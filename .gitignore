@@ -167,8 +167,8 @@ npm-debug.log
 node_modules/
 
 # PhoneGap
-mobile/platforms
-mobile/plugins
+mobile/ClikUR/platforms
+mobile/ClikUR/plugins
 
 # res
-mobile/resources/signing
+mobile/ClikUR/resources/signing
