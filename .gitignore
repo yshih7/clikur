@@ -167,7 +167,8 @@ npm-debug.log
 node_modules/
 
 # PhoneGap
-mobile-local-build/
+mobile/platforms
+mobile/plugins
 
 # res
-res/signing
+mobile/res/signing
