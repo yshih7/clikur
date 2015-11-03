@@ -43,6 +43,9 @@
     "yargs": "^2.1.1"
   },
   "jspm": {
+    "directories": {
+        "baseURL": "./www"
+    },
     "dependencies": {
       "aurelia-animator-css": "github:aurelia/animator-css@^0.17.0",
       "aurelia-binding": "github:aurelia/binding@^0.10.0",
