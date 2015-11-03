@@ -166,6 +166,9 @@ IOS/www/
 npm-debug.log
 node_modules/
 
+# JSPM
+jspm_packages/
+
 # PhoneGap
 mobile/platforms
 mobile/plugins
