@@ -1,0 +1,55 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 16px;
+	font-family: Arial, Verdana, sans-serif;
+	background-color: #ddd;
+}
+
+body {
+	position: relative;
+	min-width: 50em;
+	width: 80em;
+	min-height: 50em;
+	margin: 0 auto;
+	padding: 1em;
+	background-color: white;
+}
+
+div , p{
+	margin: .5em 0;
+}
+
+ul > li {
+	margin: .3em 0 0 1em;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table th {
+	text-decoration: underline;
+}
+
+table th, table td {
+	padding: .5em;
+	border: 1px solid black;
+}
+
+.pageTitle {
+	text-align: center;
+}
+
+#aboutNav {
+	width: 100%;
+	background-color: white;
+	margin: 1em 0;
+}
+
+#content {
+	margin-top: 1em;
+}
