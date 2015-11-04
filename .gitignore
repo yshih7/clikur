@@ -82,8 +82,6 @@ gen/
 
 # Gradle files
 .gradle/
-build/
-*/build/
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -118,11 +116,6 @@ captures/
 bin/
 gen/
 
-# Gradle files
-.gradle/
-build/
-*/build/
-
 # Local configuration file (sdk path, etc)
 local.properties
 
@@ -142,7 +135,6 @@ captures/
 
 
 # IOS / Xcode (From https://github.com/crilleengvall/gitignore/blob/master/Phonegap.gitignore)
-build/*
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -166,8 +158,13 @@ IOS/www/
 npm-debug.log
 node_modules/
 
+# JSPM
+jspm_packages/
+
 # PhoneGap
-mobile-local-build/
+mobile/build/dest/*
+!mobile/build/dest/hooks/
+!mobile/build/dest/build.json
 
 # res
-res/signing
+mobile/res/signing

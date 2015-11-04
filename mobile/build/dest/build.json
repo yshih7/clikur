@@ -1,0 +1,8 @@
+{
+    "windows": {
+        "release": {
+            "COMMENT": "Put ID here when we build for release",
+            "publisherId": ""
+        }
+    }
+}
