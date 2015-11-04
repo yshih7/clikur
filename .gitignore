@@ -162,9 +162,8 @@ node_modules/
 jspm_packages/
 
 # PhoneGap
-mobile/build/local/*
-!mobile/build/local/hooks/
-mobile/build/remote
+mobile/build/dest/*
+!mobile/build/dest/hooks/
 
 # res
 mobile/res/signing
