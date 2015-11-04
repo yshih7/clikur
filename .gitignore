@@ -164,6 +164,7 @@ jspm_packages/
 # PhoneGap
 mobile/build/dest/*
 !mobile/build/dest/hooks/
+!mobile/build/dest/build.json
 
 # res
 mobile/res/signing
