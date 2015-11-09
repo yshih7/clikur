@@ -99,10 +99,6 @@ gulp.task("clean", function() {
         .pipe(vinylPaths(del));
 });
 
-gulp.task("bundle", function() {
-    //TODO
-});
-
 gulp.task("bump", function()
 {
     if (!(argv.major ^ argv.minor ^ argv.patch))
