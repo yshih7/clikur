@@ -16,7 +16,9 @@ export class App {
         this.router = router;
         
         config.map([
-            //TODO
+            //TODO For now just going to the login screen directly. Once we have the Home screen written, switch to going
+            //there by default and add logic to the pipeline to redirect if user isn't logged in
+            {route: ["", "login"], name: "login", moduleId: "views/login"}
         ]);
     }
 }
