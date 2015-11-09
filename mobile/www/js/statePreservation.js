@@ -2,28 +2,31 @@ export function needsPreservation(id) {
     return function(target)
     {
         if ("WinJS" in window) {
-            return function()
+            return class extends target
             {
-                target.apply(this, arguments);
-
-                var store = window.preservationStore;
-                store.id = id;
-                store.src = this;
-
-                if (store.rehydrate && store.rehydrate.id === id)
+                constructor()
                 {
-                    for (let item of store.rehydrate.values)
+                    super(...arguments);
+
+                    var store = window.preservationStore;
+                    store.id = id;
+                    store.src = this;
+
+                    if (store.rehydrate && store.rehydrate.id === id)
                     {
-                        if (item.setter) {
-                            this[item.key](item.val);
+                        for (let item of store.rehydrate.values)
+                        {
+                            if (item.setter) {
+                                this[item.key](item.val);
+                            }
+                            else {
+                                this[item.key] = item.val;
+                            }
                         }
-                        else {
-                            this[item.key] = item.val;
-                        }
+
+                        store.rehydrate.id = null;
+                        store.rehydrate.values = null;
                     }
-                    
-                    store.rehydrate.id = null;
-                    store.rehydrate.values = null;
                 }
             };
         }
