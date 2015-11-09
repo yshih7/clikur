@@ -46,7 +46,7 @@ gulp.src = function()
 };
 
 gulp.task("build-source", function() {
-    return gulp.src(paths.source)
+    return gulp.src(paths.source, {base: paths.root})
         .pipe(changed(paths.srcOutput, {extension: ".js"}))
         .pipe(sourcemaps.init({loadMaps: true}))
             .pipe(babel(assign({}, babelOps, {modules: "system"})))
@@ -55,19 +55,19 @@ gulp.task("build-source", function() {
 });
 
 gulp.task("build-css", function() {
-    return gulp.src(paths.css)
+    return gulp.src(paths.css, {base: paths.root})
         .pipe(changed(paths.srcOutput, {extension: ".css"}))
         .pipe(gulp.dest(paths.srcOutput));
 });
 
 gulp.task("build-html", function() {
-    return gulp.src(paths.html)
+    return gulp.src(paths.html, {base: paths.root})
         .pipe(changed(paths.srcOutput, {extension: ".html"}))
         .pipe(gulp.dest(paths.srcOutput));
 });
 
 gulp.task("copy-res", function() {
-    return gulp.src(paths.res)
+    return gulp.src(paths.res, {base: paths.root})
         .pipe(gulp.dest(paths.srcOutput));
 });
 
