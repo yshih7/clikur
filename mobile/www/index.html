@@ -19,6 +19,8 @@
         <script type="text/javascript" src="js/winstore-jscompat.js"></script>
     </head>
     <body aurelia-app="main">
+        <!--This needs to be loaded manually due to a Windows Phone issue-->
+        <script type="text/javascript" src="jspm_packages/system-polyfills.js"></script>
         <script type="text/javascript" src="jspm_packages/system.js"></script>
         <script type="text/javascript" src="config.js"></script>
         <script type="text/javascript">
