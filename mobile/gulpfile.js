@@ -76,7 +76,7 @@ gulp.task("build-win", ["build-source", "build-css", "build-html", "copy-res"], 
     return gulp.src(paths.root + "config.xml")
         .pipe(gulp.dest(paths.localBuild))
         .pipe(shell([
-            "phonegap build windows <%= getConfig() %> -- --appx=8.1-phone --buildConfig build.json"
+            "cordova build windows <%= getConfig() %> -- --appx=8.1-phone --buildConfig build.json"
         ], {
             cwd: paths.localBuild,
             templateData : {
