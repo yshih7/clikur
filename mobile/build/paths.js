@@ -8,7 +8,7 @@ module.exports = {
     source: [srcRoot + "*.js", "!" + srcRoot + "winstore-jscompat.js", srcRoot + "views/*.js", srcRoot + "js/*.js"],
     html: srcRoot + "**/*.html",
     css: srcRoot + "**/*.css",
-    res: [srcRoot + "img/**", srcRoot + "res/**", srcRoot + "jspm_packages/**", srcRoot + "winstore-jscompat.js"],
+    res: [srcRoot + "img/**", srcRoot + "res/**", srcRoot + "jspm_packages/**", "!" + srcRoot + "jspm_packages/**.ts", srcRoot + "winstore-jscompat.js"],
     destRoot: outputRoot,
     srcOutput: outputRoot + "www/",
     localBuild: outputRoot,
