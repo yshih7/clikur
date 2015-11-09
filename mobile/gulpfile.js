@@ -68,6 +68,7 @@ gulp.task("build-html", function() {
 
 gulp.task("copy-res", function() {
     return gulp.src(paths.res, {base: paths.root})
+        .pipe(changed(paths.srcOutput))
         .pipe(gulp.dest(paths.srcOutput));
 });
 
