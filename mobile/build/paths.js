@@ -5,7 +5,7 @@ var outputRoot = "build/dest/";
 
 module.exports = {
     root: srcRoot,
-    source: [srcRoot + "*.js", "!" + srcRoot + "winstore-jscompat.js", srcRoot + "views/*.js",],
+    source: [srcRoot + "*.js", "!" + srcRoot + "winstore-jscompat.js", srcRoot + "views/*.js", srcRoot + "js/*.js"],
     html: srcRoot + "**/*.html",
     css: srcRoot + "**/*.css",
     res: [srcRoot + "img/**", srcRoot + "res/**", srcRoot + "jspm_packages/**", srcRoot + "winstore-jscompat.js"],
