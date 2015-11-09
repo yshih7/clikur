@@ -1,3 +1,5 @@
+import {needsPreservation, preserve} from "js/statePreservation"; //jshint ignore:line
+
 //start-es7
 @needsPreservation("login")
 //end-es7

@@ -1,4 +1,4 @@
-import {Redirect} from "aurelia-router";
+import {Redirect, Router} from "aurelia-router"; //jshint ignore:line
 import {inject} from "aurelia-framework"; //jshint ignore:line
 
 //start-es7
@@ -41,5 +41,7 @@ class PreserveState {
         store.path = currentPath;
         store.id = null;
         store.preserve = [];
+        
+        return next();
     }
 }
