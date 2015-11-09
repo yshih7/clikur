@@ -3,13 +3,12 @@
     padding: 0;
     margin: 0;
     width: 50%;
-    position: relative;
 }
 
 #mainTitle {
     font-size: 2em;
     font-weight: bold;
-    margin-bottom: 25px;
+    margin: 0 0 25px;
 }
 
 input {
