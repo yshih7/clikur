@@ -37,11 +37,12 @@ export function needsPreservation(id) {
 }
     
 export function preserve(setter) {
-    return function(target, key)
-    {
-        window.preservationStore.preserve.push({
-            key,
-            setter: setter || null
-        });
+    return function(target, key) {
+        if ("WinJS" in window) {
+            window.preservationStore.preserve.push({
+                key,
+                setter: setter || null
+            });
+        }
     };
 }
