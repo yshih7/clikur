@@ -24,16 +24,20 @@ export class App {
 }
 
 class PreserveState {
-    run(routingContext, next)
+    run(instruction, next)
     {
         var store = window.preservationStore || (window.preservationStore = {});
-        var currentPath = routingContext.nextInstruction.config.moduleId;
+        var currentPath = instruction.fragment;
+        console.log("Emitting instruction: %O", instruction);
+        
+        console.log("Checking for stored path. Current path is " + currentPath);
         
         if (store.rehydrate && store.rehydrate.path)
         {
             let newPath = store.rehydrate.path;
+            console.log("Previous path found: " + newPath);
             store.rehydrate.path = null;
-            if (store.rehydrate.path !== currentPath) {
+            if (newPath !== currentPath) {
                 return next.cancel(new Redirect(newPath));
             }
         }
