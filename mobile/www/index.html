@@ -30,8 +30,9 @@
             
             if ("WinJS" in window) {
                 WinJS.Application.addEventListener("activated", function(e) {
-                    if (e.kind === Windows.ApplicationModel.Activation.ActivationKind.launch
-                            && e.PreviousExecutionState === Windows.ApplicationModel.Activation.ApplicationExecutionState.terminated) {
+                    console.log("WinJS Activation. Kind: " + e.detail.kind + ", Previous State: " + e.detail.previousExecutionState);
+                    if (e.detail.kind === Windows.ApplicationModel.Activation.ActivationKind.launch
+                            && e.detail.previousExecutionState === Windows.ApplicationModel.Activation.ApplicationExecutionState.terminated) {
                         window.winResume = true;
                     }
                 }, false);
