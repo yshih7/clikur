@@ -9,7 +9,8 @@
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <!-- Done. Warning left for awareness of others. ~~@stesen-->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *">
+        <!--Put this back for production. Debug builds need lazy dynamic loading of modules-->
+<!--        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'sha256-KRbMJlBXBhRFKvC97F/hMVDA9fcxiDZTOp3Gw3V3gXQ='; style-src 'self' 'unsafe-inline'; media-src *">-->
         
         <title>ClikUR</title>
         
@@ -21,6 +22,7 @@
     <body aurelia-app="js/main">
         <!--This needs to be loaded manually due to a Windows Phone issue-->
         <script type="text/javascript" src="jspm_packages/system-polyfills.js"></script>
+        <!--For production, use system-csp-production-->
         <script type="text/javascript" src="jspm_packages/system.js"></script>
         <script type="text/javascript" src="config.js"></script>
         <script type="text/javascript">
