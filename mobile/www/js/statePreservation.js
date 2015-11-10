@@ -14,8 +14,10 @@ export function needsPreservation(id) {
 
                     if (store.rehydrate && store.rehydrate.id === id)
                     {
+                        console.log("Found previous values to rehydrate");
                         for (let item of store.rehydrate.values)
                         {
+                            console.log("%O", item);
                             if (item.setter) {
                                 this[item.key](item.val);
                             }
@@ -37,12 +39,17 @@ export function needsPreservation(id) {
 }
     
 export function preserve(setter) {
-    return function(target, key) {
+    return function(target, key, desc) {
         if ("WinJS" in window) {
+            console.log("Registering " + key + " to preserve");
             window.preservationStore.preserve.push({
                 key,
                 setter: setter || null
             });
         }
+        
+        //console.log("Desc: %O", desc);
+        desc.writable = true;
+        return desc;
     };
 }
