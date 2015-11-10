@@ -1,4 +1,4 @@
-import "localforage"; /*globals localforage, WinJS*/
+import {default as localforage} from "localforage"; /*globals WinJS*/
 
 export function configure(aurelia)
 {
