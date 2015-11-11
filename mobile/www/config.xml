@@ -108,7 +108,7 @@
         <allow-intent href="market:*"/>
     </platform>
     
-    <gap:platform game="ios"/>
+    <gap:platform name="ios"/>
     <platform name="ios">
         <allow-intent href="itms:*"/>
         <allow-intent href="itms-apps:*"/>
