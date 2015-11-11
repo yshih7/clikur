@@ -14,11 +14,13 @@ export function configure(aurelia)
         var startView = "views/app"; 
         
         if (window.winResume) {
+            //console.log("Resuming from tombstoned state");
             localforage.getItem("preservation").then(val =>
             {
                 window.winResume = false;
                 
                 if (val) {
+                    //console.log("Rehydrating %O", val);
                     window.preservationStore = {
                         rehydrate: val
                     };
@@ -50,6 +52,8 @@ export function configure(aurelia)
                 });
             }
 
+            //console.log("Preserving: %O", preservation);
+            
             e.setPromise(localforage.setItem("preservation", preservation));
         }, false);
     }

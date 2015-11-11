@@ -28,14 +28,14 @@ class PreserveState {
     {
         var store = window.preservationStore || (window.preservationStore = {});
         var currentPath = instruction.fragment;
-        console.log("Emitting instruction: %O", instruction);
+        //console.log("Emitting instruction: %O", instruction);
         
-        console.log("Checking for stored path. Current path is " + currentPath);
+        //console.log("Checking for stored path. Current path is " + currentPath);
         
         if (store.rehydrate && store.rehydrate.path)
         {
             let newPath = store.rehydrate.path;
-            console.log("Previous path found: " + newPath);
+            //console.log("Previous path found: " + newPath);
             store.rehydrate.path = null;
             if (newPath !== currentPath) {
                 return next.cancel(new Redirect(newPath));
