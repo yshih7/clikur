@@ -118,7 +118,7 @@ gulp.task("build-ios", ["build-source", "build-css", "build-html", "copy-res"], 
 });
 
 gulp.task("clean", function() {
-    return gulp.src([paths.srcOutput, paths.remoteArchive])
+    return gulp.src([paths.srcOutput])
         .pipe(vinylPaths(del));
 });
 
