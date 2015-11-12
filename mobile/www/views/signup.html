@@ -1,0 +1,15 @@
+<template>
+    <require from="css/signup.css"></require>
+    
+    <div class="deadCenter" id="InputContainer">
+        <!--TODO Replace this with an actual logo-->
+        <h1 id="mainTitle">ClikUR</h1>
+        <h2 id="sub">Create an Account</h2>
+        <input type="text" value.bind="email" name="emailField" id="emailField">
+        <input type="text" value.bind="studentName" name="nameField" id="nameField">
+        <input type="text" value.bind="studentID" name="idField" id="idField">
+        <input type="password" value.bind="password" name="pwField" id="pwField">
+        <input type="password" value.bind="passwordCheck" name="pwcField" id="pwcField">
+        <button role="button" click.delegate="createUser()">Submit</button>
+    </div>
+</template>

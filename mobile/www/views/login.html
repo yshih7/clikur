@@ -4,10 +4,9 @@
     <div class="deadCenter" id="loginContainer">
         <!--TODO Replace this with an actual logo-->
         <h1 id="mainTitle">ClikUR</h1>
-        <input type="text" value.bind="username" name="unField" id="unField">
-        <input type="password" value.bind="password" name="pwField" id="pwField">
+        <input  placeholder="Email" type="text" value.bind="email" name="emailField" id="emailField">
+        <input placeholder="password" type="password" value.bind="password" name="pwField" id="pwField">
         <button role="button" click.delegate="attemptLogin()">Sign in</button>
-        <!--TODO Make the sign-in page and link to it here!-->
-        <button role="button">Create Account</button>
+        <button role="button" click.delegate="signupAction()">Create Account</button>
     </div>
 </template>
