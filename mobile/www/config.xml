@@ -50,6 +50,10 @@
     <allow-intent href="mailto:*"/>
     <allow-intent href="geo:*"/>
     
+    <!--access allow downloading resources-->
+    <access origin="http://clikur.xyz"/>
+    <access origin="https://clikur.xyz"/>
+    
     <!--Platform declarations and specific prefs-->
     <platform name="android">
         <allow-intent href="market:*"/>
