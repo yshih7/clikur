@@ -1,9 +1,8 @@
 <widget
     xmlns="http://www.w3.org/ns/widgets"
-    xmlns:gap="http://phonegap.com/ns/1.0"
     id="edu.rochester.clikur"
     version="0.1.0"
-    versionCode="1"
+    android-versionCode="1"
     defaultlocale="en-US">
     <!--Identity info-->
     <name>ClikUR</name>
@@ -16,7 +15,6 @@
     
     <!--Preferences-->
     <!--Global-->
-    <preference name="phonegap-version" value="cli-5.2.0"/>
     <!--"default" means both portrait and landscape are allowed. Remove this preference entirely for true platform defaults-->
     <preference name="orientation" value="default"/>
     <!--Fullscreen means hiding the status bar at the top of the screen. I see no reason to do that for our app ~~stesen-->
@@ -38,60 +36,10 @@
     <!--Windows Phone-->
     <preference name="windows-target-version" value="8.1"/>
     
-    
-    <!--Plugins: Add these as we need them-->
-    <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
-    <gap:plugin name="cordova-plugin-console" source="npm"/>
-<!--
-    <gap:plugin name="cordova-plugin-battery-status" source="npm"/>
-    <gap:plugin name="cordova-plugin-camera" source="npm"/>
-    <gap:plugin name="cordova-plugin-media-capture" source="npm"/>
-    <gap:plugin name="cordova-plugin-contacts" source="npm"/>
-    <gap:plugin name="cordova-plugin-device" source="npm"/>
-    <gap:plugin name="cordova-plugin-device-motion" source="npm"/>
-    <gap:plugin name="cordova-plugin-device-orientation" source="npm"/>
-    <gap:plugin name="cordova-plugin-dialogs" source="npm"/>
-    <gap:plugin name="cordova-plugin-file" source="npm"/>
-    <gap:plugin name="cordova-plugin-file-transfer" source="npm"/>
-    <gap:plugin name="cordova-plugin-geolocation" source="npm"/>
-    <gap:plugin name="cordova-plugin-globalization" source="npm"/>
-    <gap:plugin name="cordova-plugin-inappbrowser" source="npm"/>
-    <gap:plugin name="cordova-plugin-media" source="npm"/>
-    <gap:plugin name="cordova-plugin-network-information" source="npm"/>
-    <gap:plugin name="cordova-plugin-splashscreen" source="npm"/>
-    <gap:plugin name="cordova-plugin-vibration" source="npm"/>
--->
-    
     <!--Visual assets-->
     <!--Default-->
     <icon src="icon.png"/>
-<!--    <gap:splash src="splash.png"/> ADD THIS LATER-->
-    
-    <!--Android-->
-    <icon src="res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
-    <icon src="res/icon/android/icon-48-mdpi.png" gap:platform="android" gap:qualifier="mdpi"/>
-    <icon src="res/icon/android/icon-72-hdpi.png" gap:platform="android" gap:qualifier="hdpi"/>
-    <icon src="res/icon/android/icon-96-xhdpi.png" gap:platform="android" gap:qualifier="xhdpi"/>
-    <gap:splash src="res/screen/android/screen-ldpi-portrait.png" gap:platform="android" gap:qualifier="port-ldpi"/>
-    <gap:splash src="res/screen/android/screen-mdpi-portrait.png" gap:platform="android" gap:qualifier="port-mdpi"/>
-    <gap:splash src="res/screen/android/screen-hdpi-portrait.png" gap:platform="android" gap:qualifier="port-hdpi"/>
-    <gap:splash src="res/screen/android/screen-xhdpi-portrait.png" gap:platform="android" gap:qualifier="port-xhdpi"/>
-    
-    <!--iOS-->
-    <icon src="res/icon/ios/icon-57.png" gap:platform="ios" width="57" height="57"/>
-    <icon src="res/icon/ios/icon-72.png" gap:platform="ios" width="72" height="72"/>
-    <icon src="res/icon/ios/icon-57-2x.png" gap:platform="ios" width="114" height="114"/>
-    <icon src="res/icon/ios/icon-72-2x.png" gap:platform="ios" width="144" height="144"/>
-    <gap:splash src="res/screen/ios/screen-iphone-portrait.png" gap:platform="ios" width="320" height="480"/>
-    <gap:splash src="res/screen/ios/screen-iphone-portrait-2x.png" gap:platform="ios" width="640" height="960"/>
-    <gap:splash src="res/screen/ios/screen-iphone-portrait-568h-2x.png" gap:platform="ios" width="640" height="1136"/>
-    <gap:splash src="res/screen/ios/screen-ipad-portrait.png" gap:platform="ios" width="768" height="1024"/>
-    <gap:splash src="res/screen/ios/screen-ipad-landscape.png" gap:platform="ios" width="1024" height="768"/>
-    
-    <!--Windows Phone-->
-    <platform name="windows">
-        <!--Put stuff here later!-->
-    </platform>
+<!--    <splash src="splash.png"/> ADD THIS LATER-->
     
     <!--Networking whitelist-->
     <!--allow-intent applies to opening links out of the app in a browser-->
@@ -103,16 +51,33 @@
     <allow-intent href="geo:*"/>
     
     <!--Platform declarations and specific prefs-->
-    <gap:platform name="android"/>
     <platform name="android">
         <allow-intent href="market:*"/>
+        <icon src="res/icon/android/icon-36-ldpi.png" density="ldpi"/>
+        <icon src="res/icon/android/icon-48-mdpi.png" density="mdpi"/>
+        <icon src="res/icon/android/icon-72-hdpi.png" density="hdpi"/>
+        <icon src="res/icon/android/icon-96-xhdpi.png" density="xhdpi"/>
+        <splash src="res/screen/android/screen-ldpi-portrait.png"  density="port-ldpi"/>
+        <splash src="res/screen/android/screen-mdpi-portrait.png"  density="port-mdpi"/>
+        <splash src="res/screen/android/screen-hdpi-portrait.png"  density="port-hdpi"/>
+        <splash src="res/screen/android/screen-xhdpi-portrait.png"  density="port-xhdpi"/>
     </platform>
     
-    <gap:platform name="ios"/>
     <platform name="ios">
         <allow-intent href="itms:*"/>
         <allow-intent href="itms-apps:*"/>
+        <icon src="res/icon/ios/icon-57.png" width="57" height="57"/>
+        <icon src="res/icon/ios/icon-72.png" width="72" height="72"/>
+        <icon src="res/icon/ios/icon-57-2x.png" width="114" height="114"/>
+        <icon src="res/icon/ios/icon-72-2x.png" width="144" height="144"/>
+        <splash src="res/screen/ios/screen-iphone-portrait.png" width="320" height="480"/>
+        <splash src="res/screen/ios/screen-iphone-portrait-2x.png" width="640" height="960"/>
+        <splash src="res/screen/ios/screen-iphone-portrait-568h-2x.png" width="640" height="1136"/>
+        <splash src="res/screen/ios/screen-ipad-portrait.png" width="768" height="1024"/>
+        <splash src="res/screen/ios/screen-ipad-landscape.png" width="1024" height="768"/>
     </platform>
     
-    <!--Windows Phone has to be built locally-->
+    <platform name="windows">
+        <!--Put stuff here later!-->
+    </platform>
 </widget>

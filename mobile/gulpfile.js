@@ -87,13 +87,35 @@ gulp.task("build-win", ["build-source", "build-css", "build-html", "copy-res"], 
         }));
 });
 
-//Need to manually upload once before this can be automated
-//gulp.task("build-remote", ["build-source", "build-css", "build-html", "copy-res"], function() {
-//    return gulp.src([paths.root + "config.xml", paths.srcOutput], {base: "."})
-//        .pipe(pgb({
-//            appId: ""
-//        }));
-//});
+gulp.task("build-android", ["build-source", "build-css", "build-html", "copy-res"], function() {
+    return gulp.src(paths.root + "config.xml")
+        .pipe(gulp.dest(paths.localBuild))
+        .pipe(shell([
+            "cordova build android <%= getConfig() %>"
+        ], {
+            cwd: paths.localBuild,
+            templateData : {
+                getConfig: function() {
+                    return argv.release ? "--release" : "--debug";
+                }
+            }
+        }));
+});
+
+gulp.task("build-ios", ["build-source", "build-css", "build-html", "copy-res"], function() {
+    return gulp.src(paths.root + "config.xml")
+        .pipe(gulp.dest(paths.localBuild))
+        .pipe(shell([
+            "cordova build ios <%= getConfig() %>"
+        ], {
+            cwd: paths.localBuild,
+            templateData : {
+                getConfig: function() {
+                    return argv.release ? "--release" : "--debug";
+                }
+            }
+        }));
+});
 
 gulp.task("clean", function() {
     return gulp.src([paths.srcOutput, paths.remoteArchive])
@@ -127,7 +149,7 @@ gulp.task("bump", function()
                 }
             },
             {
-                xpath: "/widget/@versionCode",
+                xpath: "/widget/@android-versionCode",
                 value: function(node)
                 {
                     var code = node.value;
