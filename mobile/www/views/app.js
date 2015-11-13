@@ -24,7 +24,7 @@ export class App {
         
         document.addEventListener("backbutton", function()
         {
-            //Call whatever back is
+            router.navigateBack();
         }, false);
     }
 }
