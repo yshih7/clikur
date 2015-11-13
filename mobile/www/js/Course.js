@@ -16,7 +16,7 @@ export class Course
     }
 }
 
-export class Session //jshint ignore:line
+export class Session
 {
     //start-es7
     static daysRegex = /^(?!$)M?W?T?R?F?S?U?$/;
@@ -34,7 +34,7 @@ export class Session //jshint ignore:line
     }
 }
 
-export class Time //jshint ignore:line
+export class Time
 {
     //start-es7
     hour: numeric;
