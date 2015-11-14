@@ -14,7 +14,7 @@ System.config({
 
   map: {
     "aurelia-animator-css": "github:aurelia/animator-css@0.18.0",
-    "aurelia-binding": "github:aurelia/binding@0.11.2",
+    "aurelia-binding": "github:aurelia/binding@0.11.3",
     "aurelia-bootstrapper": "github:aurelia/bootstrapper@0.19.0",
     "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.12.1",
     "aurelia-event-aggregator": "github:aurelia/event-aggregator@0.10.0",
@@ -47,7 +47,7 @@ System.config({
       "aurelia-pal": "github:aurelia/pal@0.3.0",
       "aurelia-templating": "github:aurelia/templating@0.17.4"
     },
-    "github:aurelia/binding@0.11.2": {
+    "github:aurelia/binding@0.11.3": {
       "aurelia-metadata": "github:aurelia/metadata@0.10.1",
       "aurelia-pal": "github:aurelia/pal@0.3.0",
       "aurelia-task-queue": "github:aurelia/task-queue@0.9.0",
@@ -82,7 +82,7 @@ System.config({
       "core-js": "npm:core-js@1.2.6"
     },
     "github:aurelia/framework@0.18.0": {
-      "aurelia-binding": "github:aurelia/binding@0.11.2",
+      "aurelia-binding": "github:aurelia/binding@0.11.3",
       "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.12.1",
       "aurelia-loader": "github:aurelia/loader@0.11.0",
       "aurelia-logging": "github:aurelia/logging@0.9.0",
@@ -135,12 +135,12 @@ System.config({
       "aurelia-pal": "github:aurelia/pal@0.3.0"
     },
     "github:aurelia/templating-binding@0.17.0": {
-      "aurelia-binding": "github:aurelia/binding@0.11.2",
+      "aurelia-binding": "github:aurelia/binding@0.11.3",
       "aurelia-logging": "github:aurelia/logging@0.9.0",
       "aurelia-templating": "github:aurelia/templating@0.17.4"
     },
     "github:aurelia/templating-resources@0.17.3": {
-      "aurelia-binding": "github:aurelia/binding@0.11.2",
+      "aurelia-binding": "github:aurelia/binding@0.11.3",
       "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.12.1",
       "aurelia-loader": "github:aurelia/loader@0.11.0",
       "aurelia-logging": "github:aurelia/logging@0.9.0",
@@ -160,7 +160,7 @@ System.config({
       "aurelia-templating": "github:aurelia/templating@0.17.4"
     },
     "github:aurelia/templating@0.17.4": {
-      "aurelia-binding": "github:aurelia/binding@0.11.2",
+      "aurelia-binding": "github:aurelia/binding@0.11.3",
       "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.12.1",
       "aurelia-loader": "github:aurelia/loader@0.11.0",
       "aurelia-logging": "github:aurelia/logging@0.9.0",
