@@ -1,7 +1,18 @@
-import {default as localforage} from "localforage"; /*globals WinJS*/
+import localforage from "localforage"; /*globals WinJS*/
+import {ViewLocator} from "aurelia-framework";
 
 export function configure(aurelia)
 {
+    //Look for html files in the views/ folder. Move JS to view-models/. This is a workaround for
+    //https://github.com/systemjs/systemjs/issues/915 which is itself a workaround for
+    //https://github.com/systemjs/systemjs/issues/450
+    ViewLocator.prototype.convertOriginToViewUrl = function(origin)
+    {
+        var moduleId = origin.moduleId;
+        var id = (moduleId.endsWith('.js')) ? moduleId.substring(0, moduleId.length - 3) : moduleId;
+        return id.replace('view-models', 'views') + '.html';
+    };
+    
     aurelia.use
         .standardConfiguration()
         .developmentLogging();
@@ -11,7 +22,7 @@ export function configure(aurelia)
     
     document.addEventListener("deviceready", function()
     {
-        var startView = "views/app"; 
+        var startView = "view-models/app"; 
         
         if (window.winResume) {
             //console.log("Resuming from tombstoned state");

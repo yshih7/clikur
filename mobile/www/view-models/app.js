@@ -18,8 +18,8 @@ export class App {
         config.map([
             //TODO For now just going to the login screen directly. Once we have the Home screen written, switch to going
             //there by default and add logic to the pipeline to redirect if user isn't logged in
-            {route: ["", "login"], name: "login", moduleId: "views/login"},
-            {route: "signup", name: "signup", moduleId: "views/signup"}
+            {route: ["", "login"], name: "login", moduleId: "view-models/login"},
+            {route: "signup", name: "signup", moduleId: "view-models/signup"}
         ]);
         
         document.addEventListener("backbutton", function()

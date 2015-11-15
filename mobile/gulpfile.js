@@ -117,6 +117,21 @@ gulp.task("build-ios", ["build-source", "build-css", "build-html", "copy-res"], 
         }));
 });
 
+gulp.task("build-ff", ["build-source", "build-css", "build-html", "copy-res"], function() {
+    return gulp.src(paths.root + "config.xml")
+        .pipe(gulp.dest(paths.localBuild))
+        .pipe(shell([
+            "cordova build firefoxos <%= getConfig() %>"
+        ], {
+            cwd: paths.localBuild,
+            templateData : {
+                getConfig: function() {
+                    return argv.release ? "--release" : "--debug";
+                }
+            }
+        }));
+});
+
 gulp.task("clean", function() {
     return gulp.src([paths.srcOutput])
         .pipe(vinylPaths(del));

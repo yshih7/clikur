@@ -12,6 +12,15 @@ System.config({
     "npm:*": "jspm_packages/npm/*"
   },
 
+  meta: {
+    "js/*.js": {
+      "scriptLoad": true
+    },
+    "view-models/*.js": {
+      "scriptLoad": true
+    }
+  },
+
   map: {
     "aurelia-animator-css": "github:aurelia/animator-css@0.18.0",
     "aurelia-binding": "github:aurelia/binding@0.11.3",
@@ -39,7 +48,7 @@ System.config({
     "babel": "npm:babel-core@5.8.34",
     "babel-runtime": "npm:babel-runtime@5.8.34",
     "core-js": "npm:core-js@1.2.6",
-    "fetch": "github:github/fetch@0.9.0",
+    "fetch": "github:github/fetch@0.10.1",
     "localforage": "npm:localforage@1.3.0",
     "text": "github:systemjs/plugin-text@0.0.2",
     "github:aurelia/animator-css@0.18.0": {
