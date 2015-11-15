@@ -5,9 +5,12 @@ import {inject} from "aurelia-framework"; //jshint ignore:line
 @inject(Router)
 //end-es7
 export class App {
-    constructor(router) {
+    constructor(router)
+    {
+        router.pipelineProvider.steps.splice(1, 0, NavigationNotifier);
+        
         if ("WinJS" in window) {
-            router.pipelineProvider.steps.splice(1, 0, PreserveState);
+            router.pipelineProvider.steps.splice(2, 0, PreserveState);
         }
     }
     
@@ -18,14 +21,11 @@ export class App {
         config.map([
             //TODO For now just going to the login screen directly. Once we have the Home screen written, switch to going
             //there by default and add logic to the pipeline to redirect if user isn't logged in
-            {route: ["", "login"], name: "login", moduleId: "view-models/login"},
-            {route: "signup", name: "signup", moduleId: "view-models/signup"}
+            {route: ["", "login"], name: "login", moduleId: "view-models/login", home: true},
+            {route: "signup", name: "signup", moduleId: "view-models/signup", defaultBack: "login"}
         ]);
         
-        document.addEventListener("backbutton", function()
-        {
-            router.navigateBack();
-        }, false);
+        config.addPipelineStep("modelbind", ApplyBackHandler);
     }
 }
 
@@ -52,6 +52,62 @@ class PreserveState {
         store.id = null;
         store.preserve = [];
         
+        return next();
+    }
+}
+
+//start-es7
+@inject(Router)
+//end-es7
+class ApplyBackHandler
+{
+    constructor(router) {
+        this.router = router;
+    }
+    
+    run(instruction, next)
+    {
+        if (instruction.config.home) {
+            if (document.backListener)
+            {
+                document.removeEventListener("backbutton", document.backListener, false);
+                delete document.backListener;
+            }
+        }
+        else if (!document.backListener)
+        {
+            (function(router) {
+                document.backListener = function()
+                {
+                    document.navigationWasSuccessful = false;
+                    router.navigateBack();
+                    
+                    setTimeout(function() {
+                        if (!document.navigationWasSuccessful)
+                        {
+                            var config = router.currentInstruction.config;
+                            if (config.defaultBack) {
+                                router.navigate(config.defaultBack);
+                            }
+                            else {
+                                console.warn(`Route ${config.name} does not have a defaultBack property`);
+                            }
+                        }
+                    }, 400);
+                };
+                
+                document.addEventListener("backbutton", document.backListener, false);
+            })(this.router);
+        }
+        
+        return next();
+    }
+}
+
+class NavigationNotifier {
+    run(instruction, next)
+    {
+        document.navigationWasSuccessful = true;
         return next();
     }
 }
