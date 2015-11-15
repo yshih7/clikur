@@ -15,7 +15,9 @@ Update with `cordova platform update android@5.0.0` in `mobile/build/dest/`
 Update with `jspm update` in `mobile/`
 
 ## Other tools:
-Mention here if something else needs to be updated
+CoreJS was updated while figuring out the Firefox WebIDE debugging issues.
+Run `jspm update` in `mobile/` to update.
+(11/14)
 
 # Dependencies
 
