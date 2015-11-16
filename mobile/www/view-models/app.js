@@ -8,13 +8,13 @@ import {inject} from "aurelia-framework"; //jshint ignore:line
 export class App
 {
     //start-es7
-    deviceHasBackButton;
-    router;
+    deviceHasBackButton: boolean;
+    router: Router;
     //end-es7
     
     constructor(router)
     {
-        console.log(device.platform);
+        //Detect if the platform is one without a physical back button
         if (device.platform === "iOS" || device.platform === "firefoxos") {
             this.deviceHasBackButton = false;
         }
@@ -24,8 +24,11 @@ export class App
         
         this.router = router;
         
+        //Add pipeline steps...
+        //Notifies the backbutton code that the router did, in fact, navigate
         router.pipelineProvider.steps.splice(1, 0, NavigationNotifier);
         
+        //Handles picking up where the user left off after tombstoning
         if ("WinJS" in window) {
             router.pipelineProvider.steps.splice(2, 0, PreserveState);
         }
@@ -42,9 +45,14 @@ export class App
             {route: "signup", name: "signup", moduleId: "view-models/signup", defaultBack: "login"}
         ]);
         
+        //Add pipeline step for handling backbutton handler attachment
         config.addPipelineStep("modelbind", ApplyBackHandler);
     }
     
+    /**
+    * Function for handling taps on the software back button
+    * Just manually fires the backbutton event to reuse code
+    */
     backButtonAction()
     {
         var e = new CustomEvent("backbutton", {bubbles: true});
@@ -52,6 +60,10 @@ export class App
     }
 }
 
+/**
+* Reacts to stored paths in the preservationStore and navigates there instead of wherever else.
+* Updates the object with the new path
+*/
 class PreserveState {
     run(instruction, next)
     {
@@ -79,6 +91,12 @@ class PreserveState {
     }
 }
 
+/**
+* Manages the backbutton handler
+* Cordova's API is (for some reason) such that when you want the back button to leave the app in the system-appropriate way,
+* you must unhook the event listener.
+* This pipeline steps hooks up the listener for internal pages and removes it for pages marked "home" in router config
+*/
 //start-es7
 @inject(Router)
 //end-es7
@@ -99,13 +117,20 @@ class ApplyBackHandler
         }
         else if (!document.backListener)
         {
-            (function(router) {
+            (function(router)
+            {
+                //Function to be used as backbutton handler
                 document.backListener = function()
                 {
+                    //Aurelia's browser history implementation just defers to window.history, which provides no
+                    //reliable way to tell if the history stack has content.
+                    //Workaround: Try to go back no matter what. Then check after a delay to see if anything actually happened.
                     document.navigationWasSuccessful = false;
                     router.navigateBack();
                     
-                    setTimeout(function() {
+                    setTimeout(function()
+                    {
+                        //If there's no page in the real back history, defer to the "defaultBack" property on the route config object
                         if (!document.navigationWasSuccessful)
                         {
                             var config = router.currentInstruction.config;
@@ -127,6 +152,9 @@ class ApplyBackHandler
     }
 }
 
+/**
+* Simply sets the variable that says "yes, the view changed".
+*/
 class NavigationNotifier {
     run(instruction, next)
     {

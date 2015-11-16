@@ -1,3 +1,9 @@
+/**
+* Class decorator for use on view-models
+* Wraps the activated() handler of the class in code that checks for relevant preserved state and rehydrates it.
+* Argument:
+*   id: String - The ID used to compare with stored data to see if it belongs to this view-model
+*/
 export function needsPreservation(id) {
     return function(target)
     {
@@ -38,7 +44,15 @@ export function needsPreservation(id) {
         return target;
     };
 }
-    
+
+/**
+* Member decorator
+* This decorator should be applied to members of classes with the needsPreservation() decorator applied
+* Registers a member of a class to be preserved through tombstoning
+* Argument:
+*   setter: string - If given, will be treated as the name of a setter function to pass the stored value to for
+*       rehydration, rather than direct assignment
+*/
 export function preserve(setter) {
     return function(target, key, desc) {
         if ("WinJS" in window)
