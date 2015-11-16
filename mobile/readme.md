@@ -21,10 +21,11 @@ Run `jspm update` in `mobile/` to update.
 
 # Dependencies
 
-## Cordova Plugins
+## Cordova Plugins (last changed 11/15)
 _(Assume these start with `cordova-plugin-`)_
 * whitelist
 * console
+* device (added 11/15)
 
 ## npm dependencies
 None added since this document was written

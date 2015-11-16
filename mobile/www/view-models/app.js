@@ -1,12 +1,29 @@
 import {Redirect, Router} from "aurelia-router"; //jshint ignore:line
 import {inject} from "aurelia-framework"; //jshint ignore:line
+/*globals device*/
 
 //start-es7
 @inject(Router)
 //end-es7
-export class App {
+export class App
+{
+    //start-es7
+    deviceHasBackButton;
+    router;
+    //end-es7
+    
     constructor(router)
     {
+        console.log(device.platform);
+        if (device.platform === "iOS" || device.platform === "firefoxos") {
+            this.deviceHasBackButton = false;
+        }
+        else {
+            this.deviceHasBackButton = true;
+        }
+        
+        this.router = router;
+        
         router.pipelineProvider.steps.splice(1, 0, NavigationNotifier);
         
         if ("WinJS" in window) {
@@ -26,6 +43,12 @@ export class App {
         ]);
         
         config.addPipelineStep("modelbind", ApplyBackHandler);
+    }
+    
+    backButtonAction()
+    {
+        var e = new CustomEvent("backbutton", {bubbles: true});
+        document.dispatchEvent(e);
     }
 }
 
