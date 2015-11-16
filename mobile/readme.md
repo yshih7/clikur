@@ -11,7 +11,7 @@ Install with `cordova platform add android@5.0.0` in `mobile/build/dest/`
 Update with `cordova platform update android@5.0.0` in `mobile/build/dest/`
 ### Cordova iOS Platform: 3.9.2
 
-## Aurelia: Last update 11/11 @ 11:43
+## Aurelia: Last update 11/15 @ 20:33
 Update with `jspm update` in `mobile/`
 
 ## Other tools:
