@@ -11,8 +11,8 @@ Install with `cordova platform add android@5.0.0` in `mobile/build/dest/`
 Update with `cordova platform update android@5.0.0` in `mobile/build/dest/`
 ### Cordova iOS Platform: 3.9.2
 
-## Aurelia: Last update 11/15 @ 20:33
-Update with `jspm update` in `mobile/`
+## Aurelia: Last update 11/16 @ 17:25
+Update with `jspm install` in `mobile/`
 
 ## Other tools:
 CoreJS was updated while figuring out the Firefox WebIDE debugging issues.
