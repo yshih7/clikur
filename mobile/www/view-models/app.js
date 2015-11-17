@@ -141,7 +141,7 @@ class ApplyBackHandler
                                 console.warn(`Route ${config.name} does not have a defaultBack property`);
                             }
                         }
-                    }, 400);
+                    }, 100);
                 };
                 
                 document.addEventListener("backbutton", document.backListener, false);
