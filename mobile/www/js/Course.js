@@ -19,7 +19,7 @@ export class Course
 export class Session
 {
     //start-es7
-    static daysRegex = /^(?!$)M?W?T?R?F?S?U?$/;
+    static daysRegex: Regexp = /^(?!$)M?W?T?R?F?S?U?$/;
     
     days: string;
     startTime: Time;
