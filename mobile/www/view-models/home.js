@@ -22,4 +22,12 @@ export class Home
         this.userData.clear();
         this.router.navigate("login");
     }
+
+    courseSelectAction(index) {
+        //TODO: Take me to your leader.... erm, I mean to the class!
+    }
+
+    addClassAction() {
+        //TODO: Navigate to class add/search screen
+    }
 }

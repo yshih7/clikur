@@ -1,14 +1,13 @@
 <template>
+    <require from="view-models/courseView"></require>
     <require from="css/home.css"></require>
     
-    <div id="header">
-        <button role="button" id="logoutBtn">Log Out</button>
+    <header>
+        <button role="button" id="logoutBtn" touchend.delegate="logOutAction()">Log Out</button>
         <h1>ClikUR</h1>
-    </div>
+    </header>
     <div class="list">
-        <template>
-            <!--TODO: Individual classes-->
-        </template>
+        <course-view repeat.for="course of userData.courseList" index.bind="$index" course.bind="course" touchend.delegate="courseSelectAction($index)"></course-view>
     </div>
-    <div id="addClass">Add a Class</div>
+    <div id="addClass" touchend.delegate="addClassAction()">Add a Class</div>
 </template>
