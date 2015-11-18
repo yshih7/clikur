@@ -1,8 +1,10 @@
 import {needsPreservation, preserve} from "js/statePreservation"; //jshint ignore:line
 import {Router} from 'aurelia-router'; //jshint ignore:line
 import {inject} from "aurelia-framework"; //jshint ignore:line
+import {UserData} from "js/UserData"; //jshint ignore:line
+
 //start-es7
-@inject(Router)
+@inject(Router, UserData)
 @needsPreservation("login")
 //end-es7
 export class Login
@@ -14,13 +16,18 @@ export class Login
     password;
     //end-es7
     
-    constructor(router)
+    constructor(router, userData)
     {
         this.Router = router;
+        this.userData = userData;
     }
     
     attemptLogin() {
         //TODO How will this work??? We still don't know!
+        
+        //Just log in for now
+        this.userData.populate(this.email);
+        this.Router.navigate("home");
     }
     
     signupAction()
