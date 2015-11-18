@@ -73,10 +73,12 @@ export class Time
             }
         }
         else {
-            hour -= 12;
+            if (hour !== 12) {
+                hour -= 12;
+            }
             ampm = "PM";
         }
         
-        return `${hour}${ampm}:${this.min}`;
+        return `${hour}:${this.min < 10 ? "0" + this.min : this.min}${ampm}`;
     }
 }

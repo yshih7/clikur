@@ -1,5 +1,6 @@
 import {Redirect, Router} from "aurelia-router"; //jshint ignore:line
 import {inject} from "aurelia-framework"; //jshint ignore:line
+import {UserData} from "js/UserData"; //jshint ignore:line
 /*globals device*/
 
 //start-es7
@@ -28,10 +29,15 @@ export class App
         //Notifies the backbutton code that the router did, in fact, navigate
         router.pipelineProvider.steps.splice(1, 0, NavigationNotifier);
         
-        //Handles picking up where the user left off after tombstoning
-        if ("WinJS" in window) {
+        if ("WinJS" in window)
+        {
+            //Handles picking up where the user left off after tombstoning
             router.pipelineProvider.steps.splice(2, 0, PreserveState);
+            router.pipelineProvider.steps.splice(4, 0, LoginVerifier);
         }
+        
+        //Checks if the user is logged in
+        router.pipelineProvider.steps.splice(3, 0, LoginVerifier);
     }
     
     configureRouter(config, router)
@@ -39,10 +45,9 @@ export class App
         this.router = router;
         
         config.map([
-            //TODO For now just going to the login screen directly. Once we have the Home screen written, switch to going
-            //there by default and add logic to the pipeline to redirect if user isn't logged in
-            {route: ["", "login"], name: "login", moduleId: "view-models/login", home: true},
-            {route: "signup", name: "signup", moduleId: "view-models/signup", defaultBack: "login"}
+            {route: "login", name: "login", moduleId: "view-models/login", home: true, login: true},
+            {route: "signup", name: "signup", moduleId: "view-models/signup", defaultBack: "login", login: true},
+            {route: ["", "home"], name: "home", moduleId: "view-models/home", home: true}
         ]);
         
         //Add pipeline step for handling backbutton handler attachment
@@ -160,5 +165,28 @@ class NavigationNotifier {
     {
         document.navigationWasSuccessful = true;
         return next();
+    }
+}
+
+//start-es7
+@inject(UserData)
+//end-es7
+class LoginVerifier
+{
+    constructor(userData)
+    {
+        this.userData = userData;
+        if (!userData.isInitialized) {
+            userData.init();
+        }
+    }
+    
+    run(instruction, next) {
+        if (!this.userData.isLoggedIn && !instruction.config.login) {
+            return next.cancel(new Redirect("login"));
+        }
+        else {
+            return next();
+        }
     }
 }

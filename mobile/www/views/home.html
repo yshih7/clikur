@@ -7,7 +7,7 @@
         <h1>ClikUR</h1>
     </header>
     <div class="list">
-        <course-view repeat.for="course of userData.courseList" index.bind="$index" course.bind="course" touchend.delegate="courseSelectAction($index)"></course-view>
+        <course-view repeat.for="course of userData.courseList" index.bind="$index" course.bind="course" del-action.bind="deleteCourse" touchend.delegate="courseSelectAction($index)"></course-view>
     </div>
-    <div id="addClass" touchend.delegate="addClassAction()">Add a Class</div>
+    <div id="addClass" touchend.delegate="addCourseAction()">Add a Class</div>
 </template>

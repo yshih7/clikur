@@ -27,7 +27,11 @@ export class Home
         //TODO: Take me to your leader.... erm, I mean to the class!
     }
 
-    addClassAction() {
+    addCourseAction() {
         //TODO: Navigate to class add/search screen
+    }
+
+    deleteCourse(index) {
+        //TODO: Delete the class!
     }
 }
