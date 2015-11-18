@@ -36,6 +36,10 @@ export class Session
         this.startTime = startTime;
         this.endTime = endTime;
     }
+
+    toString() {
+        return `${this.days} ${this.startTime}-${this.endTime}`;
+    }
 }
 
 export class Time
@@ -53,5 +57,26 @@ export class Time
         
         this.hour = hour;
         this.min = min;
+    }
+
+    toString()
+    {
+        var hour = this.hour;
+        var ampm = "";
+        
+        //Military time is much easier to store. But AM/PM is what most people want.
+        if (hour < 12)
+        {
+            ampm = "AM";
+            if (hour === 0) {
+                hour = 12;
+            }
+        }
+        else {
+            hour -= 12;
+            ampm = "PM";
+        }
+        
+        return `${hour}${ampm}:${this.min}`;
     }
 }
