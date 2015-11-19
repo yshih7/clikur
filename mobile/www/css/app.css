@@ -12,6 +12,16 @@
     font-style: normal;  
 }
 
+@font-face
+{
+    font-family: "nixieone";
+    src: url("./fonts/nixieone-regular-webfont.woff") format('woff'),
+         url("./fonts/nixieone-regular-webfont.woff2") format('woff2'); 
+    font-weight: normal;
+    font-style: normal;  
+}
+
+
 html, body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
@@ -19,12 +29,52 @@ html, body {
     -ms-user-select: none;
     user-select: none;
     font-family: "raleway",sans-serif;
-    background: 
+    background-color: #2C3B63;
+    color: #F7F7F7;
     margin:0px;
     padding:0px;
     height:100%;
     width:100%;
 
+}
+
+h1
+{
+    font-family: "nixieone";
+    font-size: 40px;
+}
+
+button
+{
+    background-color:#a8b6bf;
+    color:#ffffff;
+    font-size:20px;
+    padding-top:15px;
+    padding-bottom: 15px;
+    padding-right: 40px;
+    padding-left: 40px;
+    border: 0px;
+    border-radius: 8px;
+    margin: 10px;
+}
+
+input[type=text] 
+{
+    padding:8px;
+    border:1px solid #ccc;   
+}
+input[type=text]:focus 
+{
+    border-color:#ff0066;
+}
+input[type=password] 
+{
+    padding:8px;
+    border:1px solid #ccc;   
+}
+input[type=password]:focus 
+{
+    border-color:#ff0066;
 }
 
 .deadCenter {
