@@ -1,0 +1,37 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	background-color: #333;
+	font-size: 16px;
+	font-family: Arial, Verdana, sans-serif;
+}
+
+body {
+	background-color: #ddd;
+	min-width: 50em;
+	width: 80em;
+	min-height: 50em;
+	position: relative;
+	margin: 0 auto;
+	padding: 2em;
+}
+
+div, p {
+	margin: 1em;
+}
+
+button {
+	padding: 0.3em;
+}
+
+.field-label {
+	display: inline-block;
+	width: 10em;
+}
+
+#title {
+	text-align: center;
+}
