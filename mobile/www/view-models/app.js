@@ -173,20 +173,19 @@ class NavigationNotifier {
 //end-es7
 class LoginVerifier
 {
-    constructor(userData)
-    {
+    constructor(userData) {
         this.userData = userData;
-        if (!userData.isInitialized) {
-            userData.init();
-        }
     }
     
-    run(instruction, next) {
-        if (!this.userData.isLoggedIn && !instruction.config.login) {
-            return next.cancel(new Redirect("login"));
-        }
-        else {
-            return next();
-        }
+    run(instruction, next)
+    {
+        return this.userData.init().then(() => {
+            if (!this.userData.isLoggedIn && !instruction.config.login) {
+                return next.cancel(new Redirect("login"));
+            }
+            else {
+                return next();
+            }
+        });
     }
 }

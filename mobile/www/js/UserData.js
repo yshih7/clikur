@@ -12,7 +12,12 @@ export class UserData
     courseList: array<course.Course> = [];
     //end-es7
     
-    init() {
+    init(force)
+    {
+        if (this.isInitialized && !force) {
+            return Promise.resolve();
+        }
+        
         return localforage.getItem("userData").then(val => {
             if (val) {
                 this._populate(val);
