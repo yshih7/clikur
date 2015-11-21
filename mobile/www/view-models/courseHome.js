@@ -9,11 +9,11 @@ export class CourseHome {
     course;
     userData: UserData;
     //end-es7
-    
+
     constructor(userData) {
         this.userData = userData;
     }
-    
+
     activate(params) {
         this.course = this.userData.courseList.get(params.cid);
     }

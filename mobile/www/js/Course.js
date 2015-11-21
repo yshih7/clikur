@@ -20,7 +20,7 @@ export class Session
 {
     //start-es7
     static daysRegex: Regexp = /^(?!$)M?W?T?R?F?S?U?$/;
-    
+
     days: string;
     startTime: Time;
     endTime: Time;
@@ -31,7 +31,7 @@ export class Session
         if (!Session.daysRegex.test(days)) {
             throw new Error(`Invalid days string "${days}"`);
         }
-        
+
         this.days = days;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -54,7 +54,7 @@ export class Time
         if (hour < 0 || hour > 23 || min < 0 || min > 59) {
             throw new Error(`Invalid time "${hour}:${min}"`);
         }
-        
+
         this.hour = hour;
         this.min = min;
     }
@@ -63,7 +63,7 @@ export class Time
     {
         var hour = this.hour;
         var ampm = "";
-        
+
         //Military time is much easier to store. But AM/PM is what most people want.
         if (hour < 12)
         {
@@ -78,7 +78,7 @@ export class Time
             }
             ampm = "PM";
         }
-        
+
         return `${hour}:${this.min < 10 ? "0" + this.min : this.min}${ampm}`;
     }
 }
