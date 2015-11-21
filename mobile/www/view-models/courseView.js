@@ -6,6 +6,7 @@ import {customElement, bindable} from "aurelia-framework"; //jshint ignore:line
 export class CourseView
 {
     //start-es7
+    @bindable
     course: Course;
     @bindable
     index: numeric;

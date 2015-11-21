@@ -11,7 +11,7 @@ export class UserData
     name: string;
     courseList: array<course.Course> = [];
     //end-es7
-    
+
     init(force)
     {
         if (this.isInitialized && !force) {
@@ -39,8 +39,14 @@ export class UserData
         var startTime1 = new course.Time(12, 0);
         var endTime1 = new course.Time(1, 0);
         var session1 = new course.Session("MW", startTime1, endTime1);
-        var course1 = new course.Course("Foo Class", "FF101", session1, 12345);
+        var course1 = new course.Course(`${email} Class`, "FF101", session1, 12345);
         this.courseList.push(course1);
+        
+        var startTime2 = new course.Time(12, 0);
+        var endTime2 = new course.Time(1, 0);
+        var session2 = new course.Session("MW", startTime2, endTime2);
+        var course2 = new course.Course(`${email} Class`, "FF102", session2, 12345);
+        this.courseList.push(course2);
         
         
         this.isLoggedIn = true;

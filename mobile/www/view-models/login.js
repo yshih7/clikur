@@ -27,7 +27,10 @@ export class Login
         
         //Just log in for now
         this.userData.populate(this.email);
-        this.Router.navigate("home");
+        
+        //Okay. So without this here, if you log out and log back in, every course gets listed twice.
+        //Do I know why that happens? No. Do I know why this fixes it? Also no. ~~@stesen
+        setTimeout(() => this.Router.navigate("home"), 0);
     }
     
     signupAction()
