@@ -9,7 +9,8 @@ export class UserData
     email: string;
     //TODO: Still need some sort of auth token here!!!
     name: string;
-    courseList: array<course.Course> = [];
+    //The keys are the course IDs, and the values are the courses
+    courseList: Map<numeric, course.Course> = new Map();
     //end-es7
 
     init(force)
@@ -40,13 +41,13 @@ export class UserData
         var endTime1 = new course.Time(1, 0);
         var session1 = new course.Session("MW", startTime1, endTime1);
         var course1 = new course.Course(`${email} Class`, "FF101", session1, 12345);
-        this.courseList.push(course1);
+        this.courseList.set(12345, course1);
         
         var startTime2 = new course.Time(12, 0);
         var endTime2 = new course.Time(1, 0);
         var session2 = new course.Session("MW", startTime2, endTime2);
-        var course2 = new course.Course(`${email} Class`, "FF102", session2, 12345);
-        this.courseList.push(course2);
+        var course2 = new course.Course(`${email} Class`, "FF102", session2, 6789);
+        this.courseList.set(6789, course2);
         
         
         this.isLoggedIn = true;
@@ -66,7 +67,7 @@ export class UserData
     {
         this.email = null;
         this.name = null;
-        this.courseList = [];
+        this.courseList = new Map();
         
         this.isLoggedIn = false;
         localforage.setItem("userData", null);
