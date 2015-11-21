@@ -1,3 +1,4 @@
+
 import {customElement, bindable} from "aurelia-framework"; //jshint ignore:line
 import {Router} from 'aurelia-router'; //jshint ignore:line
 import {inject} from "aurelia-framework"; //jshint ignore:line

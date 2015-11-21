@@ -20,7 +20,9 @@ export class CourseHome {
     QQBack = () => this.toggleQuizQuestions();
     //end-es7
 
+
     constructor(userData, router) {
+
         this.userData = userData;
         this.router = router;
     }
@@ -132,5 +134,6 @@ export class CourseHome {
         else {
             this.removeBackListener();
         }
+
     }
 }

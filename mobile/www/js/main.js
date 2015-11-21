@@ -54,12 +54,14 @@ export function configure(aurelia)
         }
     }, false);
 
+
     //Windows Phone specific listeners
     if ("WinJS" in window)
     {
         //Windows Phone checkpoint listener
         //This is the equivalent of the Cordova "pause" event.
         //I'm using the native one because I can give it a Promise to wait on before suspending.
+
         WinJS.Application.addEventListener("checkpoint", function(e)
         {
             let store = window.preservationStore;

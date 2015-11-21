@@ -2,6 +2,7 @@
     <require from="view-models/courseView"></require>
     <require from="css/add.css"></require>
 
+
     <header>
         <h1 id="title">Add a Class</h1>
     </header>
@@ -11,6 +12,7 @@
 
     <div class="clear"></div>
     <div class="list" id="course_list">
+
         <course-view repeat.for="course of results" course.bind="course" touchend.delegate="courseSelectAction($index)"></course-view>
     </div>
 </template>
