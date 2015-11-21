@@ -49,7 +49,7 @@ export class App
             {route: "login", name: "login", moduleId: "view-models/login", home: true, login: true},
             {route: "signup", name: "signup", moduleId: "view-models/signup", defaultBack: "login", login: true},
             {route: ["", "home"], name: "home", moduleId: "view-models/home", home: true},
-            {route: "courses/add", name: "addCourse", moduleId: "view-models/add"}
+            {route: "courses/add", name: "addCourse", moduleId: "view-models/add", defaultBack: "home"}
             /*
                 Routes for upcoming pages:
                 {route: "courses/:cid", name: "courseHome", moduleId: "view-models/courseHome", defaultBack: "home"}
