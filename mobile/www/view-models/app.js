@@ -52,9 +52,9 @@ export class App
             {route: "courses/add", name: "addCourse", moduleId: "view-models/add"}
             /*
                 Routes for upcoming pages:
-                {route: "courses/:cid", name: "courseHome", moduleId: "view-models/courseHome"}
-                {route: "courses/:cid/ask", name: "ask", moduleId: "view-models/askQuestion"}
-                {route: "courses/:cid/answer/:qid", name: "answer", moduleId: "view-models/answerQuestion"}
+                {route: "courses/:cid", name: "courseHome", moduleId: "view-models/courseHome", defaultBack: "home"}
+                {route: "courses/:cid/ask", name: "ask", moduleId: "view-models/askQuestion", get defaultBack() {return window.location.hash.replace(/^\/#|\/ask$/, "");}}
+                {route: "courses/:cid/answer/:qid", name: "answer", moduleId: "view-models/answerQuestion", get defaultBack() {return window.location.hash.replace(/^\/#|\/answer\/.*$/, "");}}
             */
         ]);
         
