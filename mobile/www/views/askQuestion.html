@@ -5,7 +5,8 @@
 
 		<h1 id= "mainTitle">ClikUR</h1>
 		<p>Leave a constructive comment or question for the teacher. Please note that any offensive commentary will result in removal from the system.</p> 
-		<input placeholder="Enter your comment or question here" type="text" value.bind="question" name="questionField" id="questionField">
+
+		<textarea rows="4" cols="50"  placeholder="Enter your comment or question here" value.bind="question" name="questionField" id="questionField"></textarea>
 		<input type="checkbox" name="anonymous" value="anonymous" checked.bind="anonymous" id="anonymous">Anonymous
 		<button role="button" touchend.delegate="submitQuestion()" id="submit">Submit</button>
 

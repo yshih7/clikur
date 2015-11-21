@@ -11,13 +11,12 @@
 }
 
 #questionField{
-	height: 50%;
+	height: 200%;
 	margin: 0 10 10px;
 }
 #submit{
     margin-bottom: 0;
     margin-left: 0;
-    width: 80%;
 }
 input {
     width: 90%;
@@ -26,6 +25,9 @@ input {
 
 button {
     display: block;
-    width: 80%;
     margin: 0 auto 10px;
+}
+p{
+    font-size: 70%;
+
 }

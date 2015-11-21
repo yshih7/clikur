@@ -37,4 +37,10 @@ export class Login
     {
         this.router.navigate("signup");  
     }
+
+    // temporary action, for testing askQuestion page
+    askQuestion()
+    {
+        this.router.navigate("courses/123/ask");
+    }
 }
