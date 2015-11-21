@@ -5,7 +5,8 @@ export class Course
     callSign: string; //e.g., "CSC212"
     session: Session;
     id: numeric;
-    userQuestions;
+    userQuestions: Map<numeric, UserQuestion>;
+    quizQuestions: Map<numeric, QuizQuestion>;
     //end-es7
 
     constructor(name, callSign, session, id)
