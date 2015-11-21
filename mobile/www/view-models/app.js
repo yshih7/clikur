@@ -43,11 +43,19 @@ export class App
     configureRouter(config, router)
     {
         this.router = router;
+        window.router = router;
         
         config.map([
             {route: "login", name: "login", moduleId: "view-models/login", home: true, login: true},
             {route: "signup", name: "signup", moduleId: "view-models/signup", defaultBack: "login", login: true},
-            {route: ["", "home"], name: "home", moduleId: "view-models/home", home: true}
+            {route: ["", "home"], name: "home", moduleId: "view-models/home", home: true},
+            {route: "courses/add", name: "addCourse", moduleId: "view-models/add"}
+            /*
+                Routes for upcoming pages:
+                {route: "courses/:cid", name: "courseHome", moduleId: "view-models/courseHome"}
+                {route: "courses/:cid/ask", name: "ask", moduleId: "view-models/askQuestion"}
+                {route: "courses/:cid/answer/:qid", name: "answer", moduleId: "view-models/answerQuestion"}
+            */
         ]);
         
         //Add pipeline step for handling backbutton handler attachment
