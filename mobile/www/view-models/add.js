@@ -38,12 +38,12 @@ export class AddCourse {
         
         navigator.notification.confirm(`Add class ${course.callSign} ("${course.name}")?`, choice => {
             if (choice === 1)
-                {
-                    this.results.splice(index, 1);
-                    this.userData.courseList.set(course.id, course);
+            {
+                this.results.splice(index, 1);
+                this.userData.courseList.set(course.id, course);
 
-                    //TODO: Tell the server the class was added   
-                }
+                //TODO: Tell the server the class was added   
+            }
         }, "Confirm class selection", ["Yes", "Cancel"]);
     }
 }
