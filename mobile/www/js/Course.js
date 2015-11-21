@@ -19,7 +19,7 @@ export class Course
 export class Session
 {
     //start-es7
-    static daysRegex = /^(?!$)M?W?T?R?F?S?U?$/;
+    static daysRegex: Regexp = /^(?!$)M?W?T?R?F?S?U?$/;
     
     days: string;
     startTime: Time;
@@ -35,6 +35,10 @@ export class Session
         this.days = days;
         this.startTime = startTime;
         this.endTime = endTime;
+    }
+
+    toString() {
+        return `${this.days} ${this.startTime}-${this.endTime}`;
     }
 }
 
@@ -53,5 +57,28 @@ export class Time
         
         this.hour = hour;
         this.min = min;
+    }
+
+    toString()
+    {
+        var hour = this.hour;
+        var ampm = "";
+        
+        //Military time is much easier to store. But AM/PM is what most people want.
+        if (hour < 12)
+        {
+            ampm = "AM";
+            if (hour === 0) {
+                hour = 12;
+            }
+        }
+        else {
+            if (hour !== 12) {
+                hour -= 12;
+            }
+            ampm = "PM";
+        }
+        
+        return `${hour}:${this.min < 10 ? "0" + this.min : this.min}${ampm}`;
     }
 }

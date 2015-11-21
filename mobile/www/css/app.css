@@ -1,5 +1,15 @@
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
+    font-family: "raleway",sans-serif;
+}
+
+@font-face
+{
+    font-family: "raleway";
+    src: url("./fonts/raleway-regular-webfont.woff") format('woff'),
+         url("./fonts/raleway-regular-webfont.woff2") format('woff2'); 
+    font-weight: normal;
+    font-style: normal;  
 }
 
 html, body {
@@ -8,10 +18,12 @@ html, body {
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     -ms-user-select: none;
     user-select: none;
+    font-family: "raleway",sans-serif;
     margin:0px;
     padding:0px;
     height:100%;
     width:100%;
+
 }
 
 .deadCenter {
