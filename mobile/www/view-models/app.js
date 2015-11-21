@@ -40,11 +40,8 @@ export class App
         router.pipelineProvider.steps.splice(3, 0, LoginVerifier);
     }
     
-    configureRouter(config, router)
+    configureRouter(config)
     {
-        this.router = router;
-        //window.router = router;
-        
         config.map([
             {route: "login", name: "login", moduleId: "view-models/login", home: true, login: true},
             {route: "signup", name: "signup", moduleId: "view-models/signup", defaultBack: "login", login: true},
