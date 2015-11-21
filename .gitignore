@@ -168,3 +168,4 @@ mobile/build/dest/*
 
 # res
 mobile/res/signing
+.idea

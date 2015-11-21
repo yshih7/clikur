@@ -40,13 +40,16 @@ export class App
         router.pipelineProvider.steps.splice(3, 0, LoginVerifier);
     }
     
-    configureRouter(config)
+    configureRouter(config, router)
     {
+        this.router = router;
+        window.router = router;
+        
         config.map([
             {route: "login", name: "login", moduleId: "view-models/login", home: true, login: true},
             {route: "signup", name: "signup", moduleId: "view-models/signup", defaultBack: "login", login: true},
             {route: ["", "home"], name: "home", moduleId: "view-models/home", home: true},
-            {route: "courses/add", name: "addCourse", moduleId: "view-models/add", defaultBack: "home"}
+            {route: "courses/add", name: "addCourse", moduleId: "view-models/add"}
             /*
                 Routes for upcoming pages:
                 {route: "courses/:cid", name: "courseHome", moduleId: "view-models/courseHome", defaultBack: "home"}
