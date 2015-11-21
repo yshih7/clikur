@@ -1,5 +1,5 @@
-import {inject} from "aurelia-framework";
-import {UserData} from "js/UserData";
+import {inject} from "aurelia-framework"; //jshint ignore:line
+import {UserData} from "js/UserData"; //jshint ignore:line
 
 //start-es7
 @inject(UserData)

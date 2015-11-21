@@ -5,6 +5,7 @@ export class Course
     callSign: string; //e.g., "CSC212"
     session: Session;
     id: numeric;
+    userQuestions;
     //end-es7
 
     constructor(name, callSign, session, id)
@@ -19,7 +20,7 @@ export class Course
 export class Session
 {
     //start-es7
-    static daysRegex: Regexp = /^(?!$)M?W?T?R?F?S?U?$/;
+    static daysRegex: Regexp = /^(?!$)M?T?W?R?F?S?U?$/;
     
     days: string;
     startTime: Time;
