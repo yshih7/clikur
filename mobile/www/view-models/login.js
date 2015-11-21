@@ -18,7 +18,7 @@ export class Login
     
     constructor(router, userData)
     {
-        this.Router = router;
+        this.router = router;
         this.userData = userData;
     }
     
@@ -28,13 +28,13 @@ export class Login
         //Just log in for now
         this.userData.populate(this.email);
         
-        //Okay. So without this here, if you log out and log back in, every course gets listed twice.
+        //Okay. So without this timeout here, if you log out and log back in, every course gets listed twice.
         //Do I know why that happens? No. Do I know why this fixes it? Also no. ~~@stesen
-        setTimeout(() => this.Router.navigate("home"), 0);
+        setTimeout(() => this.router.navigate("home"), 0);
     }
     
     signupAction()
     {
-        this.Router.navigate("signup");  
+        this.router.navigate("signup");  
     }
 }
