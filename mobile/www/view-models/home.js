@@ -28,7 +28,7 @@ export class Home
     }
 
     addCourseAction() {
-        //TODO: Navigate to class add/search screen
+        this.router.navigate("courses/add");
     }
 
     deleteCourse(index) {
