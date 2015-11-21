@@ -43,7 +43,7 @@ export class App
     configureRouter(config, router)
     {
         this.router = router;
-        window.router = router;
+        //window.router = router;
         
         config.map([
             {route: "login", name: "login", moduleId: "view-models/login", home: true, login: true},
