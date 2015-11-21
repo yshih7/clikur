@@ -9,8 +9,6 @@ export class CourseView
     @bindable
     course: Course;
     @bindable
-    index: numeric;
-    @bindable
     delAction = null; //function(numeric): undefined
     //end-es7
 
