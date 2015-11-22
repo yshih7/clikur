@@ -38,6 +38,10 @@ export class QuestionBox
     }
     zoom()
     {
+        if (this.questionMap.size === 0) {
+            return;
+        }
+        
         this.show_list = !this.show_list;
         if(this.show_list)
         {
