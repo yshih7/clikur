@@ -51,7 +51,7 @@ export class AnswerQuestion
 	//When the take picture button is clicked
 	takePicture()
     {
-        var onSuccess = imageData => this.image = `data:image/jpeg;base64,${imageData}`;
+        var onSuccess = imageData => this.imageData = `data:image/jpeg;base64,${imageData}`;
 
 		var onFail = message => navigator.notification.alert(`Image capture failed. Reason: "${message}"`, null, "Error");
         
