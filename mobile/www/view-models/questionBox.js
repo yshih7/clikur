@@ -30,9 +30,9 @@ export class QuestionBox
     show_q_detail(id)
     {
         //link to the question detail page
-        this.router.navigate(this.route_name, {
+        this.router.navigate(this.routeName, {
             cid: this.course_id,
-            qid:id
+            qid: id
         });
     }
     zoom()
