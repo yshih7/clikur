@@ -1,7 +1,7 @@
 <template>
     <require from="css/questionBox.css"></require>
 
-    <h2 class="title">${routeName === 'answer' ? 'Quiz Questions' : 'Pending Questions'}</h2>
+    <h2 class="title">${title}</h2>
 
     <div class="itemCount" touchend.delegate="zoom()" if.bind="!show_list">
         <h2 class="title">${questionMap.size}</h2>

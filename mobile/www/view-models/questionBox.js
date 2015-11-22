@@ -19,6 +19,9 @@ export class QuestionBox
 
     @bindable
     courseId : numeric;
+
+    @bindable
+    title: string;
     //end-es7
 
     constructor(router)

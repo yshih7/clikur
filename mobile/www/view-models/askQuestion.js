@@ -1,7 +1,7 @@
 import {needsPreservation, preserve} from "js/statePreservation"; //jshint ignore:line
 import {Router} from 'aurelia-router'; //jshint ignore:line
 import {inject} from "aurelia-framework"; //jshint ignore:line
-import {UserQuestion} from "js/UserQuestion"; //jshint ignore:line
+import {UserQuestion} from "js/UserQuestion";
 
 //start-es7
 @inject(Router)
@@ -28,4 +28,9 @@ export class askQuestion
 		//navigate back to student home
 		this.router.navigateBack();
 	}
+    
+    activate(params)
+    {
+        
+    }
 }
