@@ -85,9 +85,14 @@ export class CourseHome {
 
     removeBackListener()
     {
-        document.removeEventListener('backbutton', this.backListener, false);
-        document.addEventListener('backbutton', document.backListener, false);
-        delete this.backListener;
+        if (this.backListener)
+        {
+            document.removeEventListener('backbutton', this.backListener, false);
+            delete this.backListener;
+        }
+        if (document.backListener) {
+            document.addEventListener('backbutton', document.backListener, false);
+        }
     }
 
     toggleQuizQuestions()
