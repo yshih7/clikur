@@ -31,10 +31,12 @@ export class QuestionBox
         this.show_list = false;
     }
 
-    show_q_detail(id)
+    show_q_detail(e, id)
     {
+        e.stopPropagation();
+        
         //link to the question detail page
-        this.router.navigate(this.routeName, {
+        this.router.navigateToRoute(this.routeName, {
             cid: this.courseId,
             qid: id
         });

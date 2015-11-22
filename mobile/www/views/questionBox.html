@@ -9,7 +9,7 @@
 
     <div class="list_view" if.bind="show_list" touchend.trigger="zoom()">
         <div class="list">
-            <div repeat.for="[id, question] of questionMap" touchend.trigger="show_q_detail(id)">${question.text}</div>
+            <div repeat.for="[id, question] of questionMap" touchend.trigger="show_q_detail($event, id)">${question.text}</div>
         </div>
     </div>
 </template>

@@ -33,8 +33,8 @@ export class AnswerQuestion
 
 	activate(params)
     {
-		this.course = this.UserData.courseList.get(params.cid);
-		this.question = this.course.quizQuestions.get(params.qid);
+		this.course = this.userData.courseList.get(+(params.cid));
+		this.question = this.course.quizQuestions.get(+(params.qid));
         
         var types = QuizQuestion.questionTypes;
         if (this.question.type === types.TEXT) {
