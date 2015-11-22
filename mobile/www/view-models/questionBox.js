@@ -22,6 +22,8 @@ export class QuestionBox
 
     @bindable
     title: string;
+
+    backListener = () => this.zoom();
     //end-es7
 
     constructor(router)
@@ -35,12 +37,17 @@ export class QuestionBox
     {
         e.stopPropagation();
         
+        //Unhook the back listener since we're leaving this context
+        document.removeEventListener('backbutton', this.backListener, false);
+        document.addEventListener('backbutton', document.backListener, false);
+        
         //link to the question detail page
         this.router.navigateToRoute(this.routeName, {
             cid: this.courseId,
             qid: id
         });
     }
+
     zoom()
     {
         if (this.questionMap.size === 0) {
@@ -51,7 +58,6 @@ export class QuestionBox
         if(this.show_list)
         {
             document.removeEventListener('backbutton', document.backListener, false);
-            this.backListener = () => this.zoom();
             document.addEventListener('backbutton', this.backListener, false);
         }
         else
