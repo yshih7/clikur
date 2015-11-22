@@ -10,7 +10,7 @@
         <!--RADIO INPUT-->
         <h2 value.bind="question">Temp</h2>
         <input type="radio" name="choices" repeat.for="choice of choices"
-			value.bind="choice" />
+			value.bind="choice" checked.bind="$parent.selectedChoice"/>
     </div>
 
 	<div class="formCenter" id="TextContainer" if.bind="showText">
