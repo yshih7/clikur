@@ -1,40 +1,54 @@
-<div id="addCourseDiv">
-	<form id="addCourse" name="addCourse">
-		<h2>Add a Course</h2>
-		<div>
-			<label for="course" class="field-label">
-				Course:
-			</label>
-			<input type="text" id="course" name="course" placeholder="MTH 161" />
+<form id="addCourse" name="addCourse" class="form-horizontal">
+	<h2>Add a Course</h2>
+	<div class="form-group">
+		<label for="course" class="col-md-2 control-label">
+			Course:
+		</label>
+		<div class="col-md-10">
+			<input type="text" id="course" name="course" class="form-control" placeholder="MTH 161" />
 		</div>
-		<div>
-			<label for="courseTitle" class="field-label">
-				Course Title:
-			</label>
-			<input type="text" id="courseTitle" name="courseTitle" placeholder="Calculus IA" />
+	</div>
+	<div class="form-group">
+		<label for="courseTitle" class="col-md-2 control-label">
+			Course Title:
+		</label>
+		<div class="col-md-10">
+			<input type="text" id="courseTitle" name="courseTitle" class="form-control" placeholder="Calculus IA" />
 		</div>
-		<div>
-			<label for="crn" class="field-label">
-				CRN:
-			</label>
-			<input type="text" id="crn" name="crn" placeholder="29288" />
+	</div>
+	<div class="form-group">
+		<label for="crn" class="col-md-2 control-label">
+			CRN:
+		</label>
+		<div class="col-md-10">
+			<input type="text" id="crn" name="crn" class="form-control" placeholder="29288" />
 		</div>
-		<div>
-			<label class="field-label">
-				Term:
-			</label>
-			<select id="semester" name="term">
-				<option value="Fall">Fall</option>
-				<option value="Spring">Spring</option>
-				<option value="Summer">Summer</option>
-			</select>
-			<select id="year" name="year">
-				<option value="2016">2016</option>
-				<option value="2017">2017</option>
-			</select>
+	</div>
+	<div class="form-group">
+		<label class="col-md-2 control-label">
+			Term:
+		</label>
+		<div class="col-md-10">
+			<div class="row">
+				<div class="col-md-5">
+					<select id="semester" name="term" class="form-control">
+						<option value="Fall">Fall</option>
+						<option value="Spring">Spring</option>
+						<option value="Summer">Summer</option>
+					</select>
+				</div>
+				<div class="col-md-5">
+					<select id="year" name="year" class="form-control">
+						<option value="2016">2016</option>
+						<option value="2017">2017</option>
+					</select>
+				</div>
+			</div>
 		</div>
-		<div>
+	</div>
+	<div class="form-group">
+		<div class="col-md-offset-2 col-md-2">
 			<button type="submit" id="submitCourse" name="submitCourse">Submit</button>
 		</div>
-	</form>
-</div>
+	</div>
+</form>
