@@ -1,8 +1,25 @@
-<ul>
-{{#each model as |course|}}
-	<li>Course: {{course.course}}</li>
-	<li>Title: {{course.title}}</li>
-	<li>CRN: {{course.crn}}</li>
-	<li>Term: {{course.term}}</li>
-{{/each}}
-</ul>
+<div class="row">
+	<div class="col-md-3">
+		<h2>Course List</h2>
+	</div>
+	<div class="col-md-2 col-md-offset-7">
+		<a href="courses/add"><button class="btn btn-default">Add Course</button></a>
+	</div>
+</div>
+
+<div class="row">
+	<table class="table table-striped">
+		<tbody>
+			<tr>
+				<th>&nbsp;</th>
+				<th>Course</th>
+				<th>Title</th>
+				<th>CRN</th>
+				<th>Term</th>
+			</tr>
+			{{#each model as |course|}}
+				{{course-item course=course}}
+			{{/each}}
+		</tbody>
+	</table>
+</div>
