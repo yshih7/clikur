@@ -14,13 +14,13 @@ export class AddCourse {
 
     constructor(userData) {
         this.userData = userData;
-        
+
         var startTime1 = new course.Time(12, 0);
         var endTime1 = new course.Time(1, 0);
         var session1 = new course.Session("MW", startTime1, endTime1);
         var course1 = new course.Course(`Add me!`, "AA101", session1, 111);
         this.results.push(course1);
-        
+
         var startTime2 = new course.Time(12, 0);
         var endTime2 = new course.Time(1, 0);
         var session2 = new course.Session("MW", startTime2, endTime2);
@@ -35,14 +35,14 @@ export class AddCourse {
     courseSelectAction(index)
     {
         var course = this.results[index];
-        
+
         navigator.notification.confirm(`Add class ${course.callSign} ("${course.name}")?`, choice => {
             if (choice === 1)
             {
                 this.results.splice(index, 1);
                 this.userData.courseList.set(course.id, course);
 
-                //TODO: Tell the server the class was added   
+                //TODO: Tell the server the class was added
             }
         }, "Confirm class selection", ["Yes", "Cancel"]);
     }

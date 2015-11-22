@@ -23,15 +23,15 @@ export class Home
         this.router.navigate("login");
     }
 
-    courseSelectAction(index) {
-        //TODO: Take me to your leader.... erm, I mean to the class!
+    courseSelectAction(id) {
+        this.router.navigateToRoute("courseHome", {cid: id});
     }
 
     addCourseAction() {
         this.router.navigate("courses/add");
     }
 
-    deleteCourse(index) {
+    deleteCourse(id) {
         //TODO: Delete the class!
     }
 }

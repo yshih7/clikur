@@ -15,21 +15,21 @@ export function configure(aurelia)
         var id = (moduleId.endsWith('.js')) ? moduleId.substring(0, moduleId.length - 3) : moduleId;
         return id.replace('view-models', 'views') + '.html';
     };
-    
+
     aurelia.use
         .standardConfiguration()
         .developmentLogging();
-    
+
     //Uncomment the line below to enable animation.
     //aurelia.use.plugin('aurelia-animator-css');
-    
+
     //This is the "Main function" for Cordova.
     //We declare it inside of Aurelia's main and use it to wrap the call to aurelia.start()
     document.addEventListener("deviceready", function()
     {
         //The view-model to open first
-        var startView = "view-models/app"; 
-        
+        var startView = "view-models/app";
+
         //If we're resuming from tombstone, rehydrate the preservation object from localstorage
         if (window.winResume) {
             //console.log("Resuming from tombstoned state");
@@ -37,14 +37,14 @@ export function configure(aurelia)
             {
                 //This should only happen once
                 window.winResume = false;
-                
+
                 if (val) {
                     //console.log("Rehydrating %O", val);
                     window.preservationStore = {
                         rehydrate: val
                     };
                 }
-                
+
                 return aurelia.start();
             })
             .then(a => a.setRoot(startView, document.body));
@@ -53,7 +53,7 @@ export function configure(aurelia)
             aurelia.start().then(a => a.setRoot(startView, document.body));
         }
     }, false);
-    
+
     //Windows Phone checkpoint listener
     //This is the equivalent of the Cordova "pause" event.
     //I'm using the native one because I can give it a Promise to wait on before suspending.
@@ -77,7 +77,7 @@ export function configure(aurelia)
             }
 
             //console.log("Preserving: %O", preservation);
-            
+
             e.setPromise(localforage.setItem("preservation", preservation));
         }, false);
     }
