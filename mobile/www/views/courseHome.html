@@ -4,8 +4,8 @@
 
     <h1>${course.callSign}</h1>
     
-    <question-box question-map.bind="course.userQuestions" route-name="edit" course-id.bind="course.id" title="Pending Questions"></question-box>
-    <question-box question-map.bind="course.quizQuestions" route-name="answer" course-id.bind="course.id" title="Quiz Questions"></question-box>
+    <question-box question-map.bind="course.userQuestions" route-name="edit" course-id.bind="course.id" title="Pending Questions" show-list.bind="expandUserQuestions" touchend.trigger="toggleUserQuestions()"></question-box>
+    <question-box question-map.bind="course.quizQuestions" route-name="answer" course-id.bind="course.id" title="Quiz Questions" show-list.bind="expandQuizQuestions" touchend.trigger="toggleQuizQuestions()"></question-box>
 
     <div id="raiseHand">Raise Hand!</div>
     

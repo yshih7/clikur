@@ -1,0 +1,38 @@
+<template>
+    <require from="css/answerQuestion.css"></require>
+    
+	<div class="topCenter">
+        <!--This is the header-->
+        <h1 id="questionHeader">${course.callSign} / Answer Question</h1>
+    </div>
+
+    <p id="questionText">${question.text}</p>
+    
+    <div class="formCenter" id="RadioContainer" if.bind="showRadio">
+        <!--RADIO INPUT-->
+        <label repeat.for="choice of question.choices">
+            <!--
+                model.bind="$index" means (in this context) that the value that's bound with the selection variable
+                is the index of the choice in the array (simpler for sending back to the server).
+                If we want to use the strings of the choices instead, use value.bind="choice"
+            -->
+            <input type="radio" name="choices" model.bind="$index" checked.bind="selection"/>
+            ${choice}
+        </label>
+    </div>
+
+	<div class="formCenter" id="TextContainer" if.bind="showText">
+        <!--TEXT INPUT-->
+        <textarea name="text" value.bind="textInput"></textarea>
+    </div>
+
+	<div class="formCenter" id="ImageContainer" if.bind="showImage">
+        <!--IMAGE-->
+		<img id="answerImage" src.bind="imageData">
+		<button role="button" click.delegate="takePicture()">Take Picture</button>
+    </div>
+
+	<div class="bottomCenter">
+        <button role="button" click.delegate="submitAnswer()">Submit</button>
+    </div>
+</template>

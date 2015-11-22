@@ -12,7 +12,8 @@ export class QuestionBox
     @bindable
     questionMap : Map;
 
-    show_list : boolean;
+    @bindable
+    showList : boolean;
 
     @bindable
     routeName : String;
@@ -27,35 +28,16 @@ export class QuestionBox
     constructor(router)
     {
         this.router = router;
-        //by default, the question list is not shown
-        this.show_list = false;
     }
 
-    show_q_detail(id)
+    show_q_detail(e, id)
     {
+        e.stopPropagation();
+        
         //link to the question detail page
-        this.router.navigate(this.routeName, {
+        this.router.navigateToRoute(this.routeName, {
             cid: this.courseId,
             qid: id
         });
-    }
-    zoom()
-    {
-        if (this.questionMap.size === 0) {
-            return;
-        }
-        
-        this.show_list = !this.show_list;
-        if(this.show_list)
-        {
-            document.removeEventListener('backbutton', document.backListener, false);
-            this.backListener = () => this.zoom();
-            document.addEventListener('backbutton', this.backListener, false);
-        }
-        else
-        {
-            document.removeEventListener('backbutton', this.backListener, false);
-            document.addEventListener('backbutton', document.backListener, false);
-        }
     }
 }
