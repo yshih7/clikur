@@ -54,10 +54,12 @@ export function configure(aurelia)
         }
     }, false);
 
-    //Windows Phone checkpoint listener
-    //This is the equivalent of the Cordova "pause" event.
-    //I'm using the native one because I can give it a Promise to wait on before suspending.
-    if ("WinJS" in window) {
+    //Windows Phone specific listeners
+    if ("WinJS" in window)
+    {
+        //Windows Phone checkpoint listener
+        //This is the equivalent of the Cordova "pause" event.
+        //I'm using the native one because I can give it a Promise to wait on before suspending.
         WinJS.Application.addEventListener("checkpoint", function(e)
         {
             let store = window.preservationStore;
@@ -80,5 +82,16 @@ export function configure(aurelia)
 
             e.setPromise(localforage.setItem("preservation", preservation));
         }, false);
+        
+        //Windows Phone uses click events for interaction, not touchevents.
+        //For sake of code simplicity/DRY, just fire a touchend event on anything that gets "clicked"
+        document.addEventListener("click", function(e)
+        {
+            var touchE = new CustomEvent("touchend", {bubbles: true});
+            e.target.dispatchEvent(touchE);
+            
+            //Since we're not actually using this event, we don't need it to finish traversing
+            e.stopImmediatePropagation();
+        }, true);
     }
 }
