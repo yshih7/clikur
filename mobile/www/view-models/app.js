@@ -50,7 +50,7 @@ export class App
             {route: "signup", name: "signup", moduleId: "view-models/signup", defaultBack: "login", login: true},
             {route: ["", "home"], name: "home", moduleId: "view-models/home", home: true},
             {route: "courses/add", name: "addCourse", moduleId: "view-models/add"},
-            {route: "courses/:cid", name: "courseHome", moduleId: "view-models/courseHome", defaultBack: "home"},
+            //{route: "courses/:cid", name: "courseHome", moduleId: "view-models/courseHome", defaultBack: "home"},
             {route: "courses/:cid/ask", name: "ask", moduleId: "view-models/askQuestion", get defaultBack() {return window.location.hash.replace(/^\/#|\/ask$/, "");}}
             /*
                 Routes for upcoming pages:
