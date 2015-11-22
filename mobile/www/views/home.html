@@ -9,5 +9,5 @@
     <div class="list">
         <course-view repeat.for="[id, course] of userData.courseList" course.bind="course" del-action.bind="deleteCourse" touchend.delegate="courseSelectAction(id)"></course-view>
     </div>
-    <div class="bigButton" touchend.delegate="addCourseAction()">Add a Class</div>
+    <div class="bigButton" id="add_class" touchend.delegate="addCourseAction()">Add a Class</div>
 </template>
