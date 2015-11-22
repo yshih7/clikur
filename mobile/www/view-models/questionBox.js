@@ -32,7 +32,7 @@ export class QuestionBox
     {
         //link to the question detail page
         this.router.navigate(this.routeName, {
-            cid: this.course_id,
+            cid: this.courseId,
             qid: id
         });
     }

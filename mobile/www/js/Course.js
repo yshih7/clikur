@@ -15,6 +15,8 @@ export class Course
         this.callSign = callSign;
         this.session = session;
         this.id = id;
+        this.userQuestions = new Map();
+        this.quizQuestions = new Map();
     }
 }
 

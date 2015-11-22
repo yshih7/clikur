@@ -15,6 +15,6 @@ export class CourseHome {
     }
 
     activate(params) {
-        this.course = this.userData.courseList.get(params.cid);
+        this.course = this.userData.courseList.get(+(params.cid));
     }
 }
