@@ -12,7 +12,7 @@ export class App
     deviceHasBackButton: boolean;
     router: Router;
     //end-es7
-    
+
     constructor(router)
     {
         //Detect if the platform is one without a physical back button
@@ -22,43 +22,43 @@ export class App
         else {
             this.deviceHasBackButton = true;
         }
-        
+
         this.router = router;
-        
+
         //Add pipeline steps...
         //Notifies the backbutton code that the router did, in fact, navigate
         router.pipelineProvider.steps.splice(1, 0, NavigationNotifier);
-        
+
         if ("WinJS" in window)
         {
             //Handles picking up where the user left off after tombstoning
             router.pipelineProvider.steps.splice(2, 0, PreserveState);
             router.pipelineProvider.steps.splice(4, 0, LoginVerifier);
         }
-        
+
         //Checks if the user is logged in
         router.pipelineProvider.steps.splice(3, 0, LoginVerifier);
     }
-    
+
     configureRouter(config)
     {
         config.map([
             {route: "login", name: "login", moduleId: "view-models/login", home: true, login: true},
             {route: "signup", name: "signup", moduleId: "view-models/signup", defaultBack: "login", login: true},
             {route: ["", "home"], name: "home", moduleId: "view-models/home", home: true},
-            {route: "courses/add", name: "addCourse", moduleId: "view-models/add", defaultBack: "home"}
+            {route: "courses/add", name: "addCourse", moduleId: "view-models/add", defaultBack: "home"},
+            {route: "courses/:cid", name: "courseHome", moduleId: "view-models/courseHome", defaultBack: "home"}
             /*
                 Routes for upcoming pages:
-                {route: "courses/:cid", name: "courseHome", moduleId: "view-models/courseHome", defaultBack: "home"}
-                {route: "courses/:cid/ask", name: "ask", moduleId: "view-models/askQuestion", get defaultBack() {return window.location.hash.replace(/^\/#|\/ask$/, "");}}
+                {route: ["courses/:cid/ask", "courses/:cid/edit/:qid"], name: "ask", moduleId: "view-models/askQuestion", get defaultBack() {return window.location.hash.replace(/^\/#|\/ask$/, "");}}
                 {route: "courses/:cid/answer/:qid", name: "answer", moduleId: "view-models/answerQuestion", get defaultBack() {return window.location.hash.replace(/^\/#|\/answer\/.*$/, "");}}
             */
         ]);
-        
+
         //Add pipeline step for handling backbutton handler attachment
         config.addPipelineStep("modelbind", ApplyBackHandler);
     }
-    
+
     /**
     * Function for handling taps on the software back button
     * Just manually fires the backbutton event to reuse code
@@ -80,9 +80,9 @@ class PreserveState {
         var store = window.preservationStore || (window.preservationStore = {});
         var currentPath = instruction.fragment;
         //console.log("Emitting instruction: %O", instruction);
-        
+
         //console.log("Checking for stored path. Current path is " + currentPath);
-        
+
         if (store.rehydrate && store.rehydrate.path)
         {
             let newPath = store.rehydrate.path;
@@ -92,11 +92,11 @@ class PreserveState {
                 return next.cancel(new Redirect(newPath));
             }
         }
-        
+
         store.path = currentPath;
         store.id = null;
         store.preserve = [];
-        
+
         return next();
     }
 }
@@ -115,7 +115,7 @@ class ApplyBackHandler
     constructor(router) {
         this.router = router;
     }
-    
+
     run(instruction, next)
     {
         if (instruction.config.home) {
@@ -137,7 +137,7 @@ class ApplyBackHandler
                     //Workaround: Try to go back no matter what. Then check after a delay to see if anything actually happened.
                     document.navigationWasSuccessful = false;
                     router.navigateBack();
-                    
+
                     setTimeout(function()
                     {
                         //If there's no page in the real back history, defer to the "defaultBack" property on the route config object
@@ -153,11 +153,11 @@ class ApplyBackHandler
                         }
                     }, 100);
                 };
-                
+
                 document.addEventListener("backbutton", document.backListener, false);
             })(this.router);
         }
-        
+
         return next();
     }
 }
@@ -181,7 +181,7 @@ class LoginVerifier
     constructor(userData) {
         this.userData = userData;
     }
-    
+
     run(instruction, next)
     {
         return this.userData.init().then(() => {
