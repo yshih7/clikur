@@ -14,10 +14,10 @@ export class QuestionBox
     show_list : boolean;
 
     @bindable
-    route_name : String;
+    routeName : String;
 
     @bindable
-    course_id : numeric;
+    courseId : numeric;
     //end-es7
 
     constructor(router)
