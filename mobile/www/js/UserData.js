@@ -19,6 +19,8 @@ export class UserData
             return Promise.resolve();
         }
         
+        //window.userData = this;
+        
         return localforage.getItem("userData").then(val => {
             if (val) {
                 this._populate(val);

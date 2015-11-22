@@ -26,6 +26,7 @@ _(Assume these start with `cordova-plugin-`)_
 * whitelist
 * console
 * device (added 11/15)
+* dialogs (added 11/21)
 
 ## npm dependencies
 None added since this document was written
