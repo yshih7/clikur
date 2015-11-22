@@ -73,5 +73,5 @@ export class AnswerQuestion
 		} else {
 			//TODO Submit Image
 		}
-    }   
+    }
 }
