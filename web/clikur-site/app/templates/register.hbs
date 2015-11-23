@@ -1,6 +1,6 @@
 
 <div id="registration">
-	<form id="registrationInfo" name="registrationInfo">
+	<form id="registrationInfo" name="registrationInfo" method="POST">
 	
 		<h1>Registration</h1>
 	
@@ -8,13 +8,20 @@
 			<input type="text" id="lastName" name="lastName" placeholder="Last Name" /> 
 			<input type="text" id="firstName" name="firstName" placeholder="First Name" /><br>
 			<input type="email" id="email" name="email" placeholder="Email" /><br>
-			<input type="email" id="confEmail" name="confEmail" placeholder="Confirm Email" /><br><br>
+			<input type="email" id="confEmail" name="confEmail" placeholder="Confirm Email" />
+			
+			<p id="emailWarning" class="warning" style="color:red"></p>
+			
+			<br><br>
 			<input type="password" id="password" name="password" placeholder="Password" /><br>
 			<input type="password" id="confPassword" name="confPassword" placeholder="Confirm Password" /><br>
+			
+			<p id="passWarning" class="warning" style="color:red"></p>
+			
 		</div>
 		
 		<div>
-			<button type="submit" id="submitInfo" name="submitInfo" onclick="checkConfirmations()">Finish</button>
+			<button type="button" id="submitInfo" name="submitInfo" onclick="checkConfirmations()">Finish</button>
 		</div>
 		
 	</form>
@@ -22,6 +29,25 @@
 
 <script>
 
-
+	function checkConfirmations(){
+		var email1 = document.getElementById("email").value;
+		var email2 = document.getElementById("confEmail").value;
+		
+		var pass1 = document.getElementById("password").value;
+		var pass2 = document.getElementById("confPassword").value;
+		
+		if(email1 !== email2){
+			document.getElementById("emailWarning").innerHTML = "Email does not match";
+		}
+		else{
+			document.getElementById("emailWarning").innerHTML = "";
+		}
+		if(pass1 !== pass2){
+			document.getElementById("passWarning").innerHTML = "Password does not match";
+		}
+		else {
+			document.getElementById("passWarning").innerHTML = "";
+		}
+	}
 
 </script>
