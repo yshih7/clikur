@@ -9,6 +9,7 @@ export class Home
 {
     //start-es7
     userData: UserData;
+    updating: boolean = false;
     //end-es7
     
     constructor(userData, router)
@@ -33,5 +34,9 @@ export class Home
 
     deleteCourse(id) {
         //TODO: Delete the class!
+    }
+
+    deactivate() {
+        this.updating = true;
     }
 }
