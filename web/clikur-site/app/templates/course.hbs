@@ -36,7 +36,7 @@ var Students = ExistingObject;
 	document.getElementbyId("classsemester").innerHTML = classvar.semester;
 </script>
 
-<a href="courses/add"><button type="button" id="btn_courses" >
+<a href="courses"><button type="button" id="btn_courses" >
 	Return to Course List
 </button></a>
 
@@ -52,7 +52,7 @@ var Students = ExistingObject;
 		<th width="300">Quiz Questions:</th>
 		<th></th>
 		<th>
-			<a href="courses/add"><button type="button" id="btn_addQuestion">
+			<a href="course/:course-id/quizzes/add"><button type="button" id="btn_addQuestion">
 				New Question
 			</button></a>
 		</th>
