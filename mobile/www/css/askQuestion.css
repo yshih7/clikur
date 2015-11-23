@@ -2,7 +2,7 @@
 	text-align: center;
     padding: 0;
     margin: 0;
-    width: 80%;
+    width: 90%;
 }
 #mainTitle {
     font-size: 2em;
@@ -12,15 +12,19 @@
 
 #questionField{
 	height: 200%;
-	margin: 0 10 10px;
+	margin: 0 auto;
 }
 #submit{
     margin-bottom: 0;
     margin-left: 0;
 }
+#anonymous{
+    margin: 0;
+}
 input {
     width: 90%;
     margin: 0 auto 10px;
+    vertical-align: bottom;
 }
 
 button {
@@ -28,5 +32,5 @@ button {
     margin: 0 auto 10px;
 }
 p{
-    font-size: 70%;
+    font-size: 80%;
 }
