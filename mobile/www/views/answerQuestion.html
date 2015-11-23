@@ -29,10 +29,10 @@
 	<div class="formCenter" id="ImageContainer" if.bind="showImage">
         <!--IMAGE-->
 		<img id="answerImage" src.bind="imageData">
-		<button role="button" click.delegate="takePicture()">Take Picture</button>
+		<button role="button" touchend.delegate="takePicture()">Take Picture</button>
     </div>
 
 	<div class="bottomCenter">
-        <button role="button" click.delegate="submitAnswer()">Submit</button>
+        <button role="button" touchend.delegate="submitAnswer()">Submit</button>
     </div>
 </template>
