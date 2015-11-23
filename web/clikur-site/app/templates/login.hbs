@@ -3,14 +3,21 @@
 
 <body>
 
-<form method="post"> 
+<form action="_formhelpers.html" method="post"> 
 	<fieldset>
-		Username: <br>
-		<input type="text" name="Username"><br>
-		Password: <br>
-		<input type="password" name="Password"><br><br>
-		<input type="submit" value="Register">
-		<input type="submit" value="Login">
+		<label for="Username">
+			Username:
+		</label><br>
+		<input type="text" name="username" id="username" placeholder="username"><br>
+		<label for="Password">
+			Password:
+		</label><br>
+		<input type="password" name="password" id="password" placeholder="password"><br>
+		<br>
+		<button type="button" id="btn_register" onclick="location.href='courses.hbs'">
+			Register
+		</button>
+		<input type="submit" value="Sign In">
 	</fieldset>
 </form>
 
