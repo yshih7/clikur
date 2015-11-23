@@ -1,12 +1,3 @@
-#route-home header {
-    background-color: #004E99;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 3rem;
-}
-
 #route-home #logoutBtn {
     background-color: #636F8C;
     color: #ffffff;
@@ -19,18 +10,11 @@
     margin: 0;
     left: 10px;
     font-size: 1em;
-    z-index: 1;
+    z-index: 20;
 }
 
 #route-home .list {
     margin-top: calc(3rem + 15px);
-}
-
-#route-home h1 {
-    font-size: 2em;
-    position: relative;
-    margin: 0;
-    line-height: 3rem;
 }
 
 #route-home #addCourse {
