@@ -5,7 +5,8 @@ export class Course
     callSign: string; //e.g., "CSC212"
     session: Session;
     id: numeric;
-    userQuestions;
+    userQuestions: Map<numeric, UserQuestion>;
+    quizQuestions: Map<numeric, QuizQuestion>;
     //end-es7
 
     constructor(name, callSign, session, id)
@@ -14,6 +15,8 @@ export class Course
         this.callSign = callSign;
         this.session = session;
         this.id = id;
+        this.userQuestions = new Map();
+        this.quizQuestions = new Map();
     }
 }
 

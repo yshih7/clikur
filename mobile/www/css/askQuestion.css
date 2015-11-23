@@ -1,0 +1,32 @@
+#questionContainer{
+	text-align: center;
+    padding: 0;
+    margin: 0;
+    width: 80%;
+}
+#mainTitle {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0 0 25px;
+}
+
+#questionField{
+	height: 200%;
+	margin: 0 10 10px;
+}
+#submit{
+    margin-bottom: 0;
+    margin-left: 0;
+}
+input {
+    width: 90%;
+    margin: 0 auto 10px;
+}
+
+button {
+    display: block;
+    margin: 0 auto 10px;
+}
+p{
+    font-size: 70%;
+}

@@ -1,11 +1,13 @@
 <template>
+    <require from="view-models/questionBox"></require>
     <require from="css/courseHome.css"></require>
 
     <h1>${course.callSign}</h1>
-    <!--TODO: Pending Questions box (custom element)-->
     
-    <!--TODO: Quiz Questions box (custom element)-->
+    <question-box question-map.bind="course.userQuestions" route-name="edit" course-id.bind="course.id" title="Pending Questions" show-list.bind="expandUserQuestions" touchend.trigger="toggleUserQuestions()"></question-box>
+    <question-box question-map.bind="course.quizQuestions" route-name="answer" course-id.bind="course.id" title="Quiz Questions" show-list.bind="expandQuizQuestions" touchend.trigger="toggleQuizQuestions()"></question-box>
 
     <div id="raiseHand">Raise Hand!</div>
-    <div class="bigButton">Ask a Question</div>
+    
+    <div class="bigButton" touchend.delegate="askQuestionAction()">Ask a Question</div>
 </template>

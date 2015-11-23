@@ -15,6 +15,6 @@ export class CourseView
     _delAction(e)
     {
         e.stopPropagation();
-        this.delAction(this.index);
+        this.delAction(this.course.id);
     }
 }
