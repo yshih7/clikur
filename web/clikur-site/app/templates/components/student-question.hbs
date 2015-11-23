@@ -1,0 +1,26 @@
+<div class="row">
+	<div class="col-md-6">
+		<strong>{{question.studentName}}</strong>
+	</div>
+	<div class="col-md-6">
+		{{question.timestamp}}
+	</div>
+	<div class="col-md-12">
+		&nbsp;
+	</div>
+	<div class="col-md-12">
+		{{question.question}}
+	</div>
+	<div class="col-md-12">
+		&nbsp;
+	</div>
+	<div class="col-md-6">
+		<button id="closeQ{{question.id}}" name="closeQ{{question.id}}" 
+			class="btn btn-primary" value="{{question.id}}">Close</button>
+	</div>
+	<div class="col-md-6">
+		<button id="block{{question.studentId}}" name="block{{question.studentId}}" 
+			class="btn btn-warning" value="{{question.studentId}}">Block {{question.studentName}}</button>
+	</div>
+</div>
+<hr />

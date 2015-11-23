@@ -1,1 +1,116 @@
-{{outlet}}
+
+<div id="addQuizDiv">
+	<form id="addQuiz" name="addQuiz">
+		<h2>Create a Quiz</h2>
+		
+		<div>
+			<button type="button" id="activateQuiz" name="activateQuiz">Activate Quiz</button>
+		</div>
+		
+		<br><br>
+		
+		<div>
+			<label for="quizTitle" class="field-label">
+				Quiz Title:
+			</label>
+			<input type="text" id="quizTitle" name="quizTitle" placeholder="Title" />
+		</div>
+		
+		<h3>Quiz Details</h3>
+		<div>
+			<label for="quizMonth" class="field-label">
+				Quiz Date:
+			</label>
+			<input type="text" id="quizMonth" name="quizMonth" placeholder="MM" maxlength="2" size="2"/>
+			<label for="quizDay" class="field-label">
+				/
+			</label>
+			<input type="text" id="quizDay" name="quizDay" placeholder="DD" maxlength="2" size="2"/>
+			<label for="quizYear" class="field-label">
+				/
+			</label>
+			<input type="text" id="quizYear" name="quizYear" placeholder="YYYY" maxlength="4" size="4"/>
+		</div>
+		
+		<div>
+			<input type="checkbox" id="timeLimit" name=timeLimit>
+			<label for="timeLimit" class="field-label">
+				Time Limit
+			</label>
+			<input type="text" id="minutes" name="minutes" placeholder="0" maxlength="4" size="5"/>
+			<label for="timeLimit" class="field-label">
+				mins
+			</label>
+			<input type="text" id="seconds" name="seconds" placeholder="0" maxlength="2" size="5"/>
+			<label for="timeLimit" class="field-label">
+				secs
+			</label>
+		</div>
+		
+		<br><br>
+		
+		<div>
+			<label for="question" class="field-label">
+				Question:
+			</label>
+			<textarea rows="4" cols="50" id="question" name="question" placeholder="Type question here">
+			</textarea>
+			
+			<br>
+			
+			<label for="answerType" class="field-label">
+				Answer Type: 
+			</label><br>
+			<input type="radio" id="multipleChoice" name="answerType" onclick="showAnswerChoices('mc');"/>Multiple Choice<br>
+			<input type="radio" id="shortAnswer" name="answerType" onclick="showAnswerChoices('other');"/>Short Answer<br>
+			<input type="radio" id="image" name="answerType" onclick="showAnswerChoices('other');"/>Image<br>
+			
+		</div>
+		
+		<div id="choices" style="display:none">
+			<br>
+			<p>Enter your multiple choice options and select the correct answer</p>
+			<label for="choiceA" class="field-label">A</label>
+			<input type="text" id="choiceA" name="choiceA"/>
+			<input type="radio" id="correctA" name="correct"/>
+			<br>
+			<label for="choiceB" class="field-label">B</label>
+			<input type="text" id="choiceB" name="choiceB"/>
+			<input type="radio" id="correctB" name="correct"/>
+			<br>
+			<label for="choiceC" class="field-label">C</label>
+			<input type="text" id="choiceC" name="choiceC"/>
+			<input type="radio" id="correctC" name="correct"/>
+			<br>
+			<label for="choiceD" class="field-label">D</label>
+			<input type="text" id="choiceD" name="choiceD"/>
+			<input type="radio" id="correctD" name="correct"/>
+		</div>
+		
+		<br>
+		
+		<div>
+			<button type="submit" id="submitCourse" name="submitCourse">Submit</button>
+		</div>
+		
+	</form>
+</div>
+
+<script>
+
+	var showingChoices = false;
+	function showAnswerChoices(qtype){
+		
+		
+		if(showingChoices && (qtype === "other")){
+			showingChoices = false;
+			document.getElementById("choices").style.display = "none";
+		}
+		else if(!showingChoices && (qtype === "mc")){
+			showingChoices = true;
+			document.getElementById("choices").style.display = "block";
+		}
+	}
+	
+	
+</script>

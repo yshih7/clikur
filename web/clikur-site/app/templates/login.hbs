@@ -1,35 +1,43 @@
-<html>
-<head></head>
 
-<body>
+<div class="row">
+	<div class="col-md-6">
+		<form id="loginForm" name="loginForm" method="post" class="form-horizontal"> 
+			<div class="form-group">
+				<label for="username" class="col-md-2 control-label">
+					Username:
+				</label>
+				<div class="col-md-6">
+					<input type="text" id="username" name="username" class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="password" class="col-md-2 control-label">
+					Password:
+				</label>
+				<div class="col-md-6">
+					<input type="password" id="password" name="password" class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-2">
+					<input type="submit" id="submitLogin" name="submitLogin" class="btn btn-primary" value="Login">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-12">
+					<p><strong>New to ClikUR?</strong></p>
+				</div>
+				<div class="col-md-2">
+					<a href="register"><input type="button" id="register" name="register" class="btn btn-default" value="Register"></a>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="col-md-6">
+		<strong>ClikUR</strong> is a revolutionary new tool to improve classroom communication dynamics, specifically targeted towards large lecture halls. <br>
+		<strong>ClikUR</strong> gives every student the ability to be seen and heard, sometimes even literally. <br>
+		<strong>ClikUR</strong> also helps professors see how the entire class is progressing with their understanding of their material as well as enhances their ability to answer questions their students may have. <br>
+		<strong>ClikUR</strong> is easily accessible and free for everyone. <br>
+	</div>
+</div>
 
-<form action="_formhelpers.html" method="post"> 
-	<fieldset>
-		<label for="Username">
-			Username:
-		</label><br>
-		<input type="text" name="username" id="username" placeholder="username"><br>
-		<label for="Password">
-			Password:
-		</label><br>
-		<input type="password" name="password" id="password" placeholder="password"><br>
-		<br>
-		<button type="button" id="btn_register" onclick="location.href='courses.hbs'">
-			Register
-		</button>
-		<input type="submit" value="Sign In">
-	</fieldset>
-</form>
-
-<br><br>
-<fieldset>
-clickUR is a revolutionary new tool to improve classroom communication dynamics, specifically targeted towards large lecture halls. <br>
-clickUR gives every student the ability to be seen and heard, sometimes even literally. <br>
-clickUR also helps professors see how the entire class is progressing with their understanding of their material as well as enhances their ability to answer questions their students may have. <br>
-clickUR is easily accessible and free for everyone. <br>
-
-</fieldset>
-
-</body>
-
-</html>
