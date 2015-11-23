@@ -1,32 +1,50 @@
+#route-home header {
+    background-color: #004E99;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3rem;
+}
 
-#add_class
-{
-  background-color: #636F8C;
-  color: #ffffff;
-  font-size: 20px;
-  text-align: center;
-  margin: 10px;
-  padding: 10px;
-  border-radius: 8px;
+#route-home #logoutBtn {
+    background-color: #636F8C;
+    color: #ffffff;
+    margin-top: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    position: absolute;
+    margin: 0;
+    left: 10px;
+    font-size: 1em;
+    z-index: 1;
 }
-#add_class:active
-{
-  background-color:#ffffff;
-  color:#313A50;
+
+#route-home .list {
+    margin-top: calc(3rem + 15px);
 }
-#logoutBtn
-{
-  background-color: #636F8C;
-  color: #ffffff;
-  width: auto;
-  margin-top: 0;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+
+#route-home h1 {
+    font-size: 2em;
+    position: relative;
+    margin: 0;
+    line-height: 3rem;
 }
-#logoutBtn:active
-{
+
+#route-home #addCourse {
+    position: fixed;
+    bottom: 0;
+    background-color: #313A50;
+    width: 100%;
+}
+
+#route-home #addCourse button {
+    width: calc(100% - 20px);
+}
+
+#route-home #logoutBtn:active {
   background-color:#ffffff;
   color:#16230b;
 }

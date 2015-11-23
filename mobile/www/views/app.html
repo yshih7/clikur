@@ -1,4 +1,4 @@
 <template>
     <div id="backButton" if.bind="!deviceHasBackButton && !router.currentInstruction.config.home" touchend.delegate="backButtonAction()"></div>
-    <router-view></router-view>
+    <router-view id="route-${router.currentInstruction.config.name}"></router-view>
 </template>

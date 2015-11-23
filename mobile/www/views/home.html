@@ -6,8 +6,14 @@
         <button role="button" id="logoutBtn" touchend.delegate="logOutAction()">Log Out</button>
         <h1>ClikUR</h1>
     </header>
+    
+    <div class="clear"></div>
+    
     <div class="list" if.bind="!updating">
         <course-view repeat.for="[id, course] of userData.courseList" course.bind="course" del-action.bind="deleteCourse" touchend.delegate="courseSelectAction(id)"></course-view>
     </div>
-    <div class="bigButton" id="add_class" touchend.delegate="addCourseAction()">Add a Class</div>
+    
+    <div id="addCourse">
+        <button role="button" touchend.delegate="addCourseAction()">Add a Class</button>
+    </div>
 </template>

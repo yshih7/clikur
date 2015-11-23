@@ -1,10 +1,4 @@
-* {
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    font-family: "raleway",sans-serif;
-}
-
-@font-face
-{
+@font-face {
     font-family: "raleway";
     src: url("./fonts/raleway-regular-webfont.woff") format('woff'),
          url("./fonts/raleway-regular-webfont.woff2") format('woff2');
@@ -12,8 +6,7 @@
     font-style: normal;
 }
 
-@font-face
-{
+@font-face {
     font-family: "nixieone";
     src: url("./fonts/nixieone-regular-webfont.woff") format('woff'),
          url("./fonts/nixieone-regular-webfont.woff2") format('woff2');
@@ -21,6 +14,11 @@
     font-style: normal;
 }
 
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    font-family: "raleway",sans-serif;
+    background-image: none;
+}
 
 html, body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
@@ -29,66 +27,61 @@ html, body {
     -ms-user-select: none;
     user-select: none;
     -ms-content-zooming: none;
-    font-family: "raleway",sans-serif;
+    font-family: "raleway", sans-serif;
     background-color: #313A50;
     color: #F7F7F7;
-    margin:0px;
-    padding:0px;
-    height:100%;
-    width:100%;
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
 }
 
-h1
-{
+h1 {
     font-family: "nixieone";
-    font-size: 40px;
+    font-size: 3rem;
+    line-height: 3rem;
     text-align: center;
+    margin: 25px 0;
+    font-weight: bold;
 }
 
-button
-{
-    background-color:#01a9ac;
-    color:#ffffff;
-    font-size:20px;
-    padding-top:15px;
+h1:first-child {
+    margin-top: 0;
+}
+
+button {
+    background-color: #636F8C;
+    color: #ffffff;
+    font-size: 20px;
+    padding-top: 15px;
     padding-bottom: 15px;
-    padding-right: 40px;
-    padding-left: 40px;
     border: 0px;
     border-radius: 8px;
     margin: 10px;
 }
-button:active
-{
-  background-color:#ffffff;
-  color:#16230b;
+
+button:active {
+  background-color: #16203B;
+  color: lightgray;
 }
 
-input[type=text]
-{
-    padding:8px;
-    border:1px solid #ccc;
+input[type=text], input[type=password] {
+    padding: 5px 8px;
+    border: 1px solid #ccc;
+    height: 1.5em;
+    font-size: 1.2em;
 }
-input[type=text]:focus
-{
-    border-color:#ff0066;
-}
-input[type=password]
-{
-    padding:8px;
-    border:1px solid #ccc;
-}
-input[type=password]:focus
-{
+
+input[type=text]:focus, input[type=password]:focus {
     border-color:#ff0066;
 }
 
 .deadCenter {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
+    bottom: 50%;
+    right: 50%;
+    transform: translateX(50%) translateY(50%);
+    -webkit-transform: translateX(50%) translateY(50%);
 }
 
 #backButton {
@@ -98,6 +91,14 @@ input[type=password]:focus
     top: 0;
     left: 0;
     background-image: url("../img/back.png");
+}
+
+.clear {
+    height: 1px;
+    width: 0;
+    clear: both;
+    margin: -1px 0 0;
+    padding: 0;
 }
 
 /* Landscape layout (with min-width) I left this here for reference ~~@stesen */

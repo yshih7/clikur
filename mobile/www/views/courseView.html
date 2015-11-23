@@ -1,11 +1,9 @@
 <template>
     <require from="css/courseView.css"></require>
 
-<div id="course_wrapper">
-    <h2 class="callsign" id="callSign">${course.callSign}</h2>
-    <h3 class="name" id="name">${course.name}</h3>
-    <b class="session" id="session">${course.session}</b>
-    <div class="delete" touchend.trigger="_delAction($event)" if.bind="delAction">delete</div>
-</div>
+<h2 class="callsign">${course.callSign}</h2>
+<h3 class="name">${course.name}</h3>
+<b class="session">${course.session}</b>
+<div class="delete" touchend.trigger="_delAction($event)" if.bind="delAction">delete</div>
 
 </template>
