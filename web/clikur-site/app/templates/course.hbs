@@ -3,10 +3,11 @@
 
 <body>
 
-<p id="sList" style="float:left"> Brian Park<br>bpark5@u.rochester.edu<br><br>German Hernandez<br>ghernan6@u.rochester.edu<br><br>Mary Sue<br>msue@u.rochester.edu<br><br>Michelle Diane<br>urmich@hotmail.com</p>
+<p id="sList" style="float:left"> <b>Students:</b><br>Brian Park<br>bpark5@u.rochester.edu<br><br>German Hernandez<br>ghernan6@u.rochester.edu<br><br>Mary Sue<br>msue@u.rochester.edu<br><br>Michelle Diane<br>urmich@hotmail.com<br><br>Brian Park<br>bpark5@u.rochester.edu<br><br>German Hernandez<br>ghernan6@u.rochester.edu<br><br>Mary Sue<br>msue@u.rochester.edu<br><br>Michelle Diane<br>urmich@hotmail.com<br><br>Brian Park<br>bpark5@u.rochester.edu<br><br>German Hernandez<br>ghernan6@u.rochester.edu<br></p>
 
 <script>
-var Students = ExistingObject;
+var aStudents = ExistingObject;
+var Students = JSON.parse(aStudents);
 	i = 0;
 	while(i!=Students.length){
 		var SingleS = Students[i];
@@ -30,7 +31,8 @@ var Students = ExistingObject;
 <p id="classtitle"><b><big>Death, Dying, and Beyond</big></b></p>
 <p id="classsemester"><b>Fall Semester</b></p>
 <script>
-	var classvar = jsonobject;
+	var aclassvar = jsonobject;
+	var classvar = JSON.parse(aclassvar);
 	<!-- json returns object to var classvar-->
 	document.getElementbyId("classtitle").innerHTML = classvar.title;
 	document.getElementbyId("classsemester").innerHTML = classvar.semester;
@@ -46,6 +48,7 @@ var Students = ExistingObject;
 
 <br>
 <br>
+
 
 <table>
 	<tr>
@@ -70,7 +73,8 @@ var Students = ExistingObject;
 
 <script>
 	<!-- json returns object to var Questions-->
-	var Questions = jsonobject;
+	var aQuestions = jsonobject;
+	var Questions = JSON.parse(jsonobject);
 	i = 0;
 	while(i!=Questions.length){
 		var SingleQ = Questions[i];
