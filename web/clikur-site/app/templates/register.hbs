@@ -1,18 +1,19 @@
 
 <div id="registration">
-	<form id="registrationInfo" name="registrationInfo" method="POST">
+	<form id="registrationInfo" name="registrationInfo" method="post">
 	
 		<h1>Registration</h1>
 	
 		<div>
 			<input type="text" id="lastName" name="lastName" placeholder="Last Name" /> 
-			<input type="text" id="firstName" name="firstName" placeholder="First Name" /><br>
+			<input type="text" id="firstName" name="firstName" placeholder="First Name" /><br><br>
+			
 			<input type="email" id="email" name="email" placeholder="Email" /><br>
 			<input type="email" id="confEmail" name="confEmail" placeholder="Confirm Email" />
 			
 			<p id="emailWarning" class="warning" style="color:red"></p>
 			
-			<br><br>
+			<br>
 			<input type="password" id="password" name="password" placeholder="Password" /><br>
 			<input type="password" id="confPassword" name="confPassword" placeholder="Confirm Password" /><br>
 			
@@ -36,18 +37,34 @@
 		var pass1 = document.getElementById("password").value;
 		var pass2 = document.getElementById("confPassword").value;
 		
+		var infoCorrect = true; //determines whether to submit or not
+		
 		if(email1 !== email2){
 			document.getElementById("emailWarning").innerHTML = "Email does not match";
+			infoCorrect = false;
 		}
 		else{
 			document.getElementById("emailWarning").innerHTML = "";
 		}
 		if(pass1 !== pass2){
 			document.getElementById("passWarning").innerHTML = "Password does not match";
+			infoCorrect = false;
 		}
 		else {
 			document.getElementById("passWarning").innerHTML = "";
 		}
+		
+		if(infoCorrect){
+		}
+		
+		if(submitSuccessful){
+			//navigate to the next page
+		}
+	}
+	
+	function submitInfo(){
+		//try submitting, if database rejects the info because of an invalid email return false, else true if successful
+		return true;
 	}
 
 </script>
