@@ -2,10 +2,11 @@ import {needsPreservation, preserve} from "js/statePreservation"; //jshint ignor
 import {inject} from "aurelia-framework"; //jshint ignore:line
 import {UserData} from "js/UserData"; //jshint ignore:line
 import {QuizQuestion} from "js/QuizQuestion";
+import {Router} from "aurelia-router"; //jshint ignore:line
 /*globals Camera*/
 
 //start-es7
-@inject(UserData)
+@inject(UserData, Router)
 @needsPreservation("quizquestion")
 //end-es7
 export class AnswerQuestion
@@ -27,8 +28,10 @@ export class AnswerQuestion
     //end-es7
     
 	//Initialize the variables for binding
-	constructor(userData) {
+	constructor(userData, router)
+    {
 		this.userData = userData;
+        this.router = router;
   	}
 
 	activate(params)
@@ -63,7 +66,8 @@ export class AnswerQuestion
 		});
 	}
 
-    submitAnswer() {
+    submitAnswer()
+    {
 		if(this.showText){
 			//TODO Submit text
 			//return this.sometext;
@@ -73,5 +77,8 @@ export class AnswerQuestion
 		} else {
 			//TODO Submit Image
 		}
+        
+        this.course.quizQuestions.delete(this.question.id);
+        this.router.navigateBack();
     }
 }

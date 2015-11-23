@@ -23,6 +23,8 @@ export class QuestionBox
 
     @bindable
     title: string;
+
+    updating: boolean = false;
     //end-es7
 
     constructor(router)
@@ -33,6 +35,8 @@ export class QuestionBox
     show_q_detail(e, id)
     {
         e.stopPropagation();
+        
+        this.updating = true;
         
         //link to the question detail page
         this.router.navigateToRoute(this.routeName, {

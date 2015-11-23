@@ -8,8 +8,10 @@
     </div>
 
     <div class="list_view" if.bind="showList">
-        <div class="list">
-            <div repeat.for="[id, question] of questionMap" touchend.trigger="show_q_detail($event, id)">${question.text}</div>
+        <div class="listWrapper">
+            <div class="list" if.bind="!updating">
+                <div repeat.for="[id, question] of questionMap" touchend.trigger="show_q_detail($event, id)">${question.text}</div>
+            </div>
         </div>
     </div>
 </template>

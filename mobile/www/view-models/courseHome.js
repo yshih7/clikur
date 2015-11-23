@@ -70,7 +70,7 @@ export class CourseHome {
         if (this.expandUserQuestions) {
             window.courseHomeExpansion = "user";
         }
-        else if (this.expandQuizQuestions){
+        else if (this.expandQuizQuestions) {
             window.courseHomeExpansion = "quiz";
         }
         
