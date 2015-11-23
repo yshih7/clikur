@@ -16,9 +16,9 @@
 {
     font-family: "nixieone";
     src: url("./fonts/nixieone-regular-webfont.woff") format('woff'),
-         url("./fonts/nixieone-regular-webfont.woff2") format('woff2'); 
+         url("./fonts/nixieone-regular-webfont.woff2") format('woff2');
     font-weight: normal;
-    font-style: normal;  
+    font-style: normal;
 }
 
 
@@ -30,7 +30,7 @@ html, body {
     user-select: none;
     -ms-content-zooming: none;
     font-family: "raleway",sans-serif;
-    background-color: #2C3B63;
+    background-color: #313A50;
     color: #F7F7F7;
     margin:0px;
     padding:0px;
@@ -42,11 +42,12 @@ h1
 {
     font-family: "nixieone";
     font-size: 40px;
+    text-align: center;
 }
 
 button
 {
-    background-color:#a8b6bf;
+    background-color:#01a9ac;
     color:#ffffff;
     font-size:20px;
     padding-top:15px;
@@ -57,22 +58,27 @@ button
     border-radius: 8px;
     margin: 10px;
 }
+button:active
+{
+  background-color:#ffffff;
+  color:#16230b;
+}
 
-input[type=text] 
+input[type=text]
 {
     padding:8px;
-    border:1px solid #ccc;   
+    border:1px solid #ccc;
 }
-input[type=text]:focus 
+input[type=text]:focus
 {
     border-color:#ff0066;
 }
-input[type=password] 
+input[type=password]
 {
     padding:8px;
-    border:1px solid #ccc;   
+    border:1px solid #ccc;
 }
-input[type=password]:focus 
+input[type=password]:focus
 {
     border-color:#ff0066;
 }

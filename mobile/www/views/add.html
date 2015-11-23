@@ -2,9 +2,12 @@
     <require from="view-models/courseView"></require>
     <require from="css/add.css"></require>
 
-    <h1>Add a Class</h1>
-    <input type="text" name="search" id="searchField" value.bind="searchQuery" placeholder="Search">
-    <div class="list">
+    <div><h1 id="title">Add a Class</h1></div>
+    <div id="wrapper">
+      <input type="text" name="search" id="searchField" value.bind="searchQuery" placeholder="Search">
+    </div>
+
+    <div class="list" id="course_list">
         <course-view repeat.for="course of results" course.bind="course" touchend.delegate="courseSelectAction($index)"></course-view>
     </div>
 </template>

@@ -144,12 +144,12 @@ gulp.task("bump", function()
         console.error("Must supply exactly one flag (major|minor|patch) to bump");
         return;
     }
-    
+
     var type = argv.major ? "major" : argv.minor ? "minor" : "patch";
-    
+
     var package = gulp.src("./package.json")
         .pipe(bump({type: type}));
-    
+
     var configXml = gulp.src(paths.root + "config.xml")
         .pipe(xmlpoke({replacements: [
             {
@@ -172,6 +172,6 @@ gulp.task("bump", function()
                 }
             }
         ]}));
-    
+
     return mergeStream(package, configXml);
 });

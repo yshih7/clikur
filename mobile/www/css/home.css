@@ -1,3 +1,32 @@
-#foo {
 
+#add_class
+{
+  background-color: #636F8C;
+  color: #ffffff;
+  font-size: 20px;
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 8px;
+}
+#add_class:active
+{
+  background-color:#ffffff;
+  color:#313A50;
+}
+#logoutBtn
+{
+  background-color: #636F8C;
+  color: #ffffff;
+  width: auto;
+  margin-top: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+#logoutBtn:active
+{
+  background-color:#ffffff;
+  color:#16230b;
 }
