@@ -11,16 +11,40 @@
 }
 
 #questionField{
-	height: 200%;
-	margin: 0 10 10px;
+	/*height: 200%;
+	display: block;
+  margin-left: auto;
+  margin-right: auto;*/
+}
+div.q_textfield{
+	display: flex;
+  justify-content: center;
+}
+textarea{
+	border-radius: 8px;
 }
 #submit{
-    margin-bottom: 0;
-    margin-left: 0;
+    text-align: center;
 }
-input {
-    width: 90%;
-    margin: 0 auto 10px;
+#submit button{
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+#anonymous{
+	width: 50px;
+	height: 50px;
+	background: #333;
+	margin: 20px;
+	margin-right: 10px;
+	border-radius: 50px;
+	transform: scale(0.5);
+	position: relative;
+	vertical-align: middle;
+	}
+#anonymous label{
+		position: relative;
+    vertical-align: middle;
 }
 
 button {

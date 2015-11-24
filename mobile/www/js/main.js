@@ -85,14 +85,14 @@ export function configure(aurelia)
 
             e.setPromise(localforage.setItem("preservation", preservation));
         }, false);
-        
+
         //Windows Phone uses click events for interaction, not touchevents.
         //For sake of code simplicity/DRY, just fire a touchend event on anything that gets "clicked"
         document.addEventListener("click", function(e)
         {
             var touchE = new CustomEvent("touchend", {bubbles: true});
             e.target.dispatchEvent(touchE);
-            
+
             //Since we're not actually using this event, we don't need it to finish traversing
             e.stopImmediatePropagation();
         }, true);

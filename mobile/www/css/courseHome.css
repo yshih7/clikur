@@ -1,3 +1,30 @@
-foo {
-
+question-box{
+  margin: 10px;
+}
+#user_q{
+  margin: 1px;
+}
+#quiz_q{
+  margin: 1px;
+}
+#raiseHand{
+  width: 200px;
+	height: 200px;
+  border-radius: 100px;
+  margin: 20px auto 20px;
+  background-color: #636F8C;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 200px;
+  font-size: 2em;
+}
+#raiseHand:active{
+  background-color: #16203B;
+  color: lightgray;
+}
+#askButton{
+  margin: 10px;
+}
+#btn_wrapper{
+  text-align: center;
 }

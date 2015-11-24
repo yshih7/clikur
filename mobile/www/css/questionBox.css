@@ -2,23 +2,26 @@
 question-box {
     display: block;
     position: relative;
-    border: 3px #ff0066 solid;
     border-radius: 8px;
     background-color: #01a9ac;
+    text-align: center;
 }
 
 question-box .title {
     font-family: "nixieone";
     background-color: #F0316D;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    font-size: 1.75rem;
-    margin: 0;
-    text-align: center;
+    border-radius: 8px;
+    font-size: 15px;
+    padding: 5px;
+}
+
+#title_q{
+  margin: 2px;
 }
 
 question-box .itemCount {
-    font-size: 25px;
+    font-size: 15px;
+    margin: 2px;
 }
 
 question-box .list_view {
@@ -32,13 +35,14 @@ question-box .list_view {
 
 question-box .listWrapper {
     background-color: #313A50;
-    width: 95%;
+    width: 99%;
     height: 80%;
     overflow-y: scroll;
 }
 
 question-box .listItem {
-    width: 100%;
-    border-bottom: 2px solid black;
-
+    font-size: 1em;
+    background-color: #F0316D;
+    margin: 10px;
+    padding: 5px;
 }

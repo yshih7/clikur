@@ -26,7 +26,7 @@ export class Home
                 }, 0);
             }
         }, "Confirm class removal", ["Yes", "Cancel"]);
-        
+
         //TODO: Notify server
     };
     //end-es7

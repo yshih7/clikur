@@ -30,7 +30,7 @@ export class CourseHome {
     activate(params)
     {
         this.course = this.userData.courseList.get(+(params.cid));
-        
+
         if (window.courseHomeExpansion === "user" && this.course.userQuestions.size !== 0)
         {
             this.expandUserQuestions = true;
@@ -41,9 +41,9 @@ export class CourseHome {
             this.expandQuizQuestions = true;
             this.addBackListener(this.QQBack);
         }
-        
+
         window.courseHomeExpansion = null;
-        
+
         if (!this.course.filledIn)
         {
             //Add some temp quiz questions
@@ -60,7 +60,7 @@ export class CourseHome {
             var imgQ = new QuizQuestion(33, "This is a sample image input question.", QuizQuestion.questionTypes.IMG, new Date(2015, 12, 1));
             this.course.quizQuestions.set(33, imgQ);
         }
-        
+
         this.course.filledIn = true;
     }
 
@@ -75,7 +75,7 @@ export class CourseHome {
         else if (this.expandQuizQuestions) {
             window.courseHomeExpansion = "quiz";
         }
-        
+
         this.removeBackListener();
     }
 
@@ -107,9 +107,9 @@ export class CourseHome {
         if (this.course.quizQuestions.size === 0) {
             return;
         }
-        
+
         this.expandQuizQuestions = !this.expandQuizQuestions;
-        
+
         if(this.expandQuizQuestions)
         {
             this.addBackListener(this.QQBack);
@@ -124,9 +124,9 @@ export class CourseHome {
         if (this.course.userQuestions.size === 0) {
             return;
         }
-        
+
         this.expandUserQuestions = !this.expandUserQuestions;
-        
+
         if(this.expandUserQuestions)
         {
             this.addBackListener(this.UQBack);

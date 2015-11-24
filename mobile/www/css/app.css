@@ -103,9 +103,9 @@ input[type=text]:focus, input[type=password]:focus {
 }
 
 header {
-    background-color: #004E99;
+    background-color: #0C485D;
     width: 100%;
-    position: fixed;
+    /*position: fixed;*/
     top: 0;
     left: 0;
     height: 3rem;

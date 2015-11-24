@@ -1,9 +1,9 @@
 <template>
     <require from="css/questionBox.css"></require>
 
-    <h2 class="title">${title}</h2>
+    <div id="title_q"><h2 class="title">${title}</h2></div>
 
-    <div class="itemCount deadCenter" if.bind="!showList">
+    <div class="itemCount" if.bind="!showList">
         <h2 class="title">${questionMap.size}</h2>
     </div>
 
