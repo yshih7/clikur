@@ -21,7 +21,8 @@ export function configure(aurelia)
         .developmentLogging();
 
     //Uncomment the line below to enable animation.
-    //aurelia.use.plugin('aurelia-animator-css');
+    aurelia.use.plugin('aurelia-animator-css');
+    aurelia.use.plugin('aurelia-animator-velocity');
 
     //This is the "Main function" for Cordova.
     //We declare it inside of Aurelia's main and use it to wrap the call to aurelia.start()

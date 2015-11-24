@@ -30,7 +30,7 @@ export class Home
         //TODO: Notify server
     };
     //end-es7
-    
+
     constructor(userData, router)
     {
         this.userData = userData;

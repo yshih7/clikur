@@ -23,6 +23,7 @@ System.config({
 
   map: {
     "aurelia-animator-css": "npm:aurelia-animator-css@1.0.0-beta.1",
+    "aurelia-animator-velocity": "npm:aurelia-animator-velocity@1.0.0-beta.1",
     "aurelia-binding": "npm:aurelia-binding@1.0.0-beta.1.0.1",
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.1",
     "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-beta.1",
@@ -73,6 +74,13 @@ System.config({
       "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.1",
       "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1",
       "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.1"
+    },
+    "npm:aurelia-animator-velocity@1.0.0-beta.1": {
+      "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.1",
+      "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1",
+      "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.1",
+      "jsol": "github:daepark/JSOL@master",
+      "velocity": "npm:velocity-animate@1.2.3"
     },
     "npm:aurelia-binding@1.0.0-beta.1.0.1": {
       "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.1",
@@ -209,6 +217,9 @@ System.config({
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
+    "npm:jquery@2.1.4": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
     "npm:localforage@1.3.0": {
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
@@ -225,6 +236,10 @@ System.config({
     },
     "npm:util@0.10.3": {
       "inherits": "npm:inherits@2.0.1",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:velocity-animate@1.2.3": {
+      "jquery": "npm:jquery@2.1.4",
       "process": "github:jspm/nodelibs-process@0.1.2"
     }
   }
