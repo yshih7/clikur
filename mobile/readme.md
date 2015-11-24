@@ -33,4 +33,5 @@ _(Assume these start with `cordova-plugin-`)_
 None added since this document was written
 
 ## jspm dependencies
-None added since this document was written
+_(Run these with `jspm install`+DependencyName)_
+* aurelia-animator-velocity (added 11/24)
