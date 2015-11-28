@@ -16,7 +16,7 @@
 
 course-view {
     display: block;
-    background-color:#01a9ac;
+    background-color: #01a9ac;
     margin-bottom: 10px;
     margin-top: 10px;
     margin-left: 10px;
@@ -29,8 +29,8 @@ course-view {
 }
 
 course-view:active {
-  background-color:#ffffff;
-  color:#313A50;
+  background-color: #16203B;
+  color: lightgray;
 }
 
 course-view .name {
@@ -53,7 +53,7 @@ course-view .callsign {
     border-top-right-radius: 8px;
     font-size: 1.75rem;
     margin: 0;
-    text-align: center
+    text-align: center;
 }
 
 course-view .delete {

@@ -10,3 +10,19 @@
   font-weight: bold;
   text-align: center;
 }
+
+#route-addCourse #searchWrapper {
+    position: fixed;
+    right: 50%;
+    transform: translateX(50%);
+    -webkit-transform: translateX(50%);
+    z-index: 10;
+    background-color: #313A50;
+    width: 100%;
+    padding: 15px 0;
+    top: 3rem;
+}
+
+#route-addCourse #course_list {
+    margin-top: calc(5.5rem + 35px);
+}
