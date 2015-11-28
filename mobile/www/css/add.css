@@ -1,3 +1,7 @@
+#route-addCourse {
+    padding-top: calc(5.5rem + 21px);
+}
+
 #searchField
 {
     display: block;
@@ -21,8 +25,4 @@
     width: 100%;
     padding: 15px 0;
     top: 3rem;
-}
-
-#route-addCourse #course_list {
-    margin-top: calc(5.5rem + 35px);
 }

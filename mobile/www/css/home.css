@@ -14,8 +14,8 @@
     z-index: 20;
 }
 
-#route-home .list {
-    /*margin-top: calc(3rem + 15px);*/
+#route-home {
+    padding-top: 3rem;
 }
 
 #route-home #addCourse {

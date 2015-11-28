@@ -9,8 +9,7 @@
     <div id="searchWrapper">
       <input type="text" name="search" id="searchField" value.bind="searchQuery" placeholder="Search">
     </div>
-
-    <div class="clear"></div>
+    
     <div class="list" id="course_list">
 
         <course-view repeat.for="course of results" course.bind="course" touchend.delegate="courseSelectAction($index)"></course-view>
