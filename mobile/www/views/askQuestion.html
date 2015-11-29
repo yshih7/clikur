@@ -1,14 +1,14 @@
 <template>
 	<require from="css/askQuestion.css"> </require>
 
-	<div class= "deadCenter" id="questionContainer">
+    <header>
+        <h1>${course.callSign} / ${editMode? 'Edit' : 'Ask'}</h1>
+    </header>
 
-		<h1 id= "mainTitle">ClikUR</h1>
-		<p>Leave a constructive comment or question for the teacher. Please note that any offensive commentary will result in removal from the system.</p>
-		<!--consider adding maxlength attribute-->
-	<div class="q_textfield">
-		<textarea rows="4" cols="50" placeholder="Enter your comment or question here" value.bind="question" name="questionField" id="questionField"></textarea>
-		<label><input type="checkbox" name="anonymous" value="anonymous" checked.bind="anonymous" id="anonymous"/> Anonymous </label>
-		<button role="button" touchend.delegate="submitQuestion($event)" id="submit">Submit</button>
-	</div>
+    <p>
+        Leave a constructive comment or question for the teacher. Please note that any offensive commentary will result in removal from the system.
+    </p>
+    <textarea placeholder="Enter your comment or question here" value.bind="question.text" name="questionField" id="questionField"></textarea>
+    <label id="anonymous"><input type="checkbox" name="anonymous" checked.bind="question.isAnon"> Anonymous</label>
+    <button role="button" touchend.delegate="submitQuestion($event)" id="submit">Submit</button>
 </template>
