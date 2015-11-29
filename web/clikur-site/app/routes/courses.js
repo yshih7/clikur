@@ -25,17 +25,19 @@ export default Ember.Route.extend({
 		let courses = [
 			{
 				id: "1",
-				course: "MTH 161",
+				callsign: "MTH 161",
 				title: "Calculus IA",
 				crn: "29288",
-				term: "Fall 2016"
+				semester: "Fall 2016",
+				session: "MWF"
 			},
 			{
 				id: "2",
-				course: "CHM 131",
+				callsign: "CHM 131",
 				title: "CHM Concepts, Systems, Practice I",
 				crn: "25954",
-				term: "Fall 2016"
+				semester: "Fall 2016",
+				session: "MW"
 			}
 		];
 		return courses;

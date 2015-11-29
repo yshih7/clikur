@@ -31,7 +31,8 @@
 		<div class="col-md-8">
 			<div class="row">
 				<div class="col-md-4">
-					<select id="term" name="term" class="form-control">
+					<select id="term" name="term" class="form-control" {{action "setSemester"}}>
+						<option value="">--Semester--</option>
 						<option value="03">Fall</option>
 						<option value="04">Winter</option>
 						<option value="01">Spring</option>
@@ -39,7 +40,8 @@
 					</select>
 				</div>
 				<div class="col-md-4">
-					<select id="year" name="year" class="form-control">
+					<select id="year" name="year" class="form-control" {{action "setSemester"}}>
+						<option value="">--Year--</option>
 						<option value="15">2015</option>
 						<option value="16">2016</option>
 						<option value="17">2017</option>
@@ -57,7 +59,7 @@
 			<div class="row">
 				<div class="col-md-2 checkbox-inline">
 					<div class="col-md-1">
-						<input type="checkbox" id="monday" name="monday" class="form-control" value="M" />
+						<input type="checkbox" id="monday" name="monday" class="form-control sessionBox" value="M" {{action "setSession" on="change"}} />
 					</div>
 					<div class="col-md-1">
 						<label for="monday" class="control-label">M</label>
@@ -65,7 +67,7 @@
 				</div>
 				<div class="col-md-2 checkbox-inline">
 					<div class="col-md-1">
-						<input type="checkbox" id="tuesday" name="tuesday" class="form-control" value="T" />
+						<input type="checkbox" id="tuesday" name="tuesday" class="form-control sessionBox" value="T" {{action "setSession" on="change"}} />
 					</div>
 					<div class="col-md-1">
 						<label for="tuesday" class="control-label">T</label>
@@ -73,7 +75,7 @@
 				</div>
 				<div class="col-md-2 checkbox-inline">
 					<div class="col-md-1">
-						<input type="checkbox" id="wednesday" name="wednesday" class="form-control" value="W" />
+						<input type="checkbox" id="wednesday" name="wednesday" class="form-control sessionBox" value="W" {{action "setSession" on="change"}} />
 					</div>
 					<div class="col-md-1">
 						<label for="wednesday" class="control-label">W</label>
@@ -81,7 +83,7 @@
 				</div>
 				<div class="col-md-2 checkbox-inline">
 					<div class="col-md-1">
-						<input type="checkbox" id="thursday" name="thursday" class="form-control" value="R" />
+						<input type="checkbox" id="thursday" name="thursday" class="form-control sessionBox" value="R" {{action "setSession" on="change"}} />
 					</div>
 					<div class="col-md-1">
 						<label for="thursday" class="control-label">R</label>
@@ -89,7 +91,7 @@
 				</div>
 				<div class="col-md-2 checkbox-inline">
 					<div class="col-md-1">
-						<input type="checkbox" id="friday" name="friday" class="form-control" value="F" />
+						<input type="checkbox" id="friday" name="friday" class="form-control sessionBox" value="F" {{action "setSession" on="change"}} />
 					</div>
 					<div class="col-md-1">
 						<label for="friday" class="control-label">F</label>
