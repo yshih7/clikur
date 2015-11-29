@@ -1,4 +1,3 @@
-
 question-box {
     display: block;
     position: relative;
@@ -10,18 +9,24 @@ question-box {
 question-box .title {
     font-family: "nixieone";
     background-color: #F0316D;
-    border-radius: 8px;
+    border-radius: 8px 8px 0 0;
     font-size: 15px;
     padding: 5px;
-}
-
-#title_q{
-  margin: 2px;
+    margin: 0;
+    line-height: 15px;
 }
 
 question-box .itemCount {
-    font-size: 15px;
-    margin: 2px;
+    width: 100%;
+    height: calc(100% - 25px);
+    position: relative;
+}
+
+question-box .itemCount h2 {
+    font-size: 3em;
+    line-height: 1em;
+    margin: 0;
+    font-family: "nixieone", serif;
 }
 
 question-box .list_view {

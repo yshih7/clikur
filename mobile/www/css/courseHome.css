@@ -1,30 +1,41 @@
-question-box{
-  margin: 10px;
+#route-courseHome {
+    padding-top: 3rem;
+    text-align: center;
 }
-#user_q{
-  margin: 1px;
+
+#route-courseHome question-box {
+    margin: 30px 10px;
+    width: calc(50% - 20px);
+    height: 18%;
 }
-#quiz_q{
-  margin: 1px;
+
+#route-courseHome #userQuestions {
+    float: left;
 }
-#raiseHand{
-  width: 200px;
-	height: 200px;
-  border-radius: 100px;
-  margin: 20px auto 20px;
-  background-color: #636F8C;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 200px;
-  font-size: 2em;
+
+#route-courseHome #quizQuestions {
+    float: right;
 }
-#raiseHand:active{
-  background-color: #16203B;
-  color: lightgray;
+
+#route-courseHome #raiseHand {
+    width: 250px;
+    height: 250px;
+    border-radius: 125px;
+    margin: auto;
+    background-color: #636F8C;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 250px;
+    font-size: 2.5em;
+    clear: both;
 }
-#askButton{
-  margin: 10px;
+
+#route-courseHome #raiseHand:active {
+    background-color: #16203B;
+    color: lightgray;
 }
-#btn_wrapper{
-  text-align: center;
+
+#route-courseHome #askButton {
+    width: calc(100% - 20px);
+    margin: 30px 10px;
 }
