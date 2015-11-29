@@ -62,51 +62,9 @@
 		
 		<div class="form-group form-group-lg">
 			<div class="col-md-offset-2 col-md-2">
-				<button type="button" id="submitInfo" name="submitInfo" class="btn btn-primary btn-lg" onclick="checkConfirmations()">Register</button>
+				<button type="button" id="submitInfo" name="submitInfo" class="btn btn-primary btn-lg" {{action "checkConfirmations"}}>Register</button>
 			</div>
 		</div>
 		
 	</form>
 </div>
-
-<script>
-
-	function checkConfirmations(){
-		var email1 = document.getElementById("email").value;
-		var email2 = document.getElementById("confEmail").value;
-		
-		var pass1 = document.getElementById("password").value;
-		var pass2 = document.getElementById("confPassword").value;
-		
-		var infoCorrect = true; //determines whether to submit or not
-		
-		if(email1 !== email2){
-			document.getElementById("emailWarning").innerHTML = "Email does not match";
-			infoCorrect = false;
-		}
-		else{
-			document.getElementById("emailWarning").innerHTML = "";
-		}
-		if(pass1 !== pass2){
-			document.getElementById("passWarning").innerHTML = "Password does not match";
-			infoCorrect = false;
-		}
-		else {
-			document.getElementById("passWarning").innerHTML = "";
-		}
-		
-		if(infoCorrect){
-			var submitSuccessful = submitInfo();
-		}
-		
-		if(submitSuccessful){
-			//navigate to the next page
-		}
-	}
-	
-	function submitInfo(){
-		//try submitting, if database rejects the info because of an invalid email return false, else true if successful
-		return true;
-	}
-
-</script>
