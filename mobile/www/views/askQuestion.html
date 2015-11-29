@@ -8,10 +8,7 @@
 		<!--consider adding maxlength attribute-->
 	<div class="q_textfield">
 		<textarea rows="4" cols="50" placeholder="Enter your comment or question here" value.bind="question" name="questionField" id="questionField"></textarea>
-	</div>
-		<input type="checkbox" name="anonymous" value="anonymous" checked.bind="anonymous" id="anonymous"/><label for="anonymous">Anonymous</label>
-		<div id="submit">
-			<button role="button" touchend.delegate="submitQuestion($event)">Submit</button>
-		</div>
+		<label><input type="checkbox" name="anonymous" value="anonymous" checked.bind="anonymous" id="anonymous"/> Anonymous </label>
+		<button role="button" touchend.delegate="submitQuestion($event)" id="submit">Submit</button>
 	</div>
 </template>

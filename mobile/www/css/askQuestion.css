@@ -2,7 +2,7 @@
 	text-align: center;
     padding: 0;
     margin: 0;
-    width: 80%;
+    width: 90%;
 }
 #mainTitle {
     font-size: 2em;
@@ -10,41 +10,21 @@
     margin: 0 0 25px;
 }
 
-#questionField{
-	/*height: 200%;
-	display: block;
-  margin-left: auto;
-  margin-right: auto;*/
-}
-div.q_textfield{
-	display: flex;
-  justify-content: center;
-}
-textarea{
-	border-radius: 8px;
+#questionField {
+	height: 200%;
+	margin: 0 auto;
 }
 #submit{
     text-align: center;
 }
-#submit button{
-	padding-left: 20px;
-	padding-right: 20px;
-}
 
-#anonymous{
-	width: 50px;
-	height: 50px;
-	background: #333;
-	margin: 20px;
-	margin-right: 10px;
-	border-radius: 50px;
-	transform: scale(0.5);
-	position: relative;
-	vertical-align: middle;
-	}
-#anonymous label{
-		position: relative;
-    vertical-align: middle;
+#anonymous {
+    margin: 0;
+}
+input {
+    width: 90%;
+    margin: 0 auto 10px;
+    vertical-align: bottom;
 }
 
 button {
@@ -52,5 +32,5 @@ button {
     margin: 0 auto 10px;
 }
 p{
-    font-size: 70%;
+    font-size: 80%;
 }
