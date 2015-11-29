@@ -1,5 +1,5 @@
 #questionContainer{
-	text-align: center;
+	text-align: left;
     padding: 0;
     margin: 0;
     width: 90%;
@@ -7,30 +7,25 @@
 #mainTitle {
     font-size: 2em;
     font-weight: bold;
-    margin: 0 0 25px;
+    margin: 0 0 10px;
 }
 
 #questionField{
-	height: 200%;
+	height: auto;
+    width: 100%;
 	margin: 0 auto;
 }
 #submit{
-    margin-bottom: 0;
-    margin-left: 0;
+    display: block;
+    width: 90%;
+    margin-top: 15px;
 }
 #anonymous{
-    margin: 0;
-}
-input {
-    width: 90%;
-    margin: 0 auto 10px;
+    margin: 10 0;
+    left: 0px;
     vertical-align: bottom;
 }
-
-button {
-    display: block;
-    margin: 0 auto 10px;
-}
 p{
-    font-size: 80%;
+    font-size: 90%;
+    text-align: center;
 }
