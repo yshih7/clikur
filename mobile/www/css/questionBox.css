@@ -1,9 +1,31 @@
 question-box {
     display: block;
     position: relative;
+}
+
+question-box .wrapper {
     border-radius: 8px;
     background-color: #01a9ac;
     text-align: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+question-box .wrapper.expanded {
+    width: 90%;
+    height: 80%;
+}
+
+question-box .dimmer.on {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 question-box .title {
@@ -22,6 +44,12 @@ question-box .itemCount {
     position: relative;
 }
 
+question-box .itemCount.empty {
+    background-color: gray;
+    opacity: 0.8;
+    border-radius: 0 0 8px 8px;
+}
+
 question-box .itemCount h2 {
     font-size: 3em;
     line-height: 1em;
@@ -29,25 +57,19 @@ question-box .itemCount h2 {
     font-family: "nixieone", serif;
 }
 
-question-box .list_view {
-    position: fixed;
-    top: 0;
-    left: 0;
+question-box .list {
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.25);
-}
-
-question-box .listWrapper {
-    background-color: #313A50;
-    width: 99%;
-    height: 80%;
+    height: calc(100% - 25px);
     overflow-y: scroll;
 }
 
 question-box .listItem {
     font-size: 1em;
-    background-color: #F0316D;
-    margin: 10px;
-    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: 5px;
+    padding: 10px;
+}
+
+question-box .listItem:active {
+    background-color: rgba(0, 0, 0, 0.8);
 }
