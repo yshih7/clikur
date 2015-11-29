@@ -107,6 +107,46 @@
 		</div>
 	</div>
 	<div class="form-group form-group-lg">
+		<label class="col-md-2 control-label">
+			Start Time:
+		</label>
+		<div class="col-md-8">
+			<div class="row">
+				<div class="col-md-4">
+					<select id="startHour" name="startHour" class="form-control" {{action "setStartTime"}}>
+						<option value="">--Hour--</option>
+					</select>
+				</div>
+				<div class="col-md-4">
+					<select id="startMinute" name="startMinute" class="form-control" {{action "setStartTime"}}>
+						<option value="">--Minute--</option>
+					</select>
+				</div>
+			</div>
+			<input type="hidden" id="start_time" name="start_time" value="" />
+		</div>
+	</div>
+	<div class="form-group form-group-lg">
+		<label class="col-md-2 control-label">
+			End Time:
+		</label>
+		<div class="col-md-8">
+			<div class="row">
+				<div class="col-md-4">
+					<select id="endHour" name="endHour" class="form-control" {{action "setEndTime"}}>
+						<option value="">--Hour--</option>
+					</select>
+				</div>
+				<div class="col-md-4">
+					<select id="endMinute" name="endMinute" class="form-control" {{action "setEndTime"}}>
+						<option value="">--Minute--</option>
+					</select>
+				</div>
+			</div>
+			<input type="hidden" id="end_time" name="end_time" value="" />
+		</div>		
+	</div>
+	<div class="form-group form-group-lg">
 		<div class="col-md-offset-2 col-md-2">
 			<button type="submit" id="submitCourse" name="submitCourse" class="btn btn-primary btn-lg" {{action "submit"}}>
 				Submit				
