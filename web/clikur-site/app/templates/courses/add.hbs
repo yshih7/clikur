@@ -1,4 +1,4 @@
-<form id="addCourse" name="addCourse" method="post" class="form-horizontal">
+<form id="addCourse" name="addCourse" class="form-horizontal">
 	<h2>Add a Course</h2>
 	<div class="form-group form-group-lg">
 		<label for="callsign" class="col-md-2 control-label">
@@ -59,7 +59,8 @@
 			<div class="row">
 				<div class="col-md-2 checkbox-inline">
 					<div class="col-md-1">
-						<input type="checkbox" id="monday" name="monday" class="form-control sessionBox" value="M" {{action "setSession" on="change"}} />
+						<input type="checkbox" id="monday" name="monday" class="form-control sessionBox" value="M" 
+							{{action "setSession" on="change"}} />
 					</div>
 					<div class="col-md-1">
 						<label for="monday" class="control-label">M</label>
@@ -67,7 +68,8 @@
 				</div>
 				<div class="col-md-2 checkbox-inline">
 					<div class="col-md-1">
-						<input type="checkbox" id="tuesday" name="tuesday" class="form-control sessionBox" value="T" {{action "setSession" on="change"}} />
+						<input type="checkbox" id="tuesday" name="tuesday" class="form-control sessionBox" value="T" 
+							{{action "setSession" on="change"}} />
 					</div>
 					<div class="col-md-1">
 						<label for="tuesday" class="control-label">T</label>
@@ -75,7 +77,8 @@
 				</div>
 				<div class="col-md-2 checkbox-inline">
 					<div class="col-md-1">
-						<input type="checkbox" id="wednesday" name="wednesday" class="form-control sessionBox" value="W" {{action "setSession" on="change"}} />
+						<input type="checkbox" id="wednesday" name="wednesday" class="form-control sessionBox" value="W" 
+							{{action "setSession" on="change"}} />
 					</div>
 					<div class="col-md-1">
 						<label for="wednesday" class="control-label">W</label>
@@ -83,7 +86,8 @@
 				</div>
 				<div class="col-md-2 checkbox-inline">
 					<div class="col-md-1">
-						<input type="checkbox" id="thursday" name="thursday" class="form-control sessionBox" value="R" {{action "setSession" on="change"}} />
+						<input type="checkbox" id="thursday" name="thursday" class="form-control sessionBox" value="R" 
+							{{action "setSession" on="change"}} />
 					</div>
 					<div class="col-md-1">
 						<label for="thursday" class="control-label">R</label>
@@ -91,7 +95,8 @@
 				</div>
 				<div class="col-md-2 checkbox-inline">
 					<div class="col-md-1">
-						<input type="checkbox" id="friday" name="friday" class="form-control sessionBox" value="F" {{action "setSession" on="change"}} />
+						<input type="checkbox" id="friday" name="friday" class="form-control sessionBox" value="F" 
+							{{action "setSession" on="change"}} />
 					</div>
 					<div class="col-md-1">
 						<label for="friday" class="control-label">F</label>
@@ -103,7 +108,9 @@
 	</div>
 	<div class="form-group form-group-lg">
 		<div class="col-md-offset-2 col-md-2">
-			<button type="submit" id="submitCourse" name="submitCourse" class="btn btn-primary btn-lg">Submit</button>
+			<button type="submit" id="submitCourse" name="submitCourse" class="btn btn-primary btn-lg" {{action "submit"}}>
+				Submit				
+			</button>
 		</div>
 	</div>
 </form>

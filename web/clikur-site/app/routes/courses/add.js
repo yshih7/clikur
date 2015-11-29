@@ -22,6 +22,18 @@ export default Ember.Route.extend({
 				});
 				return sessionVal;
 			});
+		},
+		submit: function () {
+			var isValid = true,
+				$form = $("#addCourse");
+			$("input[type='text'], input[type='hidden']").each(function () {
+				if ($(this).val().length < 1) {
+					isValid = false;
+				}
+			});
+			if (isValid) {
+				$form.submit();
+			}
 		}
 	}
 });
