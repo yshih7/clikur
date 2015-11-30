@@ -10,7 +10,6 @@ function populateOptions(optList, val) {
 }
 
 $(document).ready(function () {
-
 	var startHourOptions = $("#startHour").get(0).options,
 		startMinuteOptions = $("#startMinute").get(0).options,
 		endHourOptions = $("#endHour").get(0).options,

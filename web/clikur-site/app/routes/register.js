@@ -1,7 +1,10 @@
 import Ember from 'ember';
+
+var $ = Ember.$;
 			
-var submitInfo = function () {
+function submitInfo() {
 	//try submitting, if database rejects the info because of an invalid email return false, else true if successful
+	
 	return true;
 }
 
@@ -31,12 +34,20 @@ export default Ember.Route.extend({
 				document.getElementById("passWarning").innerHTML = "";
 			}
 			
+			//check to make sure each input has a value entered
+			$("input").each(function () {
+				if ($(this).val().length < 1) {
+					infoCorrect = false;
+				}
+			});
+			
 			if(infoCorrect){
 				var submitSuccessful = submitInfo();
 			}
 			
 			if(submitSuccessful){
 				//navigate to the next page
+				window.location.href = window.location.href + "/courses"
 			}
 		}
 	}
