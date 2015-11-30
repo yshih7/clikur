@@ -25,6 +25,7 @@ html, body {
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     -ms-user-select: none;
+    -moz-user-select: none;
     user-select: none;
     -ms-content-zooming: none;
     font-family: "raleway", sans-serif;
@@ -68,7 +69,11 @@ button {
     margin: 10px;
 }
 
-button:active {
+button.disabled {
+    background-color: dimgray;
+}
+
+button:not(.disabled):active {
   background-color: #16203B;
   color: lightgray;
 }

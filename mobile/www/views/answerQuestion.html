@@ -1,14 +1,13 @@
 <template>
     <require from="css/answerQuestion.css"></require>
     
-	<div class="topCenter">
-        <!--This is the header-->
-        <h1 id="questionHeader">${course.callSign} / Answer Question</h1>
-    </div>
+	<header>
+        <h1>${course.callSign} / Answer</h1>
+    </header>
 
     <p id="questionText">${question.text}</p>
     
-    <div class="formCenter" id="RadioContainer" if.bind="showRadio">
+    <div class="formCenter" id="radioContainer" if.bind="showRadio">
         <!--RADIO INPUT-->
         <label repeat.for="choice of question.choices">
             <!--
@@ -21,18 +20,20 @@
         </label>
     </div>
 
-	<div class="formCenter" id="TextContainer" if.bind="showText">
+	<div class="formCenter" id="textContainer" if.bind="showText">
         <!--TEXT INPUT-->
-        <textarea name="text" value.bind="textInput"></textarea>
+        <textarea name="text" value.bind="textInput" placeholder="Type your answer here"></textarea>
     </div>
 
-	<div class="formCenter" id="ImageContainer" if.bind="showImage">
+	<div class="formCenter" id="imageContainer" if.bind="showImage">
         <!--IMAGE-->
 		<img id="answerImage" src.bind="imageData">
-		<button role="button" touchend.delegate="takePicture()">Take Picture</button>
+        <div class="imgButton">
+		  <button role="button" touchend.delegate="takePicture()">Take Picture</button>
+        </div>
     </div>
 
-	<div class="bottomCenter">
-        <button role="button" touchend.delegate="submitAnswer()">Submit</button>
+	<div class="submitButton">
+        <button role="button" class="${!answerGiven ? 'disabled' : ''}" touchend.delegate="submitAnswer()">Submit</button>
     </div>
 </template>

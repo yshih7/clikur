@@ -12,6 +12,8 @@ import {Router} from "aurelia-router"; //jshint ignore:line
 export class AnswerQuestion
 {
     //start-es7
+    static IMG_PLACEHOLDER = "img/tinyblank.gif";
+    
     userData: UserData;
     course: Course;
     question: QuizQuestion;
@@ -24,7 +26,7 @@ export class AnswerQuestion
     @preserve()
     selection: number;
     @preserve()
-    imageData: string = "img/tinyblank.gif";
+    imageData: string = AnswerQuestion.IMG_PLACEHOLDER;
     //end-es7
     
 	//Initialize the variables for binding
@@ -66,14 +68,21 @@ export class AnswerQuestion
 		});
 	}
 
+    //TODO: Look up how to tell Aurelia what this computed property depends on
+    get answerGiven() {
+        return !!this.textInput || this.selection !== undefined || this.imageData !== AnswerQuestion.IMG_PLACEHOLDER;
+    }
+
     submitAnswer()
     {
-		if(this.showText){
+        if (!this.answerGiven) {
+            return;
+        }
+        
+		if(this.showText) {
 			//TODO Submit text
-			//return this.sometext;
-		} else if(this.showRadio){
+		} else if(this.showRadio) {
 			//TODO Submit radio choice
-			// return this.selectedChoice;
 		} else {
 			//TODO Submit Image
 		}
