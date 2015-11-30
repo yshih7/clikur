@@ -1,28 +1,31 @@
-
-<div id="addQuizDiv">
-	<form id="addQuiz" name="addQuiz">
-		<h2>Create a Quiz</h2>
-		
-		<div>
-			<button type="button" id="activateQuiz" name="activateQuiz">Activate Quiz</button>
-		</div>
-		
-		<br><br>
-		
-		<div>
-			<label for="quizTitle" class="field-label">
+<div id="addQuizDiv" class="row">
+	<form id="addQuiz" name="addQuiz" class="form-horizontal">
+		<div class="row">
+			<div class="col-md-3">
+				<h2>Create a Quiz</h2>
+			</div>
+			<div class="col-md-3">
+				<button type="button" id="activateQuiz" name="activateQuiz" class="btn btn-default">Activate Quiz</button>
+			</div>
+		</div>		
+		<div class="form-group form-group-lg">
+			<label for="quizTitle" class="control-label col-md-2">
 				Quiz Title:
 			</label>
-			<input type="text" id="quizTitle" name="quizTitle" placeholder="Title" />
+			<div class="col-md-6">
+				<input type="text" id="quizTitle" name="quizTitle" class="form-control" placeholder="Title" />
+			</div>
 		</div>
-		
-		<h3>Quiz Details</h3>
-		<div>
-			<label for="quizDate" class="field-label">
+		<div class="form-group">
+			<h3 class="col-md-offset-1">Quiz Details</h3>
+		</div>
+		<div class="form-group form-group-lg">
+			<label for="quizDate" class="control-label col-md-2">
 				Quiz Date:
 			</label>
-			
-			<input type="date" id="quizDate" name="quizDate"/>
+			<div class="col-md-6">
+				<input type="date" id="quizDate" name="quizDate" class="form-control" />
+			</div>
 			
 			<!-- changed this to a date type
 			<input type="text" id="quizMonth" name="quizMonth" placeholder="MM" maxlength="2" size="2"/>
@@ -36,86 +39,108 @@
 			<input type="text" id="quizYear" name="quizYear" placeholder="YYYY" maxlength="4" size="4"/>
 			-->
 		</div>
-		
-		<div>
-			<input type="checkbox" id="timeLimit" name="timeLimit"/>
-			<label for="timeLimit" class="field-label">
-				Time Limit
+		<!--<div class="form-group form-group-md col-md-1">
+			<input type="checkbox" id="timeLimit" name="timeLimit" class="form-control" />
+		</div>-->
+		<div class="form-group form-group-lg">
+			<label class="control-label col-md-2">
+				Time Limit:
 			</label>
-			<input type="number" id="minutes" name="minutes" placeholder="0" min="0" max="180" size="5"/>
-			<label for="timeLimit" class="field-label">
-				mins
-			</label>
-			<input type="number" id="seconds" name="seconds" placeholder="0" min="0" max="59" size="5"/>
-			<label for="timeLimit" class="field-label">
-				secs
-			</label>
-		</div>
-		
-		<br><br>
-		
-		<div>
-			<label for="question" class="field-label">
+			<div class="form-group form-group-lg col-md-6">
+				<div class="col-md-3">
+					<input type="number" id="minutes" name="minutes" class="form-control" placeholder="0" min="0" max="180" size="5"/>
+				</div>
+				<label for="minutes" class="control-label col-md-1">
+					mins
+				</label>
+				<div class="col-md-offset-1 col-md-3">
+					<input type="number" id="seconds" name="seconds" class="form-control" placeholder="0" min="0" max="59" size="5"/>
+				</div>
+				<label for="seconds" class="control-label col-md-1">
+					secs
+				</label>
+			</div>
+		</div>		
+		<div class="form-group form-group-lg">
+			<label for="question" class="control-label col-md-2">
 				Question:
 			</label>
-			<textarea rows="4" cols="50" id="question" name="question" placeholder="Type question here">
-			</textarea>
-			
-			<br>
-			
-			<label for="answerType" class="field-label">
+			<div class="col-md-6">
+				<textarea rows="4" id="question" name="question" class="form-control">
+				</textarea>
+			</div>
+		</div>
+		<div class="form-group form-group-lg">			
+			<label class="control-label col-md-2">
 				Answer Type: 
-			</label><br>
-			<input type="radio" id="multipleChoice" name="answerType" onclick="showAnswerChoices('mc');"/>Multiple Choice<br>
-			<input type="radio" id="shortAnswer" name="answerType" onclick="showAnswerChoices('other');"/>Short Answer<br>
-			<input type="radio" id="image" name="answerType" onclick="showAnswerChoices('other');"/>Image<br>
-			
+			</label>
+			<div class="col-md-6">
+				<div class="radio input-lg">
+					<label>
+						<input type="radio" id="multipleChoice" name="answerType" {{action "showAnswerChoices" "mc" preventDefault=false}} />
+						Multiple Choice
+					</label>
+				</div>
+				<div class="radio input-lg">
+					<label>
+						<input type="radio" id="shortAnswer" name="answerType" {{action "showAnswerChoices" "other" preventDefault=false}} />
+						Short Answer
+					</label>
+				</div>
+				<div class="radio input-lg">
+					<label>
+						<input type="radio" id="image" name="answerType" {{action "showAnswerChoices" "other" preventDefault=false}} />
+						Image
+					</label>
+				</div>
+			</div>
 		</div>
-		
-		<div id="choices" style="display:none">
-			<br>
-			<p>Enter your multiple choice options and select the correct answer</p>
-			<label for="choiceA" class="field-label">A</label>
-			<input type="text" id="choiceA" name="choiceA"/>
-			<input type="radio" id="correctA" name="correct"/>
-			<br>
-			<label for="choiceB" class="field-label">B</label>
-			<input type="text" id="choiceB" name="choiceB"/>
-			<input type="radio" id="correctB" name="correct"/>
-			<br>
-			<label for="choiceC" class="field-label">C</label>
-			<input type="text" id="choiceC" name="choiceC"/>
-			<input type="radio" id="correctC" name="correct"/>
-			<br>
-			<label for="choiceD" class="field-label">D</label>
-			<input type="text" id="choiceD" name="choiceD"/>
-			<input type="radio" id="correctD" name="correct"/>
+		<div id="choices" class="form-group form-group-lg" style="display:none">
+			<label class="control-label col-md-offset-2">
+				<p>Enter your multiple choice options and select the correct answer</p>
+			</label>
+			<div class="row">
+				<label for="choiceA" class="control-label col-md-2">A</label>
+				<div class="col-md-6">
+					<input type="text" id="choiceA" name="choiceA" class="form-control" />
+				</div>
+				<div class="col-md-1">
+					<input type="radio" id="correctA" name="correctA" class="form-control" />
+				</div>
+			</div>
+			<div class="row">
+				<label for="choiceB" class="control-label col-md-2">B</label>
+				<div class="col-md-6">
+					<input type="text" id="choiceB" name="choiceB" class="form-control" />
+				</div>
+				<div class="col-md-1">
+					<input type="radio" id="correctB" name="correctB" class="form-control"/>
+				</div>
+			</div>
+			<div class="row">
+				<label for="choiceC" class="control-label col-md-2">C</label>
+				<div class="col-md-6">
+					<input type="text" id="choiceC" name="choiceC" class="form-control" />
+				</div>
+				<div class="col-md-1">
+					<input type="radio" id="correctC" name="correct" class="form-control" />
+				</div>
+			</div>
+			<div class="row">
+				<label for="choiceD" class="control-label col-md-2">D</label>
+				<div class="col-md-6">
+					<input type="text" id="choiceD" name="choiceD" class="form-control" />
+				</div>
+				<div class="col-md-1">
+					<input type="radio" id="correctD" name="correct" class="form-control" />
+				</div>
+			</div>
 		</div>
-		
-		<br>
-		
-		<div>
-			<button type="submit" id="submitCourse" name="submitCourse">Submit</button>
+		<div class="form-group form-group-lg">
+			<div class="col-md-offset-2 col-md-2">
+				<button type="submit" id="submitCourse" name="submitCourse" class="btn btn-primary btn-lg">Submit</button>
+			</div>
 		</div>
 		
 	</form>
 </div>
-
-<script>
-
-	var showingChoices = false;
-	function showAnswerChoices(qtype){
-		
-		
-		if(showingChoices && (qtype === "other")){
-			showingChoices = false;
-			document.getElementById("choices").style.display = "none";
-		}
-		else if(!showingChoices && (qtype === "mc")){
-			showingChoices = true;
-			document.getElementById("choices").style.display = "block";
-		}
-	}
-	
-	
-</script>
