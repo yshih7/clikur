@@ -1,25 +1,25 @@
-[data-route="view-models/askQuestion"] {
+#route-ask {
     text-align: center;
     padding-top: 3em;
 }
 
-[data-route="view-models/askQuestion"] #questionField {
+#route-ask #questionField {
 	height: 50%;
     width: calc(100% - 20px);
 	margin: 10px;
     box-sizing: border-box;
 }
 
-[data-route="view-models/askQuestion"] #anonymous {
+#route-ask #anonymous {
     margin: 10px auto;
 }
 
-[data-route="view-models/askQuestion"] p {
+#route-ask p {
     font-size: .8em;
     margin: 10px;
 }
 
-[data-route="view-models/askQuestion"] #submit {
+#route-ask #submit {
     position: fixed;
     bottom: 0;
     left: 0;

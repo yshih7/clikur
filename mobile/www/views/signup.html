@@ -1,15 +1,17 @@
 <template>
     <require from="css/signup.css"></require>
 
-    <div class="deadCenter" id="InputContainer">
-        <!--TODO Replace this with an actual logo-->
-        <h1 id="mainTitle">ClikUR</h1>
-        <h2 id="sub">Create an Account</h2>
-        <input type="text" value.bind="email" name="emailField" id="emailField" placeholder="Email">
-        <input type="text" value.bind="studentName" name="nameField" id="nameField" placeholder="First/Last Name">
-        <input type="text" value.bind="studentID" name="idField" id="idField" placeholder="Student ID">
-        <input type="password" value.bind="password" name="pwField" id="pwField" placeholder="Password">
-        <input type="password" value.bind="passwordCheck" name="pwcField" id="pwcField" placeholder="Confirm Password">
-        <button role="button" touchend.delegate="createUser()">Submit</button>
+    <div class="viewWrapper" id="route-signup">
+        <div class="deadCenter" id="InputContainer">
+            <!--TODO Replace this with an actual logo-->
+            <h1 id="mainTitle">ClikUR</h1>
+            <h2 id="sub">Create an Account</h2>
+            <input type="text" value.bind="email" name="emailField" id="emailField" placeholder="Email">
+            <input type="text" value.bind="studentName" name="nameField" id="nameField" placeholder="First/Last Name">
+            <input type="text" value.bind="studentID" name="idField" id="idField" placeholder="Student ID">
+            <input type="password" value.bind="password" name="pwField" id="pwField" placeholder="Password">
+            <input type="password" value.bind="passwordCheck" name="pwcField" id="pwcField" placeholder="Confirm Password">
+            <button role="button" touchend.delegate="createUser()">Submit</button>
+        </div>
     </div>
 </template>

@@ -1,14 +1,16 @@
 <template>
 	<require from="css/askQuestion.css"> </require>
 
-    <header>
-        <h1>${course.callSign} / ${editMode? 'Edit' : 'Ask'}</h1>
-    </header>
+    <div class="viewWrapper" id="route-ask">
+        <header>
+            <h1>${course.callSign} / ${editMode? 'Edit' : 'Ask'}</h1>
+        </header>
 
-    <p>
-        Leave a constructive comment or question for the teacher. Please note that any offensive commentary will result in removal from the system.
-    </p>
-    <textarea placeholder="Enter your comment or question here" value.bind="question.text" name="questionField" id="questionField"></textarea>
-    <label id="anonymous"><input type="checkbox" name="anonymous" checked.bind="question.isAnon"> Anonymous</label>
-    <button role="button" touchend.delegate="submitQuestion($event)" id="submit">Submit</button>
+        <p>
+            Leave a constructive comment or question for the teacher. Please note that any offensive commentary will result in removal from the system.
+        </p>
+        <textarea placeholder="Enter your comment or question here" value.bind="question.text" name="questionField" id="questionField"></textarea>
+        <label id="anonymous"><input type="checkbox" name="anonymous" checked.bind="question.isAnon"> Anonymous</label>
+        <button role="button" touchend.delegate="submitQuestion($event)" id="submit">Submit</button>
+    </div>
 </template>
