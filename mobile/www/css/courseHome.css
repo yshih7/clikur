@@ -4,7 +4,7 @@
 }
 
 #route-courseHome question-box {
-    margin: 30px 10px;
+    margin: 10px 10px 15vw;
     width: calc(50% - 20px);
     height: 18%;
 }
@@ -37,5 +37,5 @@
 
 #route-courseHome #askButton {
     width: calc(100% - 20px);
-    margin: 30px 10px;
+    margin: 15vw 10px 10px;
 }
