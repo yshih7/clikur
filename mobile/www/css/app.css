@@ -103,7 +103,7 @@ input[type=text]:focus, input[type=password]:focus {
     position: fixed;
     top: 0;
     left: 0;
-    background-image: url("../img/back.png");
+    background-image: url("../img/ic_keyboard_arrow_left_white_2x.png");
     z-index: 100;
 }
 

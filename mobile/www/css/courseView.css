@@ -60,4 +60,5 @@ course-view .delete {
     position: absolute;
     right: 10px;
     bottom: 15px;
+    background-image: url("../img/ic_delete_white.png");
 }
