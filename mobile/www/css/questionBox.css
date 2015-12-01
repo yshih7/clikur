@@ -32,15 +32,15 @@ question-box .title {
     font-family: "nixieone";
     background-color: #F0316D;
     border-radius: 8px 8px 0 0;
-    font-size: 15px;
+    font-size: 1.1rem;
     padding: 5px;
     margin: 0;
-    line-height: 15px;
+    line-height: 1.1rem;
 }
 
 question-box .itemCount {
     width: 100%;
-    height: calc(100% - 25px);
+    height: calc(100% - 1.1rem - 10px);
     position: relative;
 }
 

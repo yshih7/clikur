@@ -61,7 +61,7 @@ h1:first-child {
 button {
     background-color: #636F8C;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 1.5rem;
     padding-top: 15px;
     padding-bottom: 15px;
     border: 0px;
@@ -78,14 +78,20 @@ button:not(.disabled):active {
   color: lightgray;
 }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], textarea {
     padding: 5px 8px;
     border: 1px solid #ccc;
-    height: 1.5em;
-    font-size: 1.2em;
+    font-size: 1.2rem;
+    border-radius: 3px;
+    -webkit-appearance: none;
+    box-sizing: content-box;
 }
 
-input[type=text]:focus, input[type=password]:focus {
+input[type=text], input[type=password], input[type=search] {
+    height: 1.5rem;
+}
+
+input[type=text]:focus, input[type=password]:focus, textarea:focus, input[type=search]:focus {
     border-color:#ff0066;
 }
 
