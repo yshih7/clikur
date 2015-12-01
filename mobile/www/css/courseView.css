@@ -59,6 +59,13 @@ course-view .callsign {
 course-view .delete {
     position: absolute;
     right: 10px;
-    bottom: 15px;
-    background-image: url("../img/ic_delete_white.png");
+    bottom: 10px;
+    background-image: url("../img/delete.png");
+    background-position: top;
+    width: 35px;
+    height: 35px;
+}
+
+course-view .delete:active {
+    background-position: bottom;
 }
