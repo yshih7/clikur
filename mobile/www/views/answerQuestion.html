@@ -35,7 +35,7 @@
         </div>
 
         <div class="submitButton">
-            <button role="button" class="${!answerGiven ? 'disabled' : ''}" touchend.delegate="submitAnswer()">Submit</button>
+            <button role="button" disabled.bind="!answerGiven" touchend.delegate="submitAnswer()">Submit</button>
         </div>
     </div>
 </template>
