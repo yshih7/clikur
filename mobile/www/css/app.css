@@ -69,11 +69,11 @@ button {
     margin: 10px;
 }
 
-button.disabled {
+button:disabled {
     background-color: dimgray;
 }
 
-button:not(.disabled):active {
+button:not(:disabled):active {
   background-color: #16203B;
   color: lightgray;
 }
@@ -91,8 +91,37 @@ input[type=text], input[type=password], input[type=search] {
     height: 1.5rem;
 }
 
+input[type=text][data-valid=false], input[type=password][data-valid=false], input[type=search][data-valid=false] {
+    box-shadow: inset 0px 0px 20px 0px rgba(255, 0, 4, 1);
+}
+
 input[type=text]:focus, input[type=password]:focus, textarea:focus, input[type=search]:focus {
     border-color:#ff0066;
+}
+
+.warnPopUp.active {
+    background-color: red;
+    display: table;
+    margin: 0 auto 10px;
+    position: relative;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.warnPopUp.active::after {
+    content: "";
+    position: absolute;
+    bottom: -7px;
+    left: 50%;
+    width: 14px;
+    height: 14px;
+    background-color: red;
+    transform: translateX(-50%) rotate(45deg);
+    -webkit-transform: translateX(-50%) rotate(45deg);
+}
+
+.warnPopUp.inactive {
+    display: none;
 }
 
 .deadCenter {

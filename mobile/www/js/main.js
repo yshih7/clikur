@@ -1,5 +1,6 @@
 import localforage from "localforage"; /*globals WinJS*/
 import {ViewLocator} from "aurelia-framework";
+import {SimplePopUpStrategy} from "js/SimplePopUpStrategy";
 
 /**
 * Function serves as "main function" for Aurelia.
@@ -21,8 +22,8 @@ export function configure(aurelia)
         .developmentLogging();
 
     //Uncomment the line below to enable animation.
-    aurelia.use.plugin('aurelia-animator-css');
     aurelia.use.plugin('aurelia-animator-velocity');
+    aurelia.use.plugin("aurelia-validation", config => config.useViewStrategy(new SimplePopUpStrategy()));
 
     //This is the "Main function" for Cordova.
     //We declare it inside of Aurelia's main and use it to wrap the call to aurelia.start()
