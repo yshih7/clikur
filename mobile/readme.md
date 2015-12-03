@@ -36,6 +36,7 @@ _(Assume these start with `cordova-plugin-`)_
 ## npm dependencies
 None added since this document was written
 
-## jspm dependencies
+## jspm dependencies (last changed 12/1)
 _(Run these with `jspm install`+DependencyName)_
 * aurelia-animator-velocity (added 11/24)
+* aurelia-validation (added 12/1)
