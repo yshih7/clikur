@@ -1,6 +1,9 @@
 import {needsPreservation, preserve} from "js/statePreservation"; //jshint ignore:line
+import {inject} from "aurelia-framework"; //jshint ignore:line
+import {Router} from "aurelia-router" //jshing ignore:line
 
 //start-es7
+@inject(Router)
 @needsPreservation("signup")
 //end-es7
 export class Signup
@@ -18,7 +21,12 @@ export class Signup
     passwordCheck;
     //end-es7
     
+    constructor(router) {
+        this.router = router;
+    }
+    
     createUser() {
         //TODO How will this work??? We still don't know!
+        navigator.notification.alert("Please check your email for a confirmation message.", () => this.router.navigateBack(), "Account Created");
     }   
 }

@@ -1,2 +1,71 @@
-#foo {
+@font-face {
+    font-family: "raleway";
+    src: url("./fonts/raleway-regular-webfont.woff") format('woff'),
+         url("./fonts/raleway-regular-webfont.woff2") format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "nixieone";
+    src: url("./fonts/nixieone-regular-webfont.woff") format('woff'),
+         url("./fonts/nixieone-regular-webfont.woff2") format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+course-view {
+    display: block;
+    background-color: #01a9ac;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: "raleway",sans-serif;
+    border-radius: 8px;
+    position: relative;
+    text-align: left;
+    padding-bottom: 1px;
+}
+
+course-view:active {
+  background-color: #16203B;
+  color: lightgray;
+}
+
+course-view .name {
+    font-family: "raleway",sans-serif;
+    margin: 5px;
+}
+
+course-view .session {
+    margin-left: 20px;
+    display: block;
+    margin: 5px;
+    font-size: 0.9rem;
+    line-height: 0.9rem;
+}
+
+course-view .callsign {
+    font-family: "nixieone";
+    background-color: #F0316D;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    font-size: 1.75rem;
+    margin: 0;
+    text-align: center;
+}
+
+course-view .delete {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background-image: url("../img/delete.png");
+    background-position: top;
+    width: 35px;
+    height: 35px;
+}
+
+course-view .delete:active {
+    background-position: bottom;
 }

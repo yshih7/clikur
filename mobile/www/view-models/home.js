@@ -9,8 +9,28 @@ export class Home
 {
     //start-es7
     userData: UserData;
+    updating: boolean = false;
+
+    //Use fat-arrow for lexical this
+    deleteCourse = id =>
+    {
+        var course = this.userData.courseList.get(id);
+        navigator.notification.confirm(`Remove class ${course.callSign} ("${course.name}")?`, choice => {
+            if (choice === 1)
+            {
+                this.updating = true;
+                setTimeout(() =>
+                {
+                    this.userData.courseList.delete(id);
+                    this.updating = false;
+                }, 0);
+            }
+        }, "Confirm class removal", ["Yes", "Cancel"]);
+
+        //TODO: Notify server
+    };
     //end-es7
-    
+
     constructor(userData, router)
     {
         this.userData = userData;
@@ -23,15 +43,15 @@ export class Home
         this.router.navigate("login");
     }
 
-    courseSelectAction(index) {
-        //TODO: Take me to your leader.... erm, I mean to the class!
+    courseSelectAction(id) {
+        this.router.navigateToRoute("courseHome", {cid: id});
     }
 
     addCourseAction() {
         this.router.navigate("courses/add");
     }
 
-    deleteCourse(index) {
-        //TODO: Delete the class!
+    deactivate() {
+        this.updating = true;
     }
 }

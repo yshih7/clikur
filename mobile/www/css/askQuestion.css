@@ -1,0 +1,27 @@
+#route-ask {
+    text-align: center;
+    padding-top: 3em;
+}
+
+#route-ask #questionField {
+	height: 50%;
+    width: calc(100% - 20px);
+	margin: 10px;
+    box-sizing: border-box;
+}
+
+#route-ask #anonymous {
+    margin: 10px auto;
+}
+
+#route-ask p {
+    font-size: .9em;
+    margin: 10px;
+}
+
+#route-ask #submit {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: calc(100% - 20px);
+}

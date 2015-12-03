@@ -2,7 +2,8 @@
 
 ## Dev Tools
 
-### Cordova CLI: 5.4.0
+### Cordova CLI: 5.4.1 (last update 11/27)
+Update with `npm install -g cordova`
 ### Cordova Windows Platform: 4.2.0 (Last update 11/11)
 Install with `cordova platform add windows@4.2.0` in `mobile/build/dest/`
 Update with `cordova platform update windows@4.2.0` in `mobile/build/dest/`
@@ -21,15 +22,20 @@ Run `jspm update` in `mobile/` to update.
 
 # Dependencies
 
-## Cordova Plugins (last changed 11/15)
+## Cordova Plugins (last changed 11/27)
+### ALL plugins updated on 11/27
+To update a plugin, remove it with `cordova plugin rm ` + &lt;PLUGIN NAME&gt; and then reinstall it.
+
 _(Assume these start with `cordova-plugin-`)_
 * whitelist
 * console
 * device (added 11/15)
 * dialogs (added 11/21)
+* camera (added 11/22)
 
 ## npm dependencies
 None added since this document was written
 
 ## jspm dependencies
-None added since this document was written
+_(Run these with `jspm install`+DependencyName)_
+* aurelia-animator-velocity (added 11/24)

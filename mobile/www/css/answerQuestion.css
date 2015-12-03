@@ -1,0 +1,58 @@
+#route-answer {
+    padding-top: 3em;
+}
+
+#route-answer header h1 {
+    font-size: 1.5em;
+}
+
+#route-answer #questionText {
+    margin: 10px;
+    font-size: 1.25em;
+}
+
+#route-answer #radioContainer {
+    display: table;
+    margin: 10px 0 10px 15px;
+}
+
+#route-answer #radioContainer label {
+    display: table-row;
+    vertical-align: middle;
+    line-height: 1em;
+}
+
+#route-answer #radioContainer input {
+    margin: 10px 0;
+}
+
+#route-answer div.submitButton {
+    position: fixed;
+    bottom: 0;
+    background-color: #313A50;
+    width: 100%;
+}
+
+#route-answer button {
+    width: calc(100% - 20px);
+}
+
+#route-answer #textContainer textarea {
+    margin: 10px;
+    height: 50vh;
+    width: calc(100vw - 20px);
+    box-sizing: border-box;
+}
+
+#route-answer #imageContainer #answerImage {
+    display: block;
+    width: 90%;
+    margin: auto;
+}
+
+#route-answer #imageContainer div.imgButton {
+    position: fixed;
+    bottom: 66px;
+    background-color: #313A50;
+    width: 100%;
+}

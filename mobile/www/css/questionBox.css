@@ -1,0 +1,75 @@
+question-box {
+    display: block;
+    position: relative;
+}
+
+question-box .wrapper {
+    border-radius: 8px;
+    background-color: #01a9ac;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+question-box .wrapper.expanded {
+    width: 90%;
+    height: 80%;
+}
+
+question-box .dimmer.on {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+question-box .title {
+    font-family: "nixieone";
+    background-color: #F0316D;
+    border-radius: 8px 8px 0 0;
+    font-size: 1.1rem;
+    padding: 5px;
+    margin: 0;
+    line-height: 1.1rem;
+}
+
+question-box .itemCount {
+    width: 100%;
+    height: calc(100% - 1.1rem - 10px);
+    position: relative;
+}
+
+question-box .itemCount.empty {
+    background-color: gray;
+    opacity: 0.8;
+    border-radius: 0 0 8px 8px;
+}
+
+question-box .itemCount h2 {
+    font-size: 3em;
+    line-height: 1em;
+    margin: 0;
+    font-family: "nixieone", serif;
+}
+
+question-box .list {
+    width: 100%;
+    height: calc(100% - 25px);
+    overflow-y: scroll;
+}
+
+question-box .listItem {
+    font-size: 1em;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: 5px;
+    padding: 10px;
+}
+
+question-box .listItem:active {
+    background-color: rgba(0, 0, 0, 0.8);
+}

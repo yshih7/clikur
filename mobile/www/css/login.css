@@ -1,23 +1,28 @@
-#loginContainer {
+#route-login #loginContainer {
     text-align: center;
     padding: 0;
     margin: 0;
-    width: 50%;
+    width: 80%;
 }
 
-#mainTitle {
-    font-size: 2em;
+#route-login #mainTitle {
     font-weight: bold;
-    margin: 0 0 25px;
+    text-align: center;
+    font-size: 4em;
 }
 
-input {
+#route-login input {
     width: 90%;
     margin: 0 auto 10px;
 }
 
-button {
+#route-login button {
     display: block;
-    width: 80%;
+    width: 90%;
     margin: 0 auto 10px;
+    text-align: center;
+}
+
+#route-login #signin_btn {
+  margin-top: 15px;
 }

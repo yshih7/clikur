@@ -1,0 +1,41 @@
+#route-courseHome {
+    padding-top: 3rem;
+    text-align: center;
+}
+
+#route-courseHome question-box {
+    margin: 10px 10px 15vw;
+    width: calc(50% - 20px);
+    height: 18%;
+}
+
+#route-courseHome #userQuestions {
+    float: left;
+}
+
+#route-courseHome #quizQuestions {
+    float: right;
+}
+
+#route-courseHome #raiseHand {
+    width: 250px;
+    height: 250px;
+    border-radius: 125px;
+    margin: auto;
+    background-color: #636F8C;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 250px;
+    font-size: 2.5em;
+    clear: both;
+}
+
+#route-courseHome #raiseHand:active {
+    background-color: #16203B;
+    color: lightgray;
+}
+
+#route-courseHome #askButton {
+    width: calc(100% - 20px);
+    margin: 15vw 10px 10px;
+}

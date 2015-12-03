@@ -1,13 +1,19 @@
 <template>
     <require from="view-models/courseView"></require>
     <require from="css/home.css"></require>
-    
-    <header>
-        <button role="button" id="logoutBtn" touchend.delegate="logOutAction()">Log Out</button>
-        <h1>ClikUR</h1>
-    </header>
-    <div class="list">
-        <course-view repeat.for="[id, course] of userData.courseList" course.bind="course" del-action.bind="deleteCourse" touchend.delegate="courseSelectAction(id)"></course-view>
+
+    <div class="viewWrapper" id="route-home">
+        <header>
+            <button role="button" id="logoutBtn" touchend.delegate="logOutAction()">Log Out</button>
+            <h1>ClikUR</h1>
+        </header>
+
+        <div class="list" if.bind="!updating">
+            <course-view repeat.for="[id, course] of userData.courseList" course.bind="course" del-action.bind="deleteCourse" touchend.delegate="courseSelectAction(id)"></course-view>
+        </div>
+
+        <div id="addCourse">
+            <button role="button" touchend.delegate="addCourseAction()">Add a Class</button>
+        </div>
     </div>
-    <div id="addClass" touchend.delegate="addCourseAction()">Add a Class</div>
 </template>

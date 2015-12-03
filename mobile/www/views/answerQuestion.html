@@ -1,0 +1,41 @@
+<template>
+    <require from="css/answerQuestion.css"></require>
+
+    <div class="viewWrapper" id="route-answer">
+        <header>
+            <h1>${course.callSign} / Answer</h1>
+        </header>
+
+        <p id="questionText">${question.text}</p>
+
+        <div class="formCenter" id="radioContainer" if.bind="showRadio">
+            <!--RADIO INPUT-->
+            <label repeat.for="choice of question.choices">
+                <!--
+                    model.bind="$index" means (in this context) that the value that's bound with the selection variable
+                    is the index of the choice in the array (simpler for sending back to the server).
+                    If we want to use the strings of the choices instead, use value.bind="choice"
+                -->
+                <input type="radio" name="choices" model.bind="$index" checked.bind="selection"/>
+                ${choice}
+            </label>
+        </div>
+
+        <div class="formCenter" id="textContainer" if.bind="showText">
+            <!--TEXT INPUT-->
+            <textarea name="text" value.bind="textInput" placeholder="Type your answer here"></textarea>
+        </div>
+
+        <div class="formCenter" id="imageContainer" if.bind="showImage">
+            <!--IMAGE-->
+            <img id="answerImage" src.bind="imageData">
+            <div class="imgButton">
+              <button role="button" touchend.delegate="takePicture()">Take Picture</button>
+            </div>
+        </div>
+
+        <div class="submitButton">
+            <button role="button" class="${!answerGiven ? 'disabled' : ''}" touchend.delegate="submitAnswer()">Submit</button>
+        </div>
+    </div>
+</template>
