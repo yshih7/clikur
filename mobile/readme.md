@@ -36,7 +36,11 @@ _(Assume these start with `cordova-plugin-`)_
 ## npm dependencies
 None added since this document was written
 
-## jspm dependencies (last changed 12/1)
+## jspm dependencies (last changed 12/3)
 _(Run these with `jspm install`+DependencyName)_
 * aurelia-animator-velocity (added 11/24)
 * aurelia-validation (added 12/1)
+* aurelia-firebase (added 12/3)
+* firebase (added 12/3)
+
+**NOTE: To fix an install tree fork that happens when installing `aurelia-firebase`, run `jspm install text`**
