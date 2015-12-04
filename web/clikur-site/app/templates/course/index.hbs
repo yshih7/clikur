@@ -1,4 +1,3 @@
-<!--<p id="sList" style="float:left"> <b>Students:</b><br>Brian Park<br>bpark5@u.rochester.edu<br><br>German Hernandez<br>ghernan6@u.rochester.edu<br><br>Mary Sue<br>msue@u.rochester.edu<br><br>Michelle Diane<br>urmich@hotmail.com<br><br>Brian Park<br>bpark5@u.rochester.edu<br><br>German Hernandez<br>ghernan6@u.rochester.edu<br><br>Mary Sue<br>msue@u.rochester.edu<br><br>Michelle Diane<br>urmich@hotmail.com<br><br>Brian Park<br>bpark5@u.rochester.edu<br><br>German Hernandez<br>ghernan6@u.rochester.edu<br></p>-->
 <div class="row">
 	<div class="col-md-3">
 	<h3>Students</h3>
@@ -6,39 +5,9 @@
 		{{student-info student=student}}
 	{{/each}}
 	</div>
-	
-	<!--<script>
-	var aStudents = ExistingObject;
-	var Students = JSON.parse(aStudents);
-		i = 0;
-		while(i!=Students.length){
-			var SingleS = Students[i];
-			document.getElementbyId("sList").innerHTML += "Student name: ";
-			if(SingleS.name.length > 30){
-				var sq = SingleS.name.substrong(0,27) + "..."
-				document.getElementbyId("sList").innerHTML += sq;
-			}
-			else document.getElementbyId("sList").innerHTML += SingleS.name;
-			
-			document.getElementbyId("sList").innerHTML += "<br />";
-			document.getElementbyId("sList").innerHTML += "Student e-mail: ";
-			document.getElementbyId("sList").innerHTML += SingleS.email;
-			
-			document.getElementbyId("sList").innerHTML += "<br /><br />"
-			i++;
-		}
-	
-	</script>-->
 	<div class="col-md-7">
 		<h3 id="classtitle">Death, Dying, and Beyond</h3>
 		<h4 id="classsemester">Fall Semester</h4>
-		<!--<script>
-			var aclassvar = jsonobject;
-			var classvar = JSON.parse(aclassvar);
-			//json returns object to var classvar
-			document.getElementbyId("classtitle").innerHTML = classvar.title;
-			document.getElementbyId("classsemester").innerHTML = classvar.semester;
-		</script>-->
 		<div class="row">
 			<div class="col-md-3">
 				<h3 id="quizzesTitle">Quizzes</h3>
@@ -58,24 +27,6 @@
 						{{quiz-question quiz=quiz}}
 					{{/each}}
 				</tbody>
-				<!--<tr>
-					<th width="300">Quiz Questions:</th>
-					<th></th>
-					<th>
-						<a href="course/:course_id/quizzes/add"><button type="button" id="btn_addQuestion">
-							New Question
-						</button></a>
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<p id="qList1">How much wood could a wood c...<br>10-20-2004<br><br>What is my name?<br>10-19-2004<br><br>What is a man but a miserabl...<br>9-30-2004 </p>
-					</td>
-					<td></td>
-					<td>
-						<p id="qList2">Draft<br><br><br>Open<br><br><br>Closed</p>
-					</td>
-				</tr>-->
 			</table>
 		</div>
 	</div>
@@ -100,29 +51,3 @@
 		</div>
 	</div>
 </div>
-<!--<script>
-	//json returns object to var Questions
-	var aQuestions = jsonobject;
-	var Questions = JSON.parse(jsonobject);
-	i = 0;
-	while(i!=Questions.length){
-		var SingleQ = Questions[i];
-		document.getElementbyId("qList1").innerHTML += "Question Title: ";
-		if(SinqleQ.question.length > 30){
-			var sq = SingleQ.question.substrong(0,27) + "..."
-			document.getElementbyId("qList1").innerHTML += sq;
-		}
-		else document.getElementbyId("qList1").innerHTML += SingleQ.question;
-		
-		document.getElementbyId("qList1").innerHTML += "<br>";
-		document.getElementbyId("qList1").innerHTML += SingleQ.date;
-		
-		document.getElementbyId("qList2").innerHTML += "Status "; 
-		document.getElementbyId("qList2").innerHTML += SingleQ.status;
-		
-		document.getElementbyId("qList1").innerHTML += "<br><br>"
-		document.getElementbyId("qList2").innerHTML += "<br><br><br>"
-		i++;
-	}
-
-</script>-->

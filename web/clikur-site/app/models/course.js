@@ -4,12 +4,13 @@ var attr = DS.attr,
 	hasMany = DS.hasMany;
 
 export default DS.Model.extend({
-	crn: attr('number'),
-	title: attr('string'),
-	callsign: attr('string'),
-	semester: attr('number'),
+	crn: attr(),
+	title: attr(),
+	callsign: attr(),
+	semester: attr(),
 	session: attr(),
-	instructor: attr('number'),
+	instructor: attr(),
 	members: hasMany('user'),
-	quizQs: hasMany('quiz-q')
+	quizQs: hasMany('quiz-q'),
+	userQs: hasMany('user-q')
 });

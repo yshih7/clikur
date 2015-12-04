@@ -5,12 +5,12 @@ var attr = DS.attr,
 	hasMany = DS.hasMany;
 
 export default DS.Model.extend({
-	crn: attr('number'),
-	qid: attr('number'),
-	type: attr('string'),
+	crn: attr(),
+	qid: attr(),
+	type: attr(),
 	choices: attr(),
 	expiration: attr(),
-	text: attr('string'),
+	text: attr(),
 	course: belongsTo('course'),
 	responses: hasMany('response')
 });

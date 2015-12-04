@@ -4,12 +4,12 @@ var attr = DS.attr,
 	belongsTo = DS.belongsTo;
 
 export default DS.Model.extend({
-	crn: attr('number'),
-	userid: attr('number'),
+	crn: attr(),
+	userid: attr(),
 	timestamp: attr(),
-	isAnon: attr('boolean'),
-	text: attr('string'),
-	flag: attr('boolean'),
+	isAnon: attr(),
+	text: attr(),
+	flag: attr(),
 	course: belongsTo('course'),
 	user: belongsTo('user')
 });

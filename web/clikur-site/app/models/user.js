@@ -4,8 +4,10 @@ var attr = DS.attr,
 	hasMany = DS.hasMany;
 
 export default DS.Model.extend({
-	userid: attr('number'),
-	urid: attr('number'),
-	name: attr('string'),
-	courses: hasMany('course')
+	userid: attr(),
+	urid: attr(),
+	name: attr(),
+	courses: hasMany('course'),
+	userQs: hasMany('user-q'),
+	responses: hasMany('response')
 });
