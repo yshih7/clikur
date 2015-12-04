@@ -1,14 +1,28 @@
 <div class="row">
+	<div class="col-md-offset-11 col-md-1">
+		<a href="/course/{{model.course.id}}"><button class="btn btn-default">Return to Course</button></a>
+	</div>
+</div>
+<div class="row">
 	<div class="col-md-6">
 		<h3>Questions</h3>
-		{{#each model as |question|}}
+		{{#each model.questions as |question|}}
 			{{student-question question=question}}
 		{{/each}}
 	</div>
 	<div class="col-md-6">
 		<h3>Quizzes</h3>
-		<div class="row">
-			
-		</div>
+		<table class="table table-striped">
+			<tbody>
+				<tr>
+					<th>Question</th>
+					<th>Status</th>
+					<th>&nbsp;</th>
+				</tr>
+				{{#each model.quizzes as |quiz|}}
+					{{quiz-lecture quiz=quiz}}
+				{{/each}}
+			</tbody>
+		</table>
 	</div>
 </div>
