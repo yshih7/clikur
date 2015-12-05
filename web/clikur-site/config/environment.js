@@ -6,9 +6,6 @@ module.exports = function(environment) {
     environment: environment,
     contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
     firebase: 'https://blinding-heat-6163.firebaseio.com/',
-	torii: {
-      sessionServiceName: 'session'
-    },
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {
