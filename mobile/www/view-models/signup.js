@@ -4,9 +4,10 @@ import {Router} from "aurelia-router"; //jshint ignore:line
 import {Validation} from "aurelia-validation"; //jshint ignore:line
 import {AuthenticationManager} from "aurelia-firebase"; //jshint ignore:line
 import Firebase from "firebase";
+import {UserData} from "js/UserData"; //jshint ignore:line
 
 //start-es7
-@inject(Router, Validation, AuthenticationManager)
+@inject(Router, Validation, AuthenticationManager, UserData)
 @needsPreservation("signup")
 //end-es7
 export class Signup
@@ -25,10 +26,11 @@ export class Signup
     validation;
     //end-es7
     
-    constructor(router, validation, authManager)
+    constructor(router, validation, authManager, userData)
     {
         this.router = router;
         this.authManager = authManager;
+        this.userData = userData;
         
         this.validation = validation.on(this, config => config.treatAllPropertiesAsMandatory())
             .ensure("email")
@@ -70,7 +72,8 @@ export class Signup
                     reject(err);
                 }
                 else {
-                    resolve();
+                    //Pass the user object on so we can give it to the UserData object
+                    resolve(user);
                 }
             }));
         };
@@ -82,6 +85,7 @@ export class Signup
         this.validation.validate()
             .then(register, validationFailure)
             .then(updateUsers)
+            .then(user => this.userData.populate(user))
             .then(showAlert)
             .then(() => this.router.navigate("home"))
             .catch(err => {

@@ -39,8 +39,12 @@ export class Home
 
     logOutAction()
     {
-        this.userData.clear();
-        this.router.navigate("login");
+        this.userData.clearAndSignOut()
+            .then(() => this.router.navigate("login"))
+            .catch(err => {
+                console.log(err);
+                navigator.notification.alert(typeof err === "string" ? err : String(err), null, "Error");
+            });
     }
 
     courseSelectAction(id) {

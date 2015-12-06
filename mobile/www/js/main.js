@@ -22,7 +22,11 @@ export function configure(aurelia)
         .developmentLogging()
         .plugin("aurelia-animator-velocity")
         .plugin("aurelia-validation", config => config.useViewStrategy(new SimplePopUpStrategy()))
-        .plugin("aurelia-firebase", config => config.setFirebaseUrl("https://blinding-heat-6163.firebaseio.com/"));
+        .plugin("aurelia-firebase", config => {
+            config
+                .setFirebaseUrl("https://blinding-heat-6163.firebaseio.com/")
+                .setMonitorAuthChange(true);
+        });
     
     //Making this global for convenience
     window.firebaseUrl = "https://blinding-heat-6163.firebaseio.com/";
