@@ -13,7 +13,9 @@
 				<h3 id="quizzesTitle">Quizzes</h3>
 			</div>
 			<div class="col-md-offset-6 col-md-2">
-				<a href="course/{{model.course.id}}/quizzes/add"><button type="button" id="addQuiz" name="addQuiz" class="btn btn-default">Add Question</button></a>
+				{{#link-to "course.quizzes.add" model.course.id tagName="button" id="addQuiz" name="addQuiz" classNames="btn btn-default"}}
+					Add Question
+				{{/link-to}}
 			</div>
 		</div>
 		<div class="row">		
@@ -33,21 +35,21 @@
 	
 	<div class="col-md-2">
 		<div class="col-md-10">
-			<a href="/lecture/{{model.course.id}}"><button type="button" id="btn_lecture" name="btn_lecture" class="btn btn-primary">
+			{{#link-to "lecture" model.course.id tagName="button" id="btn_lecture" name="btn_lecture" classNames="btn btn-primary"}}
 				Start Lecture
-			</button></a>
+			{{/link-to}}
 		</div>
 		<div class="col-md-10">&nbsp;</div>
 		<div class="col-md-10">
-			<a href="courses"><button type="button" id="btn_courses" name="btn_courses" class="btn btn-default">
+			{{#link-to "courses" tagName="button" id="btn_courses" name="btn_courses" classNames="btn btn-default"}}
 				Return to Course List
-			</button></a>
+			{{/link-to}}
 		</div>
 		<div class="col-md-10">&nbsp;</div>
 		<div class="col-md-10">
-			<a href="courses/add"><button type="button" id="btn_addCourse" name="btn_addCourse" class="btn btn-default">
-				Create New Course
-			</button></a>
+			{{#link-to "courses.add" tagName="button" id="addCourse" name="addCourse" classNames="btn btn-default"}}
+				Add Course
+			{{/link-to}}
 		</div>
 	</div>
 </div>

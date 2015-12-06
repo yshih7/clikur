@@ -1,4 +1,8 @@
-<td><a href="course/{{course.id}}"><button class="btn btn-default">View</button></a></td>
+<td>
+	{{#link-to "course" course.id tagName="button" classNames="btn btn-default"}}
+		View
+	{{/link-to}}
+</td>
 <td>{{course.callsign}}</td>
 <td>{{course.title}}</td>
 <td>{{course.crn}}</td>

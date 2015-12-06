@@ -1,4 +1,4 @@
-<div id="addQuizDiv" class="row">
+<div class="col-md-10">
 	<form id="addQuiz" name="addQuiz" class="form-horizontal">
 		<div class="row">
 			<div class="col-md-3">
@@ -95,7 +95,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="choices" class="form-group form-group-lg" style="display:none">
+		<div id="choices" class="form-group form-group-lg hidden">
 			<label class="control-label col-md-offset-2">
 				<p>Enter your multiple choice options and select the correct answer</p>
 			</label>
@@ -151,4 +151,9 @@
 		</div>
 		
 	</form>
+</div>
+<div class="col-md-2">
+	{{#link-to "course.index" model.course.id tagName="button" classNames="btn btn-default"}}
+		Return to Course
+	{{/link-to}}
 </div>
