@@ -2,6 +2,11 @@
 	float: right;
 }
 
+.alert {
+	color: red;
+	font-weight: bold;
+}
+
 #mainHeader {
 	background-color:#16203b;
 }
@@ -22,4 +27,8 @@
 
 #clikurInfo {
 	outline: thick solid #16203b;
+}
+
+#loginFailMsg {
+	font-size: 2em;
 }

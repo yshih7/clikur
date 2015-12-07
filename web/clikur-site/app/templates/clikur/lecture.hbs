@@ -1,6 +1,8 @@
 <div class="row">
 	<div class="col-md-offset-11 col-md-1">
-		<a href="/course/{{model.course.id}}"><button class="btn btn-default">Return to Course</button></a>
+		{{#link-to "clikur.course" model.course.id tagName="button" classNames="btn btn-default"}}
+			Return to Course 
+		{{/link-to}}
 	</div>
 </div>
 <div class="row">

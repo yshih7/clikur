@@ -1,10 +1,16 @@
 <div id="mainHeader">
 <br>
-<a href=""><p class="float-right">Logout &nbsp;</p></a>
-<a href="/courses"><img id="logo" src="assets/clikur_logo_white.png" alt="clikUR logo" title="clikUR"></a>
+<a href="" {{action "signOut"}}><p class="float-right">Logout &nbsp;</p></a>
+{{#if session.isAuthenticated}}
+	{{#link-to "clikur.courses"}}
+		<img id="logo" src="assets/clikur_logo_white.png" alt="clikUR logo" title="clikUR">
+	{{/link-to}}
+	<!--<a href="/clikur/courses"><img id="logo" src="assets/clikur_logo_white.png" alt="clikUR logo" title="clikUR"></a>-->
+{{else}}
+	<img id="logo" src="assets/clikur_logo_white.png" alt="clikUR logo" title="clikUR">
+{{/if}}
 <hr />
 </div>
-
 
 <div class="container">
 	{{outlet}}

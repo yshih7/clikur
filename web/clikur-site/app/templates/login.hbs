@@ -21,7 +21,7 @@
 				<form class="form-inline col-md-offset-4">
 					<div class="form-group">
 						<div class="col-md-2">
-							<a href="courses"><button type="button" id="submitLogin" name="submitLogin" class="btn btn-primary">Login</button></a>
+							<button type="button" id="submitLogin" name="submitLogin" class="btn btn-primary" {{action "signIn"}}>Login</button>
 						</div>
 					</div>
 					<div class="form-group">
@@ -41,6 +41,11 @@
 			<strong> ClikUR</strong> also helps professors see how the entire class is progressing with their understanding of their material as well as enhances their ability to answer questions their students may have. <br><br>
 			<strong> ClikUR</strong> is easily accessible and free for everyone. <br>
 			<br>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<p id="loginFailMsg" class="hidden alert">Login failed: bad email or password</p>
 		</div>
 	</div>
 </div>

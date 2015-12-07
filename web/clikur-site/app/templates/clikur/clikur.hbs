@@ -1,0 +1,9 @@
+{{#if session.isAuthenticated}}
+	{{outlet}}
+{{else}}
+	<div class="row">
+		<div class="col-md-12">
+			<a href="/"><button class="btn btn-primary">Login to clikUR</button></a>
+		</div>
+	</div>
+{{/if}}

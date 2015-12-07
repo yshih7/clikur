@@ -5,7 +5,7 @@ var $ = Ember.$,
 			
 export default Ember.Route.extend({
 	model () {
-		return this.modelFor("course");
+		return this.modelFor("clikur.course");
 	},
 	actions: {
 		showAnswerChoices: function(qtype) {
