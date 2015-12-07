@@ -4,19 +4,27 @@ export class Course
     name: string; //e.g., "Intro to HCI"
     callSign: string; //e.g., "CSC212"
     session: Session;
+    semester;
     id: numeric;
     userQuestions: Map<numeric, UserQuestion>;
     quizQuestions: Map<numeric, QuizQuestion>;
     //end-es7
 
-    constructor(name, callSign, session, id)
+    constructor(name, callSign, session, id, semester)
     {
         this.name = name;
         this.callSign = callSign;
         this.session = session;
         this.id = id;
+        this.semester = semester;
         this.userQuestions = new Map();
         this.quizQuestions = new Map();
+    }
+
+    static fromServerObj(obj, id)
+    {
+        let session = Session.fromServerObj(obj.session);
+        return new Course(obj.title, obj.callsign, session, id, obj.semester);
     }
 }
 
@@ -43,6 +51,13 @@ export class Session
 
     toString() {
         return `${this.days} ${this.startTime}-${this.endTime}`;
+    }
+
+    static fromServerObj(obj)
+    {
+        let start = Time.fromSerialString(obj.start);
+        let end = Time.fromSerialString(obj.end);
+        return new Session(obj.days, start, end);
     }
 }
 
@@ -84,5 +99,25 @@ export class Time
         }
 
         return `${hour}:${this.min < 10 ? "0" + this.min : this.min}${ampm}`;
+    }
+
+    toSerialString() {
+        return `${this.hour}:${this.min}`;
+    }
+
+    static fromSerialString(str)
+    {
+        const format = /^(\d+):(\d+)$/;
+        
+        let parseResult = format.exec(str);
+        
+        if (!parseResult) {
+            throw new Error("Argument is not a valid serialized Time");
+        }
+        
+        let hour = +parseResult[1];
+        let min = +parseResult[2];
+        
+        return new Time(hour, min);
     }
 }
