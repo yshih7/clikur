@@ -19,8 +19,24 @@ export class ReactiveCollectionWithTransform extends ReactiveCollection
     {
         let initVal = super._valueFromSnapshot(snapshot);
         
-        if (this.transformer) {
-            return this.transformer(initVal);
+        if (this.transformer)
+        {
+            let key = initVal.__firebaseKey__;
+            let newVal = this.transformer(initVal);
+            
+            if (newVal.__firebaseKey__ === undefined)
+            {
+                if (typeof newVal !== "object") {
+                    newVal = {
+                        value: newVal,
+                        __firebasePrimitive__: true
+                    };
+                }
+                
+                newVal.__firebaseKey__ = key;
+            }
+            
+            return newVal;
         }
         else {
             return initVal;
@@ -200,8 +216,15 @@ export class ReferenceCollection extends ReactiveCollectionWithTransform
         let frb_ref = new Firebase(this._refBase + ref);
         this._refMap.set(ref, frb_ref);
         
+        let firstAdd = true;
         frb_ref.on("value", snapshot => {
-            super._onItemAdded(snapshot, prevKey);
+            if (firstAdd) {
+                super._onItemAdded(snapshot, prevKey);
+                firstAdd = false;
+            }
+            else {
+                super._onItemChanged(snapshot, prevKey);
+            }
         });
     }
     
