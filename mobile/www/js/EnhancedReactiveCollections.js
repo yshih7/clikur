@@ -36,8 +36,8 @@ export class ReferenceCollection extends ReactiveCollectionWithTransform
         
         let config = Container.instance.get(Configuration);
         
-        this._refBase = ReactiveCollection._getChildLocation(config.getFirebaseUrl(), refBase);
-        this._frb_refBase = new Firebase(refBase);
+        this._refBase = ReactiveCollection._getChildLocation(config.getFirebaseUrl(), refBase) + "/";
+        this._frb_refBase = new Firebase(this._refBase);
         this._refMap = new Map();
     }
     

@@ -3,6 +3,7 @@ import * as course from "js/Course";
 import {AuthenticationManager} from "aurelia-firebase"; //jshint ignore:line
 import {inject} from "aurelia-framework"; //jshint ignore:line
 import Firebase from "firebase";
+import {ReferenceCollection} from "js/EnhancedReactiveCollections";
 
 //start-es7
 @inject(AuthenticationManager)
@@ -13,7 +14,7 @@ export class UserData
     isInitialized: boolean = false;
     user;
     name: string;
-    courseList: Map<numeric, course.Course> = new Map();
+    courseList: ReferenceCollection;
     //end-es7
 
     get isLoggedIn() {
@@ -46,27 +47,17 @@ export class UserData
         
         this.user = user;
         
-//        let frb_user = new Firebase(window.firebaseUrl + `users/${user.uid}`);
-
-        //TEMP: Add fake name
-        this.name = "Bob";
-
-        //TEMP: Add one fake class
-        var startTime1 = new course.Time(12, 0);
-        var endTime1 = new course.Time(1, 0);
-        var session1 = new course.Session("MW", startTime1, endTime1);
-        var course1 = new course.Course(`${user.email} Class`, "FF101", session1, 12345);
-        this.courseList.set(12345, course1);
-
-        var startTime2 = new course.Time(12, 0);
-        var endTime2 = new course.Time(1, 0);
-        var session2 = new course.Session("MW", startTime2, endTime2);
-        var course2 = new course.Course(`${user.email} Class`, "FF102", session2, 6789);
-        this.courseList.set(6789, course2);
+        let frb_user = new Firebase(window.firebaseUrl + `users/${user.uid}`);
         
-        this.isInitialized = true;
-        
-        return Promise.resolve();
+        return new Promise((resolve, reject) => {
+            frb_user.once("value", snapshot => {
+                this.name = snapshot.child("name").val();
+                this.courseList = new ReferenceCollection(`users/${user.uid}/courses`, "courses", 
+                                                          val => course.Course.fromServerObj(val, val.__firebaseKey__));
+                resolve();
+            },
+            e => reject(e));
+        });
     }
 
     clearAndSignOut()
