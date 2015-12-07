@@ -8,7 +8,13 @@ const Router = Ember.Router.extend({
 Router.map(function() {
   this.route('login', { path: '/' });
   this.route('register');
-  this.route('about');
+  this.route('about', function() {
+    this.route('team');
+    this.route('design');
+    this.route('timeline');
+    this.route('needfinding');
+    this.route('videos');
+  });
   this.route('clikur', function () {
     this.route('courses', function() {
       this.route('add');
