@@ -1,5 +1,6 @@
-import {ReactiveCollection} from "aurelia-firebase";
+import {ReactiveCollection, Configuration} from "aurelia-firebase";
 import Firebase from "firebase";
+import {Container} from "aurelia-dependency-injection";
 
 /**
 An extension of ReactiveCollection that accepts a function to
@@ -33,11 +34,9 @@ export class ReferenceCollection extends ReactiveCollectionWithTransform
     {
         super(path, transformer);
         
-        if (!refBase.endsWith("/")) {
-            refBase += "/";
-        }
+        let config = Container.instance.get(Configuration);
         
-        this._refBase = refBase;
+        this._refBase = ReactiveCollection._getChildLocation(config.getFirebaseUrl(), refBase);
         this._frb_refBase = new Firebase(refBase);
         this._refMap = new Map();
     }
