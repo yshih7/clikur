@@ -64,7 +64,7 @@ export class Signup
             let obj = {
                 URID: this.studentID,
                 name: this.studentName,
-                classes: {},
+                courses: {},
                 isProfessor: false
             };
             return new Promise((resolve, reject) => frb_users.child(user.uid).set(obj, err => {
