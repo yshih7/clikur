@@ -14,20 +14,16 @@ export class Home
     //Use fat-arrow for lexical this
     deleteCourse = id =>
     {
-        var course = this.userData.courseList.get(id);
+        var course = this.userData.courseList.getByKey(id);
         navigator.notification.confirm(`Remove class ${course.callSign} ("${course.name}")?`, choice => {
-            if (choice === 1)
-            {
-                this.updating = true;
-                setTimeout(() =>
-                {
-                    this.userData.courseList.delete(id);
-                    this.updating = false;
-                }, 0);
+            if (choice === 1) {
+                this.userData.courseList.removeByKey(id, false)
+                .catch(err => {
+                    console.log(err);
+                    navigator.notification.alert(typeof err === "string" ? err : String(err), null, "Error");
+                })
             }
         }, "Confirm class removal", ["Yes", "Cancel"]);
-
-        //TODO: Notify server
     };
     //end-es7
 

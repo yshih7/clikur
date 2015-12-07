@@ -5,7 +5,7 @@ export class Course
     callSign: string; //e.g., "CSC212"
     session: Session;
     semester;
-    id: numeric;
+    id: string;
     userQuestions: Map<numeric, UserQuestion>;
     quizQuestions: Map<numeric, QuizQuestion>;
     //end-es7
