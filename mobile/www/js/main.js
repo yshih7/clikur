@@ -1,6 +1,7 @@
 import localforage from "localforage"; /*globals WinJS*/
 import {ViewLocator} from "aurelia-framework";
 import {SimplePopUpStrategy} from "js/SimplePopUpStrategy";
+import Firebase from "firebase";
 
 /**
 * Function serves as "main function" for Aurelia.
@@ -103,5 +104,8 @@ export function configure(aurelia)
             //Since we're not actually using this event, we don't need it to finish traversing
             e.stopImmediatePropagation();
         }, true);
+        
+        //This seems to be inconsistently necessary for things not to break. No one knows why.
+        Firebase.INTERNAL.forceWebSockets();
     }
 }
