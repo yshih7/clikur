@@ -5,12 +5,12 @@
         <div class="wrapper ${showList ? 'expanded deadCenter' : ''}">
             <h2 class="title">${title}</h2>
 
-            <div class="itemCount ${questionMap.size === 0 ? 'empty' : ''}" if.bind="!showList">
-                <h2>${questionMap.size}</h2>
+            <div class="itemCount ${questionMap.items.length === 0 ? 'empty' : ''}" if.bind="!showList">
+                <h2>${collection.items.length}</h2>
             </div>
 
-            <div class="list" if.bind="showList && !updating">
-                <div repeat.for="[id, question] of questionMap" class="listItem" touchend.trigger="show_q_detail($event, id)">${question.text}</div>
+            <div class="list" if.bind="showList">
+                <div repeat.for="question of collection.items" class="listItem" touchend.trigger="show_q_detail($event, question.timestamp)">${question.text}</div>
             </div>
         </div>
     </div>

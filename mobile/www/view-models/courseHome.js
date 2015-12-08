@@ -29,7 +29,7 @@ export class CourseHome {
 
     activate(params)
     {
-        this.course = this.userData.courseList.get(+(params.cid));
+        this.course = this.userData.courseList.getByKey(params.cid);
 
         if (window.courseHomeExpansion === "user" && this.course.userQuestions.size !== 0)
         {
@@ -44,24 +44,7 @@ export class CourseHome {
 
         window.courseHomeExpansion = null;
 
-        if (!this.course.filledIn)
-        {
-            //Add some temp quiz questions
-            var multQ = new QuizQuestion(11, "This is a sample multiple choice question.", QuizQuestion.questionTypes.MULTI, new Date(2015, 12, 1), [
-                "Choice 1",
-                "Choice 2",
-                "Choice 3"
-            ]);
-            this.course.quizQuestions.set(11, multQ);
-
-            var textQ = new QuizQuestion(22, "This is a sample text input question.", QuizQuestion.questionTypes.TEXT, new Date(2015, 12, 1));
-            this.course.quizQuestions.set(22, textQ);
-
-            var imgQ = new QuizQuestion(33, "This is a sample image input question.", QuizQuestion.questionTypes.IMG, new Date(2015, 12, 1));
-            this.course.quizQuestions.set(33, imgQ);
-        }
-
-        this.course.filledIn = true;
+        this.course.initCollections();
     }
 
     deactivate()
@@ -104,7 +87,7 @@ export class CourseHome {
 
     toggleQuizQuestions()
     {
-        if (this.course.quizQuestions.size === 0) {
+        if (this.course.quizQuestions.items.length === 0) {
             return;
         }
 
@@ -121,7 +104,7 @@ export class CourseHome {
 
     toggleUserQuestions()
     {
-        if (this.course.userQuestions.size === 0) {
+        if (this.course.userQuestions.items.length === 0) {
             return;
         }
 

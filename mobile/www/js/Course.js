@@ -1,3 +1,8 @@
+import {ReactiveCollectionWithTransform} from "js/EnhancedReactiveCollections";
+import {Container} from "aurelia-dependency-injection";
+import {UserData} from "js/UserData";
+import {UserQuestion} from "js/UserQuestion";
+
 export class Course
 {
     //start-es7
@@ -6,19 +11,26 @@ export class Course
     session: Session;
     semester;
     id: string;
-    userQuestions: Map<numeric, UserQuestion>;
+    userQuestions: ReactiveCollectionWithTransform;
     quizQuestions: Map<numeric, QuizQuestion>;
     //end-es7
 
     constructor(name, callSign, session, id, semester)
     {
+        this.userData = Container.instance.get(UserData);
         this.name = name;
         this.callSign = callSign;
         this.session = session;
         this.id = id;
         this.semester = semester;
-        this.userQuestions = new Map();
         this.quizQuestions = new Map();
+    }
+
+    initCollections()
+    {
+        this.userQuestions = new ReactiveCollectionWithTransform(`userQs/${this.id}/${this.userData.user.uid}/submissions`, val => {
+            return new UserQuestion(val.__firebaseKey__, val.text, val.isAnon);
+        });
     }
 
     static fromServerObj(obj, id)
