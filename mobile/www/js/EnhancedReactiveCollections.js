@@ -45,18 +45,24 @@ export class ReactiveCollectionWithTransform extends ReactiveCollection
     
     //Copy/paste from plugin source code to fix typo in plugin
     _listenToQuery(query) {
-        query.on('child_added', (snapshot, previousKey) => {
-            this._onItemAdded(snapshot, previousKey);
-        });
-        query.on('child_removed', (snapshot) => {
-            this._onItemRemoved(snapshot);
-        });
-        query.on('child_changed', (snapshot, previousKey) => {
-            this._onItemChanged(snapshot, previousKey);
-        });
-        query.on('child_moved', (snapshot, previousKey) => {
-            this._onItemMoved(snapshot, previousKey);
-        });
+        //Also, Firebase internally maintains a cache. If something's in it when you attach a listener,
+        //the listener is immediately called *synchronously* with those values.
+        //This kind of fucks with inheritance.
+        //Use setTimeout to make async
+        setTimeout(() => {
+            query.on('child_added', (snapshot, previousKey) => {
+                this._onItemAdded(snapshot, previousKey);
+            });
+            query.on('child_removed', (snapshot) => {
+                this._onItemRemoved(snapshot);
+            });
+            query.on('child_changed', (snapshot, previousKey) => {
+                this._onItemChanged(snapshot, previousKey);
+            });
+            query.on('child_moved', (snapshot, previousKey) => {
+                this._onItemMoved(snapshot, previousKey);
+            });
+        }, 0);
     }
 }
 
