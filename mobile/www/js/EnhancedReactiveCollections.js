@@ -42,11 +42,37 @@ export class ReactiveCollectionWithTransform extends ReactiveCollection
             return initVal;
         }
     }
+    
+    //Copy/paste from plugin source code to fix typo in plugin
+    _listenToQuery(query) {
+        query.on('child_added', (snapshot, previousKey) => {
+            this._onItemAdded(snapshot, previousKey);
+        });
+        query.on('child_removed', (snapshot) => {
+            this._onItemRemoved(snapshot);
+        });
+        query.on('child_changed', (snapshot, previousKey) => {
+            this._onItemChanged(snapshot, previousKey);
+        });
+        query.on('child_moved', (snapshot, previousKey) => {
+            this._onItemMoved(snapshot, previousKey);
+        });
+    }
 }
 
 export class ReferenceCollection extends ReactiveCollectionWithTransform
 {
-    constructor(path, refBase, transformer)
+    /**
+    Arguments:
+    path: the path for the collection of reference keys, relative to the base
+    refBase: the path to the source collection, relative to the base
+    twoWay: for two-way relationships, an array containing:
+        the key within each source object for inserting the reference to this collection
+        the key to use to represent this collection
+    For one-way relationships, pass null for twoWay
+    transformer: A function to transform the pulled-in results before displaying them
+    */
+    constructor(path, refBase, twoWay, transformer)
     {
         super(path, transformer);
         
@@ -55,6 +81,7 @@ export class ReferenceCollection extends ReactiveCollectionWithTransform
         this._refBase = ReactiveCollection._getChildLocation(config.getFirebaseUrl(), refBase) + "/";
         this._frb_refBase = new Firebase(this._refBase);
         this._refMap = new Map();
+        [this._twoWayKey, this._twoWayVal] = twoWay;
     }
     
     /**
@@ -76,17 +103,39 @@ export class ReferenceCollection extends ReactiveCollectionWithTransform
         });
         
         let setRef = key => {
-            return new Promise((resolve, reject) => {
+            let frontRef = new Promise((resolve, reject) => {
                 let query = this._query.child(key);
                 query.set(true, e => {
                     if(e) {
                         reject(e);
                     }
                     else {
-                        resolve(item);
+                        resolve();
                     }
                 });
             });
+            
+            let backRef = () => {
+                return new Promise((resolve, reject) => {
+                    let query = this._frb_refBase.child(`${key}/${this._twoWayKey}/${this._twoWayVal}`);
+                    query.set(true, e => {
+                        if(e) {
+                            reject(e);
+                        }
+                        else {
+                            resolve();
+                        }
+                    });
+                });
+            };
+            
+            if (this._twoWayKey) {
+                return Promise.all([frontRef, backRef()])
+                    .then(() => Promise.resolve(item));
+            }
+            else {
+                return frontRef;
+            }
         };
         
         return setVal.then(setRef);
@@ -113,17 +162,39 @@ export class ReferenceCollection extends ReactiveCollectionWithTransform
         };
         
         let setRef = () => {
-            return new Promise((resolve, reject) => {
+            let frontRef = new Promise((resolve, reject) => {
                 let query = this._query.child(key);
                 query.set(true, e => {
                     if(e) {
                         reject(e);
                     }
                     else {
-                        resolve(item);
+                        resolve();
                     }
                 });
             });
+            
+            let backRef = () => {
+                return new Promise((resolve, reject) => {
+                    let query = this._frb_refBase.child(`${key}/${this._twoWayKey}/${this._twoWayVal}`);
+                    query.set(true, e => {
+                        if(e) {
+                            reject(e);
+                        }
+                        else {
+                            resolve();
+                        }
+                    });
+                });
+            };
+            
+            if (this._twoWayKey) {
+                return Promise.all([frontRef, backRef()])
+                    .then(() => Promise.resolve(item));
+            }
+            else {
+                return frontRef;
+            }
         };
         
         if (item !== undefined) {
@@ -151,9 +222,10 @@ export class ReferenceCollection extends ReactiveCollectionWithTransform
     removeByKey(key, removeValue)
     {
         let remRef = () => {
-            return new Promise((resolve, reject) => {
-                this._query.child(key).remove(e => {
-                    if (e) {
+            let frontRef = new Promise((resolve, reject) => {
+                let query = this._query.child(key);
+                query.remove(e => {
+                    if(e) {
                         reject(e);
                     }
                     else {
@@ -161,6 +233,27 @@ export class ReferenceCollection extends ReactiveCollectionWithTransform
                     }
                 });
             });
+            
+            let backRef = () => {
+                return new Promise((resolve, reject) => {
+                    let query = this._frb_refBase.child(`${key}/${this._twoWayKey}/${this._twoWayVal}`);
+                    query.remove(e => {
+                        if(e) {
+                            reject(e);
+                        }
+                        else {
+                            resolve();
+                        }
+                    });
+                });
+            };
+            
+            if (this._twoWayKey) {
+                return Promise.all([frontRef, backRef()]);
+            }
+            else {
+                return frontRef;
+            }
         };
         
         let remVal = () => {
@@ -186,11 +279,23 @@ export class ReferenceCollection extends ReactiveCollectionWithTransform
     
     clear() {
         //NOP: Protect by enforcing specificity of function calls
-        console.log("Don't use clear() on ReferenceCollections! Use clearRefs() or clearRefsAndVals() instead");
+        console.error("Don't use clear() on ReferenceCollections! Use clearRefs() or clearRefsAndVals() instead.");
     }
     
-    clearRefs() {
-        return super.clear();
+    clearRefs()
+    {
+        if (this._twoWayKey)
+        {
+            //Do this an item at a time because we have to deal with two-way relationships where we have to delete a lot of nested keys
+            let prom = Promise.resolve();
+            for (let [key] of this._valueMap) {
+                prom = prom.then(this.removeByKey(key, false));
+            }
+            return prom;
+        }
+        else {
+            return super.clear();
+        }
     }
     
     clearRefsAndVals() {
@@ -235,5 +340,43 @@ export class ReferenceCollection extends ReactiveCollectionWithTransform
         let ref = oldSnapshot.key();
         this._refMap.get(ref).off();
         this._refMap.delete(ref);
+    }
+}
+
+export class FilteredCollection extends ReactiveCollectionWithTransform
+{
+    constructor(path, filter, transformer)
+    {
+        super(path, transformer);
+        
+        this.filter = filter;
+    }
+    
+    _onItemAdded(snapshot, prevKey)
+    {
+        if (this.filter)
+        {
+            let val = this._valueFromSnapshot(snapshot);
+            if (!this.filter(val)) {
+                return;
+            }
+        }
+        
+        super._onItemAdded(snapshot, prevKey);
+    }
+    
+    _onItemChanged(snapshot, prevKey)
+    {
+        if (this.filter)
+        {
+            let val = this._valueFromSnapshot(snapshot);
+            if (!this.filter(val))
+            {
+                this._onItemRemoved(snapshot);
+                return;
+            }
+        }
+        
+        super._onItemChanged(snapshot, prevKey);
     }
 }

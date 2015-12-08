@@ -8,7 +8,7 @@
             <h1>ClikUR</h1>
         </header>
 
-        <div class="list" if.bind="!updating">
+        <div class="list">
             <course-view repeat.for="course of userData.courseList.items" course.bind="course" del-action.bind="deleteCourse" touchend.delegate="courseSelectAction(course.id)"></course-view>
         </div>
 

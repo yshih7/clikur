@@ -9,7 +9,6 @@ export class Home
 {
     //start-es7
     userData: UserData;
-    updating: boolean = false;
 
     //Use fat-arrow for lexical this
     deleteCourse = id =>
@@ -49,9 +48,5 @@ export class Home
 
     addCourseAction() {
         this.router.navigate("courses/add");
-    }
-
-    deactivate() {
-        this.updating = true;
     }
 }

@@ -52,7 +52,7 @@ export class UserData
         return new Promise((resolve, reject) => {
             frb_user.once("value", snapshot => {
                 this.name = snapshot.child("name").val();
-                this.courseList = new ReferenceCollection(`users/${user.uid}/courses`, "courses", val => {
+                this.courseList = new ReferenceCollection(`users/${user.uid}/courses`, "courses", ["members", user.uid], val => {
                     return course.Course.fromServerObj(val, val.__firebaseKey__);
                 });
                 resolve();

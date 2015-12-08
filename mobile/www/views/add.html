@@ -11,8 +11,7 @@
         </div>
 
         <div class="list" id="course_list">
-
-            <course-view repeat.for="course of results" course.bind="course" touchend.delegate="courseSelectAction($index)"></course-view>
+            <course-view repeat.for="course of results.items" course.bind="course" touchend.delegate="courseSelectAction(course.id)"></course-view>
         </div>
     </div>
 </template>
