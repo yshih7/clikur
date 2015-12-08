@@ -4,6 +4,11 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'clikur-site',
     environment: environment,
+    contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
+    firebase: 'https://blinding-heat-6163.firebaseio.com/',
+	torii: {
+      sessionServiceName: 'session'
+    },
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {

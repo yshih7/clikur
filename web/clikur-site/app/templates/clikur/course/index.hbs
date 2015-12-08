@@ -1,0 +1,55 @@
+<div class="row">
+	<div class="col-md-3">
+	<h3>Students</h3>
+	{{#each model.students as |student|}}
+		{{student-info student=student}}
+	{{/each}}
+	</div>
+	<div class="col-md-7">
+		<h3 id="classtitle">Death, Dying, and Beyond</h3>
+		<h4 id="classsemester">Fall Semester</h4>
+		<div class="row">
+			<div class="col-md-3">
+				<h3 id="quizzesTitle">Quizzes</h3>
+			</div>
+			<div class="col-md-offset-6 col-md-2">
+				{{#link-to "clikur.course.quizzes.add" model.course.id tagName="button" id="addQuiz" name="addQuiz" classNames="btn btn-default"}}
+					Add Question
+				{{/link-to}}
+			</div>
+		</div>
+		<div class="row">		
+			<table class="table table-striped">
+				<tbody>
+					<tr>
+						<th>Question</th>
+						<th>Status</th>
+					</tr>
+					{{#each model.quizzes as |quiz|}}
+						{{quiz-question quiz=quiz}}
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	<div class="col-md-2">
+		<div class="col-md-10">
+			{{#link-to "clikur.lecture" model.course.id tagName="button" id="btn_lecture" name="btn_lecture" classNames="btn btn-primary"}}
+				Start Lecture
+			{{/link-to}}
+		</div>
+		<div class="col-md-10">&nbsp;</div>
+		<div class="col-md-10">
+			{{#link-to "clikur.courses" tagName="button" id="btn_courses" name="btn_courses" classNames="btn btn-default"}}
+				Return to Course List
+			{{/link-to}}
+		</div>
+		<div class="col-md-10">&nbsp;</div>
+		<div class="col-md-10">
+			{{#link-to "clikur.courses.add" tagName="button" id="addCourse" name="addCourse" classNames="btn btn-default"}}
+				Add Course
+			{{/link-to}}
+		</div>
+	</div>
+</div>

@@ -1,0 +1,73 @@
+<div id="loginMain">
+	<div class="row">
+		<div class="col-md-6">
+			<form id="loginForm" name="loginForm" method="post" class="form-horizontal"> 
+				<div class="form-group">
+					<label for="email" class="col-md-offset-1 col-md-2 control-label">
+						Email:
+					</label>
+					<div class="col-md-6">
+						{{input type="email" id="email" name="email" class="form-control"}}
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="password" class="col-md-offset-1 col-md-2 control-label">
+						Password:
+					</label>
+					<div class="col-md-6">
+						{{input type="password" id="password" name="password" class="form-control"}}
+					</div>
+				</div>
+				<form class="form-inline col-md-offset-4">
+					<div class="form-group">
+						<div class="col-md-2">
+							<button type="button" id="submitLogin" name="submitLogin" class="btn btn-primary" {{action "signIn"}}>Login</button>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-offset-5 col-md-2">
+							{{#link-to "register" tagName="button" id="register" name="register" classNames="btn btn-info"}}
+								Register
+							{{/link-to}}
+						</div>
+					</div>
+				</form>
+			</form>
+		</div>
+		<div id="clikurInfo" class="col-md-6">
+			<div class="row clikURInfo">
+				<div class="col-md-12">
+					<strong> ClikUR</strong> is a revolutionary new tool to improve classroom communication dynamics, specifically targeted towards large lecture halls.
+				</div>
+			</div>
+			<div class="row clikURInfo">
+				<div class="col-md-12">
+					<strong> ClikUR</strong> gives every student the ability to be seen and heard, sometimes even literally.
+				</div>
+			</div>
+			<div class="row clikURInfo">
+				<div class="col-md-12">
+					<strong> ClikUR</strong> also helps professors see how the entire class is progressing with their understanding of their material 
+					as well as enhances their ability to answer questions their students may have.
+				</div>
+			</div>
+			<div class="row clikURInfo">
+				<div class="col-md-12">
+					<strong> ClikUR</strong> is easily accessible and free for everyone.
+				</div>
+			</div>
+			<div class="row clikURInfo">
+				<div class="col-md-12">
+					{{#link-to "about" tagName="button" id="aboutClikUR" name="aboutClikUR" classNames="btn btn-primary"}}
+						More About ClikUR
+					{{/link-to}}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<p id="loginFailMsg" class="hidden alert">Login failed: bad email or password</p>
+		</div>
+	</div>
+</div>

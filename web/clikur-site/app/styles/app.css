@@ -1,0 +1,42 @@
+.float-right {
+	float: right;
+}
+
+.alert {
+	color: red;
+	font-weight: bold;
+}
+
+.clikURInfo {
+	padding: .5em 0;
+}
+
+.timeline {
+	padding: .5em 0;
+}
+
+#mainHeader {
+	background-color:#16203b;
+}
+
+#logo {
+	width:220px;
+	height:60px;
+}
+
+#loginMain {
+	background-color:#ffffff;
+}
+
+#loginForm {
+	background-color:#ec2e4a;
+	padding: 2em;
+}
+
+#clikurInfo {
+	outline: thick solid #16203b;
+}
+
+#loginFailMsg {
+	font-size: 2em;
+}
