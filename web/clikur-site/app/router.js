@@ -14,6 +14,7 @@ Router.map(function() {
     this.route('timeline');
     this.route('needfinding');
     this.route('videos');
+    this.route('prototypes');
   });
   this.route('clikur', function () {
     this.route('courses', function() {

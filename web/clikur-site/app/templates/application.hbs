@@ -1,6 +1,8 @@
 <div id="mainHeader">
 <br>
-<a href="" {{action "signOut"}}><p class="float-right">Logout &nbsp;</p></a>
+{{#if session.isAuthenticated}}
+	<a href="" {{action "signOut"}}><p class="float-right">Logout &nbsp;</p></a>
+{{/if}}
 {{#if session.isAuthenticated}}
 	{{#link-to "clikur.courses"}}
 		<img id="logo" src="assets/clikur_logo_white.png" alt="clikUR logo" title="clikUR">
