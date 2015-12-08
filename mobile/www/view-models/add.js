@@ -22,8 +22,10 @@ export class AddCourse
         this.results = this.getCollection();
     }
 
-    searchAction() {
-        this.results = this.getCollection();
+    searchAction(e) {
+        if (e.keyCode === 13) {
+            this.results = this.getCollection();
+        }
     }
 
     getCollection() {
@@ -39,9 +41,10 @@ export class AddCourse
     {
         if (this.searchQuery && this.searchQuery.length > 0)
         {
-            return val.name.contains(this.searchQuery) ||
-                val.callsign.contains(this.searchQuery) ||
-                val.id.contains(this.searchQuery);
+            let query = this.searchQuery.toLowerCase();
+            return val.name.toLowerCase().includes(query) ||
+                val.callSign.toLowerCase().includes(query) ||
+                val.id.toLowerCase().includes(query);
         }
         
         //A still truthy, but distinct, value
