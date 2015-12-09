@@ -7,12 +7,11 @@
             <h1 id="title">Add a Class</h1>
         </header>
         <div id="searchWrapper">
-          <input type="text" name="search" id="searchField" value.bind="searchQuery" placeholder="Search">
+          <input type="text" name="search" id="searchField" value.bind="searchQuery" placeholder="Search" keyup.delegate="searchAction($event)">
         </div>
 
         <div class="list" id="course_list">
-
-            <course-view repeat.for="course of results" course.bind="course" touchend.delegate="courseSelectAction($index)"></course-view>
+            <course-view repeat.for="course of results.items" course.bind="course" touchend.delegate="courseSelectAction(course.id)"></course-view>
         </div>
     </div>
 </template>

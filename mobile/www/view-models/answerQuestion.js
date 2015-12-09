@@ -3,6 +3,7 @@ import {inject, computedFrom} from "aurelia-framework"; //jshint ignore:line
 import {UserData} from "js/UserData"; //jshint ignore:line
 import {QuizQuestion} from "js/QuizQuestion";
 import {Router} from "aurelia-router"; //jshint ignore:line
+import Firebase from "firebase";
 /*globals Camera*/
 
 //start-es7
@@ -38,8 +39,8 @@ export class AnswerQuestion
 
     activate(params)
     {
-        this.course = this.userData.courseList.get(+(params.cid));
-        this.question = this.course.quizQuestions.get(+(params.qid));
+        this.course = this.userData.courseList.getByKey(params.cid);
+        this.question = this.course.quizQuestions.getByKey(params.qid);
         
         var types = QuizQuestion.questionTypes;
         if (this.question.type === types.TEXT) {
@@ -68,26 +69,60 @@ export class AnswerQuestion
         });
     }
 
+    //start-es7
     @computedFrom("textInput", "selection", "imageData")
+    //end-es7
     get answerGiven() {
         return !!this.textInput || this.selection !== undefined || this.imageData !== AnswerQuestion.IMG_PLACEHOLDER;
     }
 
-    submitAnswer()
+    submitAnswer(e)
     {
         if (!this.answerGiven) {
             return;
         }
         
+        let response;
         if(this.showText) {
-            //TODO Submit text
+            response = this.textInput;
         } else if(this.showRadio) {
-            //TODO Submit radio choice
+            response = this.selection;
         } else {
-            //TODO Submit Image
+            response = this.imageData;
         }
         
-        this.course.quizQuestions.delete(this.question.id);
-        this.router.navigateBack();
+        let respond = new Promise((resolve, reject) => {
+            let frb_respond = new Firebase(window.firebaseUrl + `responses/${this.course.id}/${this.question.id}/${this.userData.user.uid}`);
+            frb_respond.set({
+                response,
+                timestamp: e.timeStamp
+            }, err => {
+                if (err) {
+                    reject(err);
+                }
+                else {
+                    resolve();
+                }
+            });
+        });
+        
+        let mark = new Promise((resolve, reject) => {
+            let frb_mark = new Firebase(window.firebaseUrl + `quizQs/${this.course.id}/${this.question.id}/hasAnswered/${this.userData.user.uid}`);
+            frb_mark.set(true, err => {
+                if (err) {
+                    reject(err);
+                }
+                else {
+                    resolve();
+                }
+            });
+        });
+        
+        Promise.all([respond, mark])
+            .then(() => this.router.navigateBack())
+            .catch(err => {
+                console.log(err);
+                navigator.notification.alert(typeof err === "string" ? err : String(err), null, "Error");
+            });
     }
 }

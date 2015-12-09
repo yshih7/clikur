@@ -9,8 +9,8 @@
         <p>
             Leave a constructive comment or question for the teacher. Please note that any offensive commentary will result in removal from the system.
         </p>
-        <textarea placeholder="Enter your comment or question here" value.bind="question.text" name="questionField" id="questionField"></textarea>
-        <label id="anonymous"><input type="checkbox" name="anonymous" checked.bind="question.isAnon"> Anonymous</label>
+        <textarea placeholder="Enter your comment or question here" value.bind="text" name="questionField" id="questionField"></textarea>
+        <label id="anonymous"><input type="checkbox" name="anonymous" checked.bind="isAnon"> Anonymous</label>
         <button role="button" touchend.delegate="submitQuestion($event)" id="submit">Submit</button>
     </div>
 </template>

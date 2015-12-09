@@ -1,14 +1,15 @@
 import {inject} from "aurelia-framework"; //jshint ignore:line
 import {UserData} from "js/UserData"; //jshint ignore:line
 import {Router} from "aurelia-router"; //jshint ignore:line
-import {QuizQuestion} from "js/QuizQuestion";
 import {preserve, needsPreservation} from "js/statePreservation"; //jshint ignore:line
+import Firebase from "firebase";
 
 //start-es7
 @inject(UserData, Router)
 @needsPreservation("courseHome")
 //end-es7
-export class CourseHome {
+export class CourseHome
+{
     //start-es7
     course;
     userData: UserData;
@@ -18,25 +19,27 @@ export class CourseHome {
     expandQuizQuestions: boolean = false;
     UQBack = () => this.toggleUserQuestions();
     QQBack = () => this.toggleQuizQuestions();
+    frb_hand: Firebase;
+    handRaise: boolean = false;
     //end-es7
 
 
-    constructor(userData, router) {
-
+    constructor(userData, router)
+    {
         this.userData = userData;
         this.router = router;
     }
 
     activate(params)
     {
-        this.course = this.userData.courseList.get(+(params.cid));
+        this.course = this.userData.courseList.getByKey(params.cid);
 
-        if (window.courseHomeExpansion === "user" && this.course.userQuestions.size !== 0)
+        if (window.courseHomeExpansion === "user" && this.course.userQuestions.items.length !== 0)
         {
             this.expandUserQuestions = true;
             this.addBackListener(this.UQBack);
         }
-        else if (window.courseHomeExpansion === "quiz" && this.course.quizQuestions.size !== 0)
+        else if (window.courseHomeExpansion === "quiz" && this.course.quizQuestions.items.length !== 0)
         {
             this.expandQuizQuestions = true;
             this.addBackListener(this.QQBack);
@@ -44,24 +47,10 @@ export class CourseHome {
 
         window.courseHomeExpansion = null;
 
-        if (!this.course.filledIn)
-        {
-            //Add some temp quiz questions
-            var multQ = new QuizQuestion(11, "This is a sample multiple choice question.", QuizQuestion.questionTypes.MULTI, new Date(2015, 12, 1), [
-                "Choice 1",
-                "Choice 2",
-                "Choice 3"
-            ]);
-            this.course.quizQuestions.set(11, multQ);
-
-            var textQ = new QuizQuestion(22, "This is a sample text input question.", QuizQuestion.questionTypes.TEXT, new Date(2015, 12, 1));
-            this.course.quizQuestions.set(22, textQ);
-
-            var imgQ = new QuizQuestion(33, "This is a sample image input question.", QuizQuestion.questionTypes.IMG, new Date(2015, 12, 1));
-            this.course.quizQuestions.set(33, imgQ);
-        }
-
-        this.course.filledIn = true;
+        this.course.initCollections();
+        
+        this.frb_hand = new Firebase(window.firebaseUrl + `userQs/${this.course.id}/${this.userData.user.uid}/handRaise`);
+        this.frb_hand.on("value", snapshot => this.handRaise = snapshot.val());
     }
 
     deactivate()
@@ -104,7 +93,7 @@ export class CourseHome {
 
     toggleQuizQuestions()
     {
-        if (this.course.quizQuestions.size === 0) {
+        if (this.course.quizQuestions.items.length === 0) {
             return;
         }
 
@@ -121,7 +110,7 @@ export class CourseHome {
 
     toggleUserQuestions()
     {
-        if (this.course.userQuestions.size === 0) {
+        if (this.course.userQuestions.items.length === 0) {
             return;
         }
 
@@ -135,5 +124,15 @@ export class CourseHome {
             this.removeBackListener();
         }
 
+    }
+
+    handRaiseAction() {
+        //For now, not caring about spam. Implement a timer later.
+        this.frb_hand.set(!this.handRaise, err => {
+            if (err) {
+                console.log(err);
+                navigator.notification.alert(typeof err === "string" ? err : String(err), null, "Error");
+            }
+        });
     }
 }

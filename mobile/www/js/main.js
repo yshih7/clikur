@@ -1,6 +1,7 @@
 import localforage from "localforage"; /*globals WinJS*/
 import {ViewLocator} from "aurelia-framework";
 import {SimplePopUpStrategy} from "js/SimplePopUpStrategy";
+import Firebase from "firebase";
 
 /**
 * Function serves as "main function" for Aurelia.
@@ -19,11 +20,17 @@ export function configure(aurelia)
 
     aurelia.use
         .standardConfiguration()
-        .developmentLogging();
-
-    //Uncomment the line below to enable animation.
-    aurelia.use.plugin('aurelia-animator-velocity');
-    aurelia.use.plugin("aurelia-validation", config => config.useViewStrategy(new SimplePopUpStrategy()));
+        .developmentLogging()
+        .plugin("aurelia-animator-velocity")
+        .plugin("aurelia-validation", config => config.useViewStrategy(new SimplePopUpStrategy()))
+        .plugin("aurelia-firebase", config => {
+            config
+                .setFirebaseUrl("https://blinding-heat-6163.firebaseio.com/")
+                .setMonitorAuthChange(true);
+        });
+    
+    //Making this global for convenience
+    window.firebaseUrl = "https://blinding-heat-6163.firebaseio.com/";
 
     //This is the "Main function" for Cordova.
     //We declare it inside of Aurelia's main and use it to wrap the call to aurelia.start()
@@ -97,5 +104,8 @@ export function configure(aurelia)
             //Since we're not actually using this event, we don't need it to finish traversing
             e.stopImmediatePropagation();
         }, true);
+        
+        //This seems to be inconsistently necessary for things not to break. No one knows why.
+        Firebase.INTERNAL.forceWebSockets();
     }
 }

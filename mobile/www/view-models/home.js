@@ -9,25 +9,20 @@ export class Home
 {
     //start-es7
     userData: UserData;
-    updating: boolean = false;
 
     //Use fat-arrow for lexical this
     deleteCourse = id =>
     {
-        var course = this.userData.courseList.get(id);
+        var course = this.userData.courseList.getByKey(id);
         navigator.notification.confirm(`Remove class ${course.callSign} ("${course.name}")?`, choice => {
-            if (choice === 1)
-            {
-                this.updating = true;
-                setTimeout(() =>
-                {
-                    this.userData.courseList.delete(id);
-                    this.updating = false;
-                }, 0);
+            if (choice === 1) {
+                this.userData.courseList.removeByKey(id, false)
+                .catch(err => {
+                    console.log(err);
+                    navigator.notification.alert(typeof err === "string" ? err : String(err), null, "Error");
+                })
             }
         }, "Confirm class removal", ["Yes", "Cancel"]);
-
-        //TODO: Notify server
     };
     //end-es7
 
@@ -39,8 +34,12 @@ export class Home
 
     logOutAction()
     {
-        this.userData.clear();
-        this.router.navigate("login");
+        this.userData.clearAndSignOut()
+            .then(() => this.router.navigate("login"))
+            .catch(err => {
+                console.log(err);
+                navigator.notification.alert(typeof err === "string" ? err : String(err), null, "Error");
+            });
     }
 
     courseSelectAction(id) {
@@ -49,9 +48,5 @@ export class Home
 
     addCourseAction() {
         this.router.navigate("courses/add");
-    }
-
-    deactivate() {
-        this.updating = true;
     }
 }

@@ -2,10 +2,11 @@ import {needsPreservation, preserve} from "js/statePreservation"; //jshint ignor
 import {Router} from 'aurelia-router'; //jshint ignore:line
 import {inject} from "aurelia-framework"; //jshint ignore:line
 import {UserData} from "js/UserData"; //jshint ignore:line
-import {Validation} from "aurelia-validation";
+import {Validation} from "aurelia-validation"; //jshint ignore:line
+import {AuthenticationManager} from "aurelia-firebase"; //jshint ignore:line
 
 //start-es7
-@inject(Router, UserData, Validation)
+@inject(Router, UserData, Validation, AuthenticationManager)
 @needsPreservation("login")
 //end-es7
 export class Login
@@ -18,10 +19,11 @@ export class Login
     validation;
     //end-es7
 
-    constructor(router, userData, validation)
+    constructor(router, userData, validation, authManager)
     {
         this.router = router;
         this.userData = userData;
+        this.authManager = authManager;
         this.validation = validation.on(this, config => config.treatAllPropertiesAsMandatory())
             .ensure("email")
                 .isEmail()
@@ -30,24 +32,24 @@ export class Login
             .ensure("password");
     }
 
-    attemptLogin() {
-        //TODO How will this work??? We still don't know!
-
-        this.validation.validate().then(() => {
-            //Just log in for now
-            this.userData.populate(this.email);
-
-            //Okay. So without this timeout here, if you log out and log back in, every course gets listed twice.
-            //Do I know why that happens? No. Do I know why this fixes it? Also no. ~~@stesen
-            setTimeout(() => this.router.navigate("home"), 0);
-        },
-        () => {
-            navigator.notification.alert("Invalid email or password", null, "Error");
-        });
+    attemptLogin()
+    {
+        this.validation.validate()
+            .then(() => {
+                return this.authManager.signIn(this.email, this.password);
+            },
+            () => {
+                navigator.notification.alert("Invalid email or password", null, "Error");
+            })
+            .then(user => this.userData.populate(user))
+            .then(() => this.router.navigate("home"))
+            .catch(err => {
+                console.log(err);
+                navigator.notification.alert(typeof err === "string" ? err : String(err), null, "Error");
+            });
     }
 
-    signupAction()
-    {
+    signupAction() {
         this.router.navigate("signup");
     }
 }

@@ -11,7 +11,7 @@ export class QuestionBox
 {
     //start-es7
     @bindable
-    questionMap : Map;
+    collection : ReactiveCollectionWithTransform;
 
     @bindable
     showList : boolean;
@@ -24,20 +24,15 @@ export class QuestionBox
 
     @bindable
     title: string;
-
-    updating: boolean = false;
     //end-es7
 
-    constructor(router)
-    {
+    constructor(router) {
         this.router = router;
     }
 
     show_q_detail(e, id)
     {
         e.stopPropagation();
-        
-        this.updating = true;
         
         //link to the question detail page
         this.router.navigateToRoute(this.routeName, {

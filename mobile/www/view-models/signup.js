@@ -2,9 +2,12 @@ import {needsPreservation, preserve} from "js/statePreservation"; //jshint ignor
 import {inject} from "aurelia-framework"; //jshint ignore:line
 import {Router} from "aurelia-router"; //jshint ignore:line
 import {Validation} from "aurelia-validation"; //jshint ignore:line
+import {AuthenticationManager} from "aurelia-firebase"; //jshint ignore:line
+import Firebase from "firebase";
+import {UserData} from "js/UserData"; //jshint ignore:line
 
 //start-es7
-@inject(Router, Validation)
+@inject(Router, Validation, AuthenticationManager, UserData)
 @needsPreservation("signup")
 //end-es7
 export class Signup
@@ -23,8 +26,12 @@ export class Signup
     validation;
     //end-es7
     
-    constructor(router, validation) {
+    constructor(router, validation, authManager, userData)
+    {
         this.router = router;
+        this.authManager = authManager;
+        this.userData = userData;
+        
         this.validation = validation.on(this, config => config.treatAllPropertiesAsMandatory())
             .ensure("email")
                 .isEmail()
@@ -40,13 +47,50 @@ export class Signup
                 .isEqualTo(() => this.password, "the entered password");
     }
     
-    createUser() {
-        //TODO How will this work??? We still don't know!
+    createUser()
+    {
+        let frb_users = new Firebase(window.firebaseUrl + "users");
         
-        let success = () => navigator.notification.alert("Please check your email for a confirmation message.", () => this.router.navigateBack(), "Account Created");
+        //So... Firebase can't do email verification. This is problematic. A middleware server is required to handle sending the email.
+        //Not worryting about that right now
+        //let success = () => navigator.notification.alert("Please check your email for a confirmation message.", () => this.router.navigateBack(), "Account Created");
         
-        let failure = () => navigator.notification.alert("One or more inputs were invalid. Please review the form.", null, "Error");
+        //We have to immediately log the user in so that we can write their profile
+        let register = () => this.authManager.createUserAndSignIn(this.email, this.password);
         
-        this.validation.validate().then(success, failure);
+        let validationFailure = () => navigator.notification.alert("One or more inputs were invalid. Please review the form.", null, "Error");
+        
+        let updateUsers = user => {
+            let obj = {
+                URID: this.studentID,
+                name: this.studentName,
+                courses: {},
+                isProfessor: false
+            };
+            return new Promise((resolve, reject) => frb_users.child(user.uid).set(obj, err => {
+                if (err) {
+                    reject(err);
+                }
+                else {
+                    //Pass the user object on so we can give it to the UserData object
+                    resolve(user);
+                }
+            }));
+        };
+        
+        let showAlert = () => new Promise((resolve) => {
+            return navigator.notification.alert("You are now logged in", () => resolve(), "Registration Successful");
+        });
+        
+        this.validation.validate()
+            .then(register, validationFailure)
+            .then(updateUsers)
+            .then(user => this.userData.populate(user))
+            .then(showAlert)
+            .then(() => this.router.navigate("home"))
+            .catch(err => {
+                console.log(err);
+                navigator.notification.alert(typeof err === "string" ? err : String(err), null, "Error");
+            });
     }   
 }

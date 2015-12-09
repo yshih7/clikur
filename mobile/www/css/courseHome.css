@@ -30,6 +30,10 @@
     clear: both;
 }
 
+#route-courseHome #raiseHand.raised {
+    background-color: #01a9ac;
+}
+
 #route-courseHome #raiseHand:active {
     background-color: #16203B;
     color: lightgray;

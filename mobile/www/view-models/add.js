@@ -1,48 +1,63 @@
 import {inject} from "aurelia-framework"; //jshint ignore:line
 import {UserData} from "js/UserData"; //jshint ignore:line
 import * as course from "js/Course"; //jshint ignore:line
+import {FilteredCollection} from "js/EnhancedReactiveCollections";
 
 //start-es7
 @inject(UserData)
 //end-es7
-export class AddCourse {
+export class AddCourse
+{
     //start-es7
     searchQuery: string;
     userData: UserData;
-    results: array<course.Course> = [];
+    results: FilteredCollection;
     //end-es7
 
     constructor(userData) {
         this.userData = userData;
-
-        var startTime1 = new course.Time(12, 0);
-        var endTime1 = new course.Time(1, 0);
-        var session1 = new course.Session("MW", startTime1, endTime1);
-        var course1 = new course.Course(`Add me!`, "AA101", session1, 111);
-        this.results.push(course1);
-
-        var startTime2 = new course.Time(12, 0);
-        var endTime2 = new course.Time(1, 0);
-        var session2 = new course.Session("MW", startTime2, endTime2);
-        var course2 = new course.Course(`Me too!`, "BB102", session2, 222);
-        this.results.push(course2);
     }
 
-    searchAction() {
-        //Do a search! Somehow!
+    activate() {
+        this.results = this.getCollection();
     }
 
-    courseSelectAction(index)
+    searchAction(e) {
+        if (e.keyCode === 13) {
+            this.results = this.getCollection();
+        }
+    }
+
+    getCollection() {
+        return new FilteredCollection("courses", val => {
+            return !this.userData.courseList.getByKey(val.id) && this.searchFilter(val);
+        },
+        val => {
+            return course.Course.fromServerObj(val, val.__firebaseKey__);
+        });
+    }
+
+    searchFilter(val)
     {
-        var course = this.results[index];
+        if (this.searchQuery && this.searchQuery.length > 0)
+        {
+            let query = this.searchQuery.toLowerCase();
+            return val.name.toLowerCase().includes(query) ||
+                val.callSign.toLowerCase().includes(query) ||
+                val.id.toLowerCase().includes(query);
+        }
+        
+        //A still truthy, but distinct, value
+        return 1;
+    }
+
+    courseSelectAction(id)
+    {
+        var course = this.results.getByKey(id);
 
         navigator.notification.confirm(`Add class ${course.callSign} ("${course.name}")?`, choice => {
-            if (choice === 1)
-            {
-                this.results.splice(index, 1);
-                this.userData.courseList.set(course.id, course);
-
-                //TODO: Tell the server the class was added
+            if (choice === 1) {
+                this.userData.courseList.addRef(id);
             }
         }, "Confirm class selection", ["Yes", "Cancel"]);
     }
