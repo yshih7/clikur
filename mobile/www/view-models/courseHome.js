@@ -2,12 +2,14 @@ import {inject} from "aurelia-framework"; //jshint ignore:line
 import {UserData} from "js/UserData"; //jshint ignore:line
 import {Router} from "aurelia-router"; //jshint ignore:line
 import {preserve, needsPreservation} from "js/statePreservation"; //jshint ignore:line
+import Firebase from "firebase";
 
 //start-es7
 @inject(UserData, Router)
 @needsPreservation("courseHome")
 //end-es7
-export class CourseHome {
+export class CourseHome
+{
     //start-es7
     course;
     userData: UserData;
@@ -17,11 +19,13 @@ export class CourseHome {
     expandQuizQuestions: boolean = false;
     UQBack = () => this.toggleUserQuestions();
     QQBack = () => this.toggleQuizQuestions();
+    frb_hand: Firebase;
+    handRaise: boolean = false;
     //end-es7
 
 
-    constructor(userData, router) {
-
+    constructor(userData, router)
+    {
         this.userData = userData;
         this.router = router;
     }
@@ -44,6 +48,9 @@ export class CourseHome {
         window.courseHomeExpansion = null;
 
         this.course.initCollections();
+        
+        this.frb_hand = new Firebase(window.firebaseUrl + `userQs/${this.course.id}/${this.userData.user.uid}/handRaise`);
+        this.frb_hand.on("value", snapshot => this.handRaise = snapshot.val());
     }
 
     deactivate()
@@ -117,5 +124,15 @@ export class CourseHome {
             this.removeBackListener();
         }
 
+    }
+
+    handRaiseAction() {
+        //For now, not caring about spam. Implement a timer later.
+        this.frb_hand.set(!this.handRaise, err => {
+            if (err) {
+                console.log(err);
+                navigator.notification.alert(typeof err === "string" ? err : String(err), null, "Error");
+            }
+        });
     }
 }
