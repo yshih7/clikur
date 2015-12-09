@@ -34,12 +34,12 @@ export class CourseHome
     {
         this.course = this.userData.courseList.getByKey(params.cid);
 
-        if (window.courseHomeExpansion === "user" && this.course.userQuestions.size !== 0)
+        if (window.courseHomeExpansion === "user" && this.course.userQuestions.items.length !== 0)
         {
             this.expandUserQuestions = true;
             this.addBackListener(this.UQBack);
         }
-        else if (window.courseHomeExpansion === "quiz" && this.course.quizQuestions.size !== 0)
+        else if (window.courseHomeExpansion === "quiz" && this.course.quizQuestions.items.length !== 0)
         {
             this.expandQuizQuestions = true;
             this.addBackListener(this.QQBack);
