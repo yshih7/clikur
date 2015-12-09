@@ -43,6 +43,10 @@ export class ReactiveCollectionWithTransform extends ReactiveCollection
         }
     }
     
+    _untransformedValueFromSnapshot(snapshot) {
+        return super._valueFromSnapshot(snapshot);
+    }
+    
     //Copy/paste from plugin source code to fix typo in plugin
     _listenToQuery(query) {
         //Also, Firebase internally maintains a cache. If something's in it when you attach a listener,
@@ -351,18 +355,19 @@ export class ReferenceCollection extends ReactiveCollectionWithTransform
 
 export class FilteredCollection extends ReactiveCollectionWithTransform
 {
-    constructor(path, filter, transformer)
+    constructor(path, filter, transformer, filterBeforeTransform)
     {
         super(path, transformer);
         
         this.filter = filter;
+        this.filterBeforeTransform = filterBeforeTransform;
     }
     
     _onItemAdded(snapshot, prevKey)
     {
         if (this.filter)
         {
-            let val = this._valueFromSnapshot(snapshot);
+            let val = this.filterBeforeTransform ? this._untransformedValueFromSnapshot(snapshot) : this._valueFromSnapshot(snapshot);
             if (!this.filter(val)) {
                 return;
             }
@@ -375,11 +380,16 @@ export class FilteredCollection extends ReactiveCollectionWithTransform
     {
         if (this.filter)
         {
-            let val = this._valueFromSnapshot(snapshot);
+            let val = this.filterBeforeTransform ? this._untransformedValueFromSnapshot(snapshot) : this._valueFromSnapshot(snapshot);
             if (!this.filter(val))
             {
                 this._onItemRemoved(snapshot);
                 return;
+            }
+            
+            //If it was disqualified before, we need to add it anew
+            if (this._valueMap.get(val.__firebaseKey__) === undefined) {
+                return super._onItemAdded(snapshot, prevKey);
             }
         }
         
