@@ -9,7 +9,7 @@
 
         <question-box id="userQuestions" collection.bind="course.userQuestions" route-name="edit" course-id.bind="course.id" title="Your Questions" show-list.bind="expandUserQuestions" touchend.trigger="toggleUserQuestions()"></question-box>
 
-<!--        <question-box id="quizQuestions" question-map.bind="course.quizQuestions" route-name="answer" course-id.bind="course.id" title="Quiz Questions" show-list.bind="expandQuizQuestions" touchend.trigger="toggleQuizQuestions()"></question-box>-->
+        <question-box id="quizQuestions" collection.bind="course.quizQuestions" route-name="answer" course-id.bind="course.id" title="Quiz Questions" show-list.bind="expandQuizQuestions" touchend.trigger="toggleQuizQuestions()"></question-box>
 
         <div class="clear"></div>
 

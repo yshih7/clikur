@@ -1,7 +1,6 @@
 import {inject} from "aurelia-framework"; //jshint ignore:line
 import {UserData} from "js/UserData"; //jshint ignore:line
 import {Router} from "aurelia-router"; //jshint ignore:line
-import {QuizQuestion} from "js/QuizQuestion";
 import {preserve, needsPreservation} from "js/statePreservation"; //jshint ignore:line
 
 //start-es7

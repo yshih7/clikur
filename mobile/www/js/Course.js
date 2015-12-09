@@ -1,7 +1,8 @@
-import {ReactiveCollectionWithTransform} from "js/EnhancedReactiveCollections";
+import {FilteredCollection} from "js/EnhancedReactiveCollections";
 import {Container} from "aurelia-dependency-injection";
 import {UserData} from "js/UserData";
 import {UserQuestion} from "js/UserQuestion";
+import {QuizQuestion} from "js/QuizQuestion";
 
 export class Course
 {
@@ -11,8 +12,8 @@ export class Course
     session: Session;
     semester;
     id: string;
-    userQuestions: ReactiveCollectionWithTransform;
-    quizQuestions: Map<numeric, QuizQuestion>;
+    userQuestions: FilteredCollection;
+    quizQuestions: FilteredCollection;
     //end-es7
 
     constructor(name, callSign, session, id, semester)
@@ -23,14 +24,25 @@ export class Course
         this.session = session;
         this.id = id;
         this.semester = semester;
-        this.quizQuestions = new Map();
     }
 
     initCollections()
     {
-        this.userQuestions = new ReactiveCollectionWithTransform(`userQs/${this.id}/${this.userData.user.uid}/submissions`, val => {
+        this.userQuestions = new FilteredCollection(`userQs/${this.id}/${this.userData.user.uid}/submissions`, val => {
+            return !val.flag;
+        },
+        val => {
             return new UserQuestion(val.__firebaseKey__, val.text, val.isAnon);
-        });
+        }, true);
+        
+        this.quizQuestions = new FilteredCollection(`quizQs/${this.id}`, val => {
+            return (!val.hasAnswered || !val.hasAnswered[this.userData.user.uid]) &&
+                val.active &&
+                val.expiration > Date.now();
+        },
+        val => {
+            return new QuizQuestion(val.__firebaseKey__, val.text, val.type, new Date(val.expiration), val.choices);
+        }, true);
     }
 
     static fromServerObj(obj, id)
