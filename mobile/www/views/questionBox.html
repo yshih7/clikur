@@ -10,7 +10,7 @@
             </div>
 
             <div class="list" if.bind="showList">
-                <div repeat.for="question of collection.items" class="listItem" touchend.trigger="show_q_detail($event, question.timestamp)">${question.text}</div>
+                <div repeat.for="question of collection.items" class="listItem" touchend.trigger="show_q_detail($event, question.id)">${question.text}</div>
             </div>
         </div>
     </div>
