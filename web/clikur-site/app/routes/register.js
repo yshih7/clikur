@@ -11,6 +11,7 @@ function submitInfo() {
 export default Ember.Route.extend({
 	actions: {
 		checkConfirmations: function () {
+			var submitSuccessful;
 			var email1 = document.getElementById("email").value;
 			var email2 = document.getElementById("confEmail").value;
 			
@@ -42,12 +43,12 @@ export default Ember.Route.extend({
 			});
 			
 			if(infoCorrect){
-				var submitSuccessful = submitInfo();
+				submitSuccessful = submitInfo();
 			}
 			
 			if(submitSuccessful){
 				//navigate to the next page
-				window.location.href = window.location.href + "/courses"
+				window.location.href = window.location.href + "/courses";
 			}
 		}
 	}
